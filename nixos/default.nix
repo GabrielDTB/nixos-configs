@@ -18,6 +18,8 @@
     ./system-packages.nix
     # Users.
     ./users.nix
+    # Snapshots
+    ./immich.nix
   ];
 
   #nixpkgs.config = {
@@ -105,6 +107,11 @@
     # Virtual Microphone, built-in
     "snd-aloop"
   ];
+
+  services.udev.packages = [
+    pkgs.android-udev-rules
+  ];
+  programs.adb.enable = true;
 
   # Set initial kernel module settings
   boot.extraModprobeConfig = ''

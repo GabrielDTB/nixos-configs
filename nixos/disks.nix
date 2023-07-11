@@ -1,5 +1,5 @@
 
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   systemd.services = {
@@ -19,28 +19,28 @@
     };
   };
 
-  fileSystems."/" = pkgs.lib.mkForce {
-    device = "/dev/disk/by-label/nixos";
-    fsType = "btrfs";
-    options = [ "subvol=@" "compress=zstd:3" "noatime" ];
-  };
-
-  fileSystems."/boot" = pkgs.lib.mkForce {
-    device = "/dev/disk/by-label/boot";
-    fsType = "vfat";
-    options = [ "defaults" ];
-  };
-
   boot.initrd.luks.devices."enclave".device = pkgs.lib.mkForce "/dev/disk/by-label/enc";
-  fileSystems."/swap" = pkgs.lib.mkForce {
-    device = "/dev/disk/by-label/enclave";
-    fsType = "btrfs";
-    options = [ "subvol=@swap" "compress=zstd:3" "noatime" ];
+
+  fileSystems = {
+    "/" = pkgs.lib.mkForce {
+      device = "/dev/disk/by-label/nixos";
+      fsType = "btrfs";
+      options = [ "subvol=@" "compress=zstd:3" "noatime" ];
+    };
+    "/boot" = pkgs.lib.mkForce {
+      device = "/dev/disk/by-label/boot";
+      fsType = "vfat";
+      options = [ "defaults" ];
+    };
+    "/swap" = pkgs.lib.mkForce {
+      device = "/dev/disk/by-label/enclave";
+      fsType = "btrfs";
+      options = [ "subvol=@swap" "compress=zstd:3" "noatime" ];
+    };
   };
-  swapDevices = pkgs.lib.mkForce [
-    {
+
+  swapDevices = pkgs.lib.mkForce [{
       device = "/swap/swapfile";
       size = (1024 * 32); # RAM size
-    }
-  ]; 
+  }]; 
 }

@@ -20,7 +20,6 @@
     ./osu
   ];
   
-
   home.packages = with pkgs; [
     kitty
     signal-desktop
@@ -34,6 +33,7 @@
     cmatrix
     airshipper
     prismlauncher
+    digikam
   ];
 
   fonts.fontconfig.enable = true;
