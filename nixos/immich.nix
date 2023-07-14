@@ -2,12 +2,11 @@
 
 {
   services.btrbk.instances = {
-    immich = {
+    immich-minutes = {
       onCalendar = "*-*-* *:*:00";
       settings = {
         timestamp_format = "long-iso";
-        snapshot_preserve_min = "18h";
-        snapshot_preserve = "36h 365d";
+        snapshot_preserve_min = "2d";
         volume."/immich" = {
           snapshot_dir = ".snapshots";
           subvolume."data/library".snapshot_name = "library";
@@ -15,6 +14,18 @@
         };
       };
     };
+    immich-hours = {
+      onCalendar = "*-*-* *:00:00";
+      settings = {
+        timestamp_format = "long-iso";
+        snapshot_preserve_min = "latest";
+        snapshot_preserve = "48h 365d";
+        volume."/immich" = {
+          snapshot_dir = ".snapshots";
+          subvolume."data/library".snapshot_name = "library";
+        };
+      };
+    };  
   };
   fileSystems = {
     "/immich" = pkgs.lib.mkForce {
