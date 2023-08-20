@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   home.packages = with pkgs; [
@@ -8,18 +8,21 @@
     wl-clipboard
     acpilight
   ];
+  
   #programs.tofi.enable = true;
   xdg.configFile."sway/tofi.ini".text = (builtins.readFile ./tofi.ini);
+  home.file.".config/sway/status.sh".text = (builtins.readFile ./status.sh);
+  home.file.".config/sway/lockman.sh".text = (builtins.readFile ./lockman.sh);
   
   wayland.windowManager.sway = let
     bg = "282c32";
     hl = "61afef";
     tx = "abb2bf";
     ar = "e06c75";
+    mod = "Mod4";
   in {
     enable = true;
     config = let mod = "Mod4";
-
     in rec {
       modifier = mod;
       terminal = "kitty -1";
@@ -159,32 +162,38 @@
 
       focus = { followMouse = "always"; };
     };
-
     extraConfig = ''
-      set $onedark_background #282c34
-      set $onedark_highlight  #61afef
-      set $onedark_text       #abb2bf
-      set $onedark_alert      #e06c75      
       bar {  
         id 0
         position top
         mode hide
 
         #status_command while ~/.config/sway/status.sh; do sleep 1; done
-
+        status_command while echo "Up $(uptime | cut -d ',' -f1  | cut -d ' ' -f7) :: Kernel $(uname -r) :: $(date '+%A %B %-d %-I:%M:%S %p %Z %Y')"; do sleep 1; done
+        
         colors {
-          statusline $onedark_text
-          background $onedark_background
-	        focused_workspace $onedark_background $onedark_highlight $onedark_background
-          inactive_workspace $onedark_background $onedark_background $onedark_text
-          urgent_workspace $onedark_background $onedark_background $onedark_alert
+          statusline #${tx}
+          background #${bg}
+	        focused_workspace #${bg} #${hl} #${bg}
+          inactive_workspace #${bg} #${bg} #${tx}
+          urgent_workspace #${bg} #${bg} #${ar}
         }
         font pango:monospace
       }
       font pango:monospace 0.01
       titlebar_border_thickness 0
       titlebar_padding 0
-    '';
+
+      ### Idle configuration
+      exec sway-audio-idle-inhibit
+      exec swayidle -w \
+        timeout 300 'swaylock -f -c 000000' \
+        timeout 270 'swaymsg "output * dpms off"' \
+        resume 'swaymsg "output * dpms on"' \
+        before-sleep 'swaylock -f -c 000000'
+      set $lockman exec bash ~/.config/sway/lockman.sh
+      bindsym ${mod}+l exec $lockman
+      '';
   };
 
   programs.swaylock = { enable = true; };

@@ -112,6 +112,8 @@
     pkgs.android-udev-rules
   ];
   programs.adb.enable = true;
+  programs.steam.enable = true;
+  security.pam.services.swaylock = {};
 
   # Set initial kernel module settings
   boot.extraModprobeConfig = ''

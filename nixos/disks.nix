@@ -25,7 +25,7 @@
     "/" = pkgs.lib.mkForce {
       device = "/dev/disk/by-label/nixos";
       fsType = "btrfs";
-      options = [ "subvol=@" "compress=zstd:3" "noatime" ];
+      options = [ "subvol=@" "compress-force=zstd:3" "noatime" ];
     };
     "/boot" = pkgs.lib.mkForce {
       device = "/dev/disk/by-label/boot";
@@ -35,7 +35,27 @@
     "/swap" = pkgs.lib.mkForce {
       device = "/dev/disk/by-label/enclave";
       fsType = "btrfs";
-      options = [ "subvol=@swap" "compress=zstd:3" "noatime" ];
+      options = [ "subvol=@swap" "compress-force=zstd:3" "noatime" ];
+    };
+    "/home" = pkgs.lib.mkForce {
+      device = "/dev/disk/by-label/nixos";
+      fsType = "btrfs";
+      options = [ "subvol=@home" "compress-force=zstd:3" "noatime" ];
+    };
+    "/home/gabe/Enclave" = pkgs.lib.mkForce {
+      device = "/dev/disk/by-label/enclave";
+      fsType = "btrfs";
+      options = [ "subvol=@gabe" "compress-force=zstd:3" "noatime" ];
+    };
+    "/home/gabe/Games" = pkgs.lib.mkForce {
+      device = "/dev/disk/by-label/ssd";
+      fsType = "btrfs";
+      options = [ "subvol=@games" "compress-force=zstd:3" "noatime" ];
+    };
+    "/minecraft" = pkgs.lib.mkForce {
+      device = "/dev/disk/by-label/ssd";
+      fsType = "btrfs";
+      options = [ "subvol=@minecraft" "compress-force=zstd:3" "noatime" ];
     };
   };
 
