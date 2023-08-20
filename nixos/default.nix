@@ -58,7 +58,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   networking.hostName = "gbox";
-  time.timeZone = "America/Los_Angeles";
+  time.timeZone = "America/New_York";
   security.polkit.enable = true;
   security.rtkit.enable = true;
   services.dbus.enable = true;

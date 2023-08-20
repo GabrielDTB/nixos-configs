@@ -11,7 +11,6 @@
   
   #programs.tofi.enable = true;
   xdg.configFile."sway/tofi.ini".text = (builtins.readFile ./tofi.ini);
-  home.file.".config/sway/status.sh".text = (builtins.readFile ./status.sh);
   home.file.".config/sway/lockman.sh".text = (builtins.readFile ./lockman.sh);
   
   wayland.windowManager.sway = let
@@ -169,7 +168,7 @@
         mode hide
 
         #status_command while ~/.config/sway/status.sh; do sleep 1; done
-        status_command while echo "Up $(uptime | cut -d ',' -f1  | cut -d ' ' -f7) :: Kernel $(uname -r) :: $(date '+%A %B %-d %-I:%M:%S %p %Z %Y')"; do sleep 1; done
+        status_command while echo "Up $(uptime | cut -d ',' -f1  | cut -d ' ' -f7) '|' Kernel $(uname -r) '|' $(date '+%A %B %-d %-I:%M:%S %p %Z %Y')"; do sleep 1; done
         
         colors {
           statusline #${tx}
