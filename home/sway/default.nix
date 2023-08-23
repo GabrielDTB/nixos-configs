@@ -167,7 +167,7 @@
         position top
         mode hide
 
-        status_command while echo "Up $(function displaytime { local T=$1; local D=$((T/60/60/24)); local H=$((T/60/60%24)); local M=$((T/60%60)); local S=$((T%60)); (( $D > 0 && $D != 1 )) && printf '%d days' $D; (( $D > 0 && $D == 1 )) && printf '%d day ' $D; (( $H > 0 && $H != 1 )) && printf '%d hours ' $H; (( $H > 0 && $H == 1 )) && printf '%d hour ' $H; (( $M > 0 && $M != 1 )) && printf '%d minutes ' $M; (( $M > 0 && $M == 1 )) && printf '%d minute ' $M; (( $D > 0 || $H > 0 || $M > 0 )) && printf 'and '; (( $S != 1 )) && printf '%d seconds' $S; (( $S == 1 )) && printf '%d second' $S; }; displaytime $(cat /proc/uptime | cut -d '.' -f1)) '|' Kernel $(uname -r) '|' $(date '+%A %B %-d %-I:%M:%S %p %Z %Y')"; do sleep 1; done
+        status_command while echo "Up $(function displaytime { local T=$1; local D=$((T/60/60/24)); local H=$((T/60/60%24)); local M=$((T/60%60)); local S=$((T%60)); (( $D > 0 && $D != 1 )) && printf '%d days ' $D; (( $D > 0 && $D == 1 )) && printf '%d day ' $D; (( $H > 0 && $H != 1 )) && printf '%d hours ' $H; (( $H > 0 && $H == 1 )) && printf '%d hour ' $H; (( $M > 0 && $M != 1 )) && printf '%d minutes ' $M; (( $M > 0 && $M == 1 )) && printf '%d minute ' $M; (( $D > 0 || $H > 0 || $M > 0 )) && printf 'and '; (( $S != 1 )) && printf '%d seconds' $S; (( $S == 1 )) && printf '%d second' $S; }; displaytime $(cat /proc/uptime | cut -d '.' -f1)) '|' Kernel $(uname -r) '|' $(date '+%A %B %-d %-I:%M:%S %p %Z %Y')"; do sleep 1; done
         
         colors {
           statusline #${tx}
