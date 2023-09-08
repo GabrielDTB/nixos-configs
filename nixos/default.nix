@@ -73,12 +73,16 @@
   hardware.opentabletdriver.enable = true;
   xdg.portal = {
     enable = true;
-    wlr.enable = true;
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-wlr
-    ];
+    wlr = {
+      enable = true;
+      settings = {
+        screencast = {
+          chooser_type = "simple";
+          chooser_cmd = "${pkgs.slurp}/bin/slurp -f %o -ro";
+        };
+      };
+    };
   };
-
   nix = {
     # This will add each flake input as a registry
     # To make nix3 commands consistent with your flake

@@ -19,7 +19,7 @@
     ./helix
     ./osu
     ./obsidian
-  ];
+  ];  
   
   home.packages = with pkgs; [
     kitty
@@ -35,6 +35,7 @@
     airshipper
     prismlauncher
     digikam
+    imhex
   ];
 
   fonts.fontconfig.enable = true;
