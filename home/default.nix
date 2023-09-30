@@ -36,6 +36,9 @@
     prismlauncher
     digikam
     imhex
+    rstudio
+    vlc
+    p7zip
   ];
 
   fonts.fontconfig.enable = true;
