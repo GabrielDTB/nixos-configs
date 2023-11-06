@@ -54,17 +54,17 @@
         "${mod}+Shift+space" = "floating toggle";
         "${mod}+space" = "focus mode_toggle";
 
-        "${mod}+1" = "workspace number 1";
-        "${mod}+2" = "workspace number 2";
-        "${mod}+3" = "workspace number 3";
-        "${mod}+4" = "workspace number 4";
-        "${mod}+5" = "workspace number 5";
-        "${mod}+6" = "workspace number 6";
-        "${mod}+7" = "workspace number 7";
-        "${mod}+8" = "workspace number 8";
-        "${mod}+9" = "workspace number 9";
-        "${mod}+0" = "workspace number 10";
-
+        "${mod}+1" = "workspace 1";
+        "${mod}+2" = "workspace 2";
+        "${mod}+3" = "workspace 3";
+        "${mod}+4" = "workspace 4";
+        "${mod}+5" = "workspace 5";
+        "${mod}+6" = "workspace 6";
+        "${mod}+7" = "workspace 7";
+        "${mod}+8" = "workspace 8";
+        "${mod}+9" = "workspace 9";
+        "${mod}+0" = "workspace 10";
+        
         "${mod}+Shift+1" = "move container to workspace number 1";
         "${mod}+Shift+2" = "move container to workspace number 2";
         "${mod}+Shift+3" = "move container to workspace number 3";
@@ -162,6 +162,20 @@
       focus = { followMouse = "always"; };
     };
     extraConfig = ''
+      workspace 1 output DP-3
+      workspace 2 output DP-3
+      workspace 3 output DP-3
+      workspace 4 output DP-2
+      workspace 5 output DP-2
+      workspace 6 output DP-2
+      workspace 7 output DP-2
+      workspace 8 output DP-1
+      workspace 9 output DP-1
+      workspace 10 output DP-1
+      
+      output DP-3 pos 0 0 res 1600x900
+      output DP-2 pos 1600 0 res 1600x900
+      output DP-1 pos 3200 0 res 1600x900
       bar {  
         id 0
         position top

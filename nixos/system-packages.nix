@@ -11,7 +11,6 @@
     git
     nix-prefetch-scripts
     cryptsetup
-    tmux
     greetd.tuigreet
     helix
     v4l-utils
@@ -19,5 +18,15 @@
     slurp
     grim
     wf-recorder-fix
+    dracula-theme # gtk theme
+    gnome3.adwaita-icon-theme  # default gnome cursors
+    curl
   ];
+
+  programs.tmux = {
+    enable = true;
+    extraConfig = ''
+      set -sg escape-time 0
+    '';
+  };
 }

@@ -30,6 +30,16 @@
   #  };
   #};
 
+  # boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
+
+  # networking = {
+  #   # extraHosts = ''
+  #   # 192.168.122.198 immich.services.gabrieltb.me
+  #   # '';
+  #   firewall.extraCommands = ''
+  #     iptables -t nat -A PREROUTING -p tcp --dport 443 -j DNAT --to-destination 192.168.122.198:443
+  #   '';
+  # };
   nixpkgs = {
     # You can add overlays here
     overlays = [
@@ -55,6 +65,10 @@
     };
   };
 
+  security.sudo.extraConfig = ''
+    Defaults timestamp_timeout=360
+  '';
+
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   networking.hostName = "gbox";
@@ -68,6 +82,7 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
+  services.jellyfin.enable = true;
   hardware.opengl.enable = true;
   hardware.opengl.extraPackages = [ pkgs.mesa.drivers ];
   hardware.opentabletdriver.enable = true;
@@ -83,6 +98,9 @@
       };
     };
   };
+  virtualisation.libvirtd.enable = true;
+  programs.dconf.enable = true; # virt-manager requires dconf to remember settings
+  environment.systemPackages = with pkgs; [ virt-manager ];
   nix = {
     # This will add each flake input as a registry
     # To make nix3 commands consistent with your flake
@@ -99,6 +117,10 @@
       auto-optimise-store = true;
     };
   };
+
+  hardware.bluetooth.enable = true; # enables support for Bluetooth
+  hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
+  services.blueman.enable = true;
 
   # Make some extra kernel modules available to NixOS
   boot.extraModulePackages = with config.boot.kernelPackages;

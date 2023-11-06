@@ -19,6 +19,9 @@
     ./helix
     ./osu
     ./obsidian
+    ./starship
+    ./nushell
+    ./direnv
   ];  
   
   home.packages = with pkgs; [
@@ -39,6 +42,13 @@
     rstudio
     vlc
     p7zip
+    qbittorrent
+    kopia
+    lutris
+    wine
+    winetricks
+    croc
+    lazygit
   ];
 
   fonts.fontconfig.enable = true;
@@ -69,6 +79,14 @@
       allowUnfreePredicate = (_: true);
     };
   };
+
+  dconf.settings = {
+    "org/virt-manager/virt-manager/connections" = {
+      autoconnect = ["qemu:///system"];
+      uris = ["qemu:///system"];
+    };
+  };
+
 
   programs.home-manager.enable = true;
 

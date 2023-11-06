@@ -37,7 +37,21 @@
   # (the default) this is the recommended approach. When using systemd-networkd it's
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
-  networking.useDHCP = lib.mkDefault true;
+  networking = { 
+    useDHCP = false;
+    bridges.br0.interfaces = [ "enp5s0" ];
+    interfaces.br0.ipv4.addresses = [ {
+      address = "192.168.1.188";
+      prefixLength = 24;
+    } ];
+    defaultGateway = "192.168.1.1";
+    nameservers = [
+      "9.9.9.10"
+      "1.1.1.1"
+    ];
+  };
+  networking.enableIPv6 = false;
+
   # networking.interfaces.enp5s0.useDHCP = lib.mkDefault true;
   # networking.interfaces.wlp4s0.useDHCP = lib.mkDefault true;
 
