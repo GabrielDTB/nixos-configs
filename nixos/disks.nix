@@ -52,6 +52,11 @@
       fsType = "btrfs";
       options = [ "subvol=@games" "compress-force=zstd:3" "noatime" ];
     };
+    "/home/gabe/ml" = pkgs.lib.mkForce {
+      device = "/dev/disk/by-label/ssd";
+      fsType = "btrfs";
+      options = [ "subvol=@ml" "compress-force=zstd:3" "noatime" ];
+    };
     "/home/gabe/Videos" = pkgs.lib.mkForce {
       device = "/dev/sda1";
       fsType = "btrfs";

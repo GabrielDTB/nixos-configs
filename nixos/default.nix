@@ -22,6 +22,21 @@
     ./immich.nix
   ];
 
+  boot.supportedFilesystems = [ "ntfs" ];
+  services.foldingathome.enable = true;
+  services.openssh = {
+    enable = true;
+    settings.PasswordAuthentication = false;
+    settings.KbdInteractiveAuthentication = false;
+  };
+  users.users."gabe".openssh.authorizedKeys.keys = [
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAxWwpJxQlIenoxGRuVSjI9soGmEWxe9Wnql4UcNg+g0" # content of authorized_keys file
+    # note: ssh-copy-id will add user@your-machine after the public key
+    # but we can remove the "@your-machine" part
+  ];
+  boot.kernelPackages = pkgs.linuxPackages_zen;
+  boot.kernelParams = [ "pcie_acs_override=downstream,multifunction" ];
+
   #nixpkgs.config = {
   #  packageOverrides = pkgs: {
   #    unstable = import unstableTarball {
@@ -71,7 +86,13 @@
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  networking.hostName = "gbox";
+  networking = { 
+    hostName = "gbox";
+    extraHosts = ''
+      192.168.1.216   immich
+      192.168.1.171   kopia
+    '';
+  };
   time.timeZone = "America/New_York";
   security.polkit.enable = true;
   security.rtkit.enable = true;
@@ -83,8 +104,33 @@
     pulse.enable = true;
   };
   services.jellyfin.enable = true;
-  hardware.opengl.enable = true;
-  hardware.opengl.extraPackages = [ pkgs.mesa.drivers ];
+  hardware.opengl = {
+    enable = true;
+    # driSupport = true;
+    # driSupport32Bit = true;
+    extraPackages = with pkgs; [ mesa.drivers rocm-opencl-icd ];
+  };
+  # services.xserver.videoDrivers = ["nvidia"];
+  # hardware.nvidia = {
+    # modesetting.enable = true;
+    # powerManagement.enable = false;
+    # powerManagement.finegrained = false;
+    # open = false;
+    # nvidiaSettings = true;
+    # package = config.boot.kernelPackages.nvidiaPackages.stable;
+  # };
+  
+# services.udev.extraRules = ''
+#   # Remove NVIDIA USB xHCI Host Controller devices, if present
+#   ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x0c0330", ATTR{power/control}="auto", ATTR{remove}="1"
+#   # Remove NVIDIA USB Type-C UCSI devices, if present
+#   ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x0c8000", ATTR{power/control}="auto", ATTR{remove}="1"
+#   # Remove NVIDIA Audio devices, if present
+#   ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x040300", ATTR{power/control}="auto", ATTR{remove}="1"
+#   # Remove NVIDIA VGA/3D controller devices
+#   ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x03[0-9]*", ATTR{power/control}="auto", ATTR{remove}="1"
+# '';
+# boot.blacklistedKernelModules = [ "nouveau" "nvidia" "nvidia_drm" "nvidia_modeset" ];
   hardware.opentabletdriver.enable = true;
   xdg.portal = {
     enable = true;
@@ -147,6 +193,8 @@
     # card_label: Name of virtual camera, how it'll show up in Skype, Zoom, Teams
     # https://github.com/umlaeute/v4l2loopback
     options v4l2loopback exclusive_caps=1 card_label="Virtual Camera"
+    blacklist nouveau
+    options nouveau modeset=0
   '';
 
   system.stateVersion = "23.05"; # Don't change. Just affects defaults.

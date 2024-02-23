@@ -11,22 +11,27 @@
   };
 
   imports = [
-    ./kitty
-    ./sway
-    ./git
-    ./neovim
-    ./firefox
-    ./helix
-    ./osu
-    ./obsidian
-    ./starship
-    ./nushell
-    ./direnv
-  ];  
+    ./terminal/kitty
+    ./desktop/sway
+    ./development/git
+    ./terminal/neovim
+    # ./applications/firefox
+    ./development/helix
+    # ./applications/osu
+    # ./applications/obsidian
+    ./terminal/starship
+    ./terminal/nushell
+    ./development/direnv
+
+    ./applications/bundles/media
+    ./applications/bundles/internet
+    ./applications/bundles/games
+    ./applications/bundles/productivity
+    ./applications/bundles/communication
+  ];
   
   home.packages = with pkgs; [
     kitty
-    signal-desktop
     pavucontrol
     sl
     (nerdfonts.override { fonts = [ "Iosevka" ]; })
@@ -40,18 +45,48 @@
     digikam
     imhex
     rstudio
-    vlc
     p7zip
     qbittorrent
     kopia
     lutris
-    wine
-    winetricks
+    wineWowPackages.staging
+    # winetricks
     croc
     lazygit
+    qrencode
   ];
 
   fonts.fontconfig.enable = true;
+
+  systemd.user.services.kopia = {
+    Unit = {
+      Description = "Kopia backup";
+      After = [ "network.target" ];
+    };
+    Service = {
+      Type = "oneshot";
+      ExecStart = toString (
+        pkgs.writeShellScript "kopia-backup-script.sh" ''
+          set -eou pipefail
+
+          ${pkgs.kopia}/bin/kopia snapshot create /home/gabe/Enclave/Zettelkasten/
+          ${pkgs.kopia}/bin/kopia snapshot create /home/gabe/SM-P610/
+        ''
+      );
+    };
+    # Install.WantedBy = [ "default.target" ];
+  };
+  systemd.user.timers.kopia = {
+    Unit.Description = "Kopia backup schedule";
+    Timer = {
+      Unit = "oneshot";
+      OnBootSec = "1h";
+      OnUnitActiveSec = "1h";
+    };
+    Install.WantedBy = [ "timers.target" ];
+  };
+
+
 
   nixpkgs = {
     # You can add overlays here
