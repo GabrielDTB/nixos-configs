@@ -162,20 +162,19 @@
       focus = { followMouse = "always"; };
     };
     extraConfig = ''
-      workspace 1 output DP-3
-      workspace 2 output DP-3
-      workspace 3 output DP-3
-      workspace 4 output DP-2
-      workspace 5 output DP-2
-      workspace 6 output DP-2
+      workspace 1 output DP-1
+      workspace 2 output DP-1
+      workspace 3 output DP-1
+      workspace 4 output DP-1
+      workspace 5 output DP-1
+      workspace 6 output DP-1
       workspace 7 output DP-2
-      workspace 8 output DP-1
-      workspace 9 output DP-1
-      workspace 10 output DP-1
+      workspace 8 output DP-2
+      workspace 9 output DP-2
+      workspace 10 output DP-2
       
-      output DP-3 pos 0 0 res 1600x900
-      output DP-2 pos 1600 0 res 1600x900
-      output DP-1 pos 3200 0 res 1600x900
+      output DP-2 pos -1600 0 res 1600x900@60Hz
+      output DP-1 pos 0 0 res 2560x1440@165Hz
       bar {  
         id 0
         position top
@@ -190,7 +189,7 @@
           inactive_workspace #${bg} #${bg} #${tx}
           urgent_workspace #${bg} #${bg} #${ar}
         }
-        font pango:monospace
+        font pango:monospace 12.0
       }
       font pango:monospace 0.01
       titlebar_border_thickness 0
