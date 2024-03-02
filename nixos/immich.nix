@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   services.btrbk.instances = {
     immich-hours = {
       onCalendar = "*-*-* *:00:00";
@@ -12,13 +10,13 @@
           snapshot_dir = ".snapshots";
         };
       };
-    };  
+    };
   };
   fileSystems = {
     "/vms" = pkgs.lib.mkForce {
       device = "/dev/sda1";
       fsType = "btrfs";
-      options = [ "subvol=@vms" "noatime" ];
+      options = ["subvol=@vms" "noatime"];
     };
   };
 }

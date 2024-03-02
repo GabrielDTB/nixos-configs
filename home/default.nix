@@ -1,16 +1,14 @@
-{ outputs, pkgs, ... }: 
-
 {
+  outputs,
+  pkgs,
+  ...
+}: {
   home = {
     username = "gabe";
     homeDirectory = "/home/gabe";
-    shellAliases = {
-      "screenshare" = "wf-recorder --muxer=v4l2 --codec=rawvideo --file=/dev/video0 -x yuv420p -tD";
-      "areashare" = "wf-recorder -g \"$(slurp)\" --muxer=v4l2 --codec=rawvideo --file=/dev/video0 -x yuv420p -tD";
-    };
   };
-
   imports = [
+    ./theming
     ./terminal/kitty
     ./desktop/sway
     ./development/git
@@ -29,12 +27,10 @@
     ./applications/bundles/productivity
     ./applications/bundles/communication
   ];
-  
+
   home.packages = with pkgs; [
-    kitty
     pavucontrol
     sl
-    (nerdfonts.override { fonts = [ "Iosevka" ]; })
     noto-fonts
     noto-fonts-extra
     noto-fonts-emoji
@@ -61,7 +57,7 @@
   systemd.user.services.kopia = {
     Unit = {
       Description = "Kopia backup";
-      After = [ "network.target" ];
+      After = ["network.target"];
     };
     Service = {
       Type = "oneshot";
@@ -83,10 +79,8 @@
       OnBootSec = "1h";
       OnUnitActiveSec = "1h";
     };
-    Install.WantedBy = [ "timers.target" ];
+    Install.WantedBy = ["timers.target"];
   };
-
-
 
   nixpkgs = {
     # You can add overlays here
@@ -111,7 +105,7 @@
       # Disable if you don't want unfree packages
       allowUnfree = true;
       # Workaround for https://github.com/nix-community/home-manager/issues/2942
-      allowUnfreePredicate = (_: true);
+      allowUnfreePredicate = _: true;
     };
   };
 
@@ -121,7 +115,6 @@
       uris = ["qemu:///system"];
     };
   };
-
 
   programs.home-manager.enable = true;
 

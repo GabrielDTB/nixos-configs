@@ -1,11 +1,8 @@
-
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   systemd.services = {
     create-swapfile = {
       serviceConfig.Type = "oneshot";
-      wantedBy = [ "swap-swapfile.swap" ];
+      wantedBy = ["swap-swapfile.swap"];
       script = ''
         swapfile="/swap/swapfile"
         if [[ -f "$swapfile" ]]; then
@@ -25,52 +22,54 @@
     "/" = pkgs.lib.mkForce {
       device = "/dev/disk/by-label/nixos";
       fsType = "btrfs";
-      options = [ "subvol=@" "compress-force=zstd:3" "noatime" ];
+      options = ["subvol=@" "compress-force=zstd:3" "noatime"];
     };
     "/boot" = pkgs.lib.mkForce {
       device = "/dev/disk/by-label/boot";
       fsType = "vfat";
-      options = [ "defaults" ];
+      options = ["defaults"];
     };
     "/swap" = pkgs.lib.mkForce {
       device = "/dev/disk/by-label/enclave";
       fsType = "btrfs";
-      options = [ "subvol=@swap" "compress-force=zstd:3" "noatime" ];
+      options = ["subvol=@swap" "compress-force=zstd:3" "noatime"];
     };
     "/home" = pkgs.lib.mkForce {
       device = "/dev/disk/by-label/nixos";
       fsType = "btrfs";
-      options = [ "subvol=@home" "compress-force=zstd:3" "noatime" ];
+      options = ["subvol=@home" "compress-force=zstd:3" "noatime"];
     };
     "/home/gabe/Enclave" = pkgs.lib.mkForce {
       device = "/dev/disk/by-label/enclave";
       fsType = "btrfs";
-      options = [ "subvol=@gabe" "compress-force=zstd:3" "noatime" ];
+      options = ["subvol=@gabe" "compress-force=zstd:3" "noatime"];
     };
     "/home/gabe/Games" = pkgs.lib.mkForce {
       device = "/dev/disk/by-label/ssd";
       fsType = "btrfs";
-      options = [ "subvol=@games" "compress-force=zstd:3" "noatime" ];
+      options = ["subvol=@games" "compress-force=zstd:3" "noatime"];
     };
     "/home/gabe/ml" = pkgs.lib.mkForce {
       device = "/dev/disk/by-label/ssd";
       fsType = "btrfs";
-      options = [ "subvol=@ml" "compress-force=zstd:3" "noatime" ];
+      options = ["subvol=@ml" "compress-force=zstd:3" "noatime"];
     };
     "/home/gabe/Videos" = pkgs.lib.mkForce {
       device = "/dev/sda1";
       fsType = "btrfs";
-      options = [ "subvol=@videos" "compress-force=zstd:3" "noatime" ];
+      options = ["subvol=@videos" "compress-force=zstd:3" "noatime"];
     };
     "/minecraft" = pkgs.lib.mkForce {
       device = "/dev/disk/by-label/ssd";
       fsType = "btrfs";
-      options = [ "subvol=@minecraft" "compress-force=zstd:3" "noatime" ];
+      options = ["subvol=@minecraft" "compress-force=zstd:3" "noatime"];
     };
   };
 
-  swapDevices = pkgs.lib.mkForce [{
+  swapDevices = pkgs.lib.mkForce [
+    {
       device = "/swap/swapfile";
-      size = (1024 * 32); # RAM size
-  }]; 
+      size = 1024 * 32; # RAM size
+    }
+  ];
 }

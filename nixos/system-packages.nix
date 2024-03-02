@@ -1,7 +1,4 @@
-
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     vim
     neovim
@@ -19,7 +16,7 @@
     grim
     wf-recorder-fix
     dracula-theme # gtk theme
-    gnome3.adwaita-icon-theme  # default gnome cursors
+    gnome3.adwaita-icon-theme # default gnome cursors
     curl
     busybox
   ];

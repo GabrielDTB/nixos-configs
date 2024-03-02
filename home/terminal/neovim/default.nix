@@ -1,6 +1,10 @@
-{ config, pkgs, programs, home, ... }:
-
 {
+  config,
+  pkgs,
+  programs,
+  home,
+  ...
+}: {
   home.sessionVariables = {
     EDITOR = "nvim";
     SUDO_EDITOR = "nvim";
@@ -10,15 +14,14 @@
     viAlias = true;
     vimAlias = true;
     extraConfig = ''
-      require('plugins')
-      require('opts')
-      vim.cmd([[
-        loader.enable()
-	set signcolumn=yes
-      ]])
+           require('plugins')
+           require('opts')
+           vim.cmd([[
+             loader.enable()
+      set signcolumn=yes
+           ]])
     '';
     plugins = with pkgs.vimPlugins; [
-      
     ];
   };
 }

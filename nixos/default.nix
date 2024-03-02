@@ -1,6 +1,11 @@
-
-{ inputs, outputs, lib, config, pkgs, ... }:
-
+{
+  inputs,
+  outputs,
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 #let
 #  unstableTarball =
 #    fetchTarball {
@@ -9,7 +14,7 @@
 #    };
 #in
 {
-  imports = [ 
+  imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     # Disk layouts.
@@ -22,7 +27,7 @@
     ./immich.nix
   ];
 
-  boot.supportedFilesystems = [ "ntfs" ];
+  boot.supportedFilesystems = ["ntfs"];
   services.foldingathome.enable = true;
   services.openssh = {
     enable = true;
@@ -35,7 +40,7 @@
     # but we can remove the "@your-machine" part
   ];
   boot.kernelPackages = pkgs.linuxPackages_zen;
-  boot.kernelParams = [ "pcie_acs_override=downstream,multifunction" ];
+  boot.kernelParams = ["pcie_acs_override=downstream,multifunction"];
 
   #nixpkgs.config = {
   #  packageOverrides = pkgs: {
@@ -93,7 +98,7 @@
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  networking = { 
+  networking = {
     hostName = "gbox";
     extraHosts = ''
       192.168.1.216   immich
@@ -115,29 +120,29 @@
     enable = true;
     # driSupport = true;
     # driSupport32Bit = true;
-    extraPackages = with pkgs; [ mesa.drivers rocm-opencl-icd ];
+    extraPackages = with pkgs; [mesa.drivers rocm-opencl-icd];
   };
   # services.xserver.videoDrivers = ["nvidia"];
   # hardware.nvidia = {
-    # modesetting.enable = true;
-    # powerManagement.enable = false;
-    # powerManagement.finegrained = false;
-    # open = false;
-    # nvidiaSettings = true;
-    # package = config.boot.kernelPackages.nvidiaPackages.stable;
+  # modesetting.enable = true;
+  # powerManagement.enable = false;
+  # powerManagement.finegrained = false;
+  # open = false;
+  # nvidiaSettings = true;
+  # package = config.boot.kernelPackages.nvidiaPackages.stable;
   # };
-  
-# services.udev.extraRules = ''
-#   # Remove NVIDIA USB xHCI Host Controller devices, if present
-#   ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x0c0330", ATTR{power/control}="auto", ATTR{remove}="1"
-#   # Remove NVIDIA USB Type-C UCSI devices, if present
-#   ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x0c8000", ATTR{power/control}="auto", ATTR{remove}="1"
-#   # Remove NVIDIA Audio devices, if present
-#   ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x040300", ATTR{power/control}="auto", ATTR{remove}="1"
-#   # Remove NVIDIA VGA/3D controller devices
-#   ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x03[0-9]*", ATTR{power/control}="auto", ATTR{remove}="1"
-# '';
-# boot.blacklistedKernelModules = [ "nouveau" "nvidia" "nvidia_drm" "nvidia_modeset" ];
+
+  # services.udev.extraRules = ''
+  #   # Remove NVIDIA USB xHCI Host Controller devices, if present
+  #   ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x0c0330", ATTR{power/control}="auto", ATTR{remove}="1"
+  #   # Remove NVIDIA USB Type-C UCSI devices, if present
+  #   ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x0c8000", ATTR{power/control}="auto", ATTR{remove}="1"
+  #   # Remove NVIDIA Audio devices, if present
+  #   ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x040300", ATTR{power/control}="auto", ATTR{remove}="1"
+  #   # Remove NVIDIA VGA/3D controller devices
+  #   ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x03[0-9]*", ATTR{power/control}="auto", ATTR{remove}="1"
+  # '';
+  # boot.blacklistedKernelModules = [ "nouveau" "nvidia" "nvidia_drm" "nvidia_modeset" ];
   hardware.opentabletdriver.enable = true;
   xdg.portal = {
     enable = true;
@@ -153,11 +158,11 @@
   };
   virtualisation.libvirtd.enable = true;
   programs.dconf.enable = true; # virt-manager requires dconf to remember settings
-  environment.systemPackages = with pkgs; [ virt-manager ];
+  environment.systemPackages = with pkgs; [virt-manager];
   nix = {
     # This will add each flake input as a registry
     # To make nix3 commands consistent with your flake
-    registry = lib.mapAttrs (_: value: { flake = value; }) inputs;
+    registry = lib.mapAttrs (_: value: {flake = value;}) inputs;
 
     # This will additionally add your inputs to the system's legacy channels
     # Making legacy nix commands consistent as well, awesome!
@@ -176,8 +181,7 @@
   services.blueman.enable = true;
 
   # Make some extra kernel modules available to NixOS
-  boot.extraModulePackages = with config.boot.kernelPackages;
-    [ v4l2loopback.out ];
+  boot.extraModulePackages = with config.boot.kernelPackages; [v4l2loopback.out];
 
   # Activate kernel modules (choose from built-ins and extra ones)
   boot.kernelModules = [

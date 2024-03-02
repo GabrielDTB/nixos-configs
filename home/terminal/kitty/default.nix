@@ -1,14 +1,15 @@
-
-{ config, pkgs, ... }:
-
+{ config, ...}: 
+with config.theming;
 {
   programs.kitty = {
     enable = true;
+    # Base theme.
     theme = "One Half Dark";
-    #font = pkgs.nerdfonts;
     settings = {
-      font_family = "IosevkaTerm NFM";
+      font_family = font.monospaced;
       confirm_os_window_close = 2;
+      background = "#"+color.background;
+      foreground = "#"+color.text;
     };
   };
 }

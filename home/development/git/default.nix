@@ -1,16 +1,14 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   programs.git = {
     enable = true;
     userName = "Gabriel Talbert Bunt";
     userEmail = "gabriel@gabrieltb.me";
     package = pkgs.gitFull;
-    extraConfig  = { 
+    extraConfig = {
       credential.helper = "store";
       push.autoSetupRemote = true;
     };
-    
+
     # aliases = {
     #   reset = "reset HEAD --";
     #   master = "checkout master";

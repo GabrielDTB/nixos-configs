@@ -1,6 +1,5 @@
-{ pkgs, ... }:
-
-{
+{pkgs, config, ...}: 
+with config.theming; {
   home.packages = with pkgs; [
     tofi
     grim
@@ -11,22 +10,23 @@
 
   home.sessionVariables = {
     MOZ_ENABLE_WAYLAND = 1;
-    XDG_CURRENT_DESKTOP = "sway"; 
+    XDG_CURRENT_DESKTOP = "sway";
   };
-  
+
   #programs.tofi.enable = true;
-  xdg.configFile."sway/tofi.ini".text = (builtins.readFile ./tofi.ini);
-  home.file.".config/sway/lockman.sh".text = (builtins.readFile ./lockman.sh);
-  
+  xdg.configFile."sway/tofi.ini".text = builtins.readFile ./tofi.ini;
+  home.file.".config/sway/lockman.sh".text = builtins.readFile ./lockman.sh;
+
   wayland.windowManager.sway = let
-    bg = "282c32";
-    hl = "61afef";
-    tx = "abb2bf";
-    ar = "e06c75";
+    bg = color.background;
+    hl = color.highlight;
+    tx = color.text;
+    ar = color.error;
     mod = "Mod4";
   in {
     enable = true;
-    config = let mod = "Mod4";
+    config = let
+      mod = "Mod4";
     in rec {
       modifier = mod;
       terminal = "kitty -1";
@@ -69,7 +69,7 @@
         "${mod}+8" = "workspace 8";
         "${mod}+9" = "workspace 9";
         "${mod}+0" = "workspace 10";
-        
+
         "${mod}+Shift+1" = "move container to workspace number 1";
         "${mod}+Shift+2" = "move container to workspace number 2";
         "${mod}+Shift+3" = "move container to workspace number 3";
@@ -85,8 +85,7 @@
         "${mod}+BackSpace" = "scratchpad show";
 
         "${mod}+Shift+c" = "reload";
-        "${mod}+Shift+e" =
-          "exec swaynag -t warning -m '' -b 'Exit' 'swaymsg exit' --background ${bg} --button-text ${tx} --border ${bg} --button-background ${bg} --border-bottom ${ar}";
+        "${mod}+Shift+e" = "exec swaynag -t warning -m '' -b 'Exit' 'swaymsg exit' --background ${bg} --button-text ${tx} --border ${bg} --button-background ${bg} --border-bottom ${ar}";
 
         "${mod}+r" = "mode resize";
 
@@ -98,7 +97,6 @@
         #"${mod}+minus" = "";
         "${mod}+Shift+equal" = "exec xbacklight -inc 33.33 -steps 2";
         "${mod}+Shift+minus" = "exec xbacklight -dec 33.33 -steps 2";
-        
       };
 
       bars = [];
@@ -145,26 +143,26 @@
         };
       };
 
-      gaps = { inner = 4; };
+      gaps = {inner = 4;};
 
       window = {
         commands = [
           {
             command = "floating enable";
-            criteria = { app_id = "pavucontrol"; };
+            criteria = {app_id = "pavucontrol";};
           }
           {
             command = "opacity 0.95";
-            criteria = { class = ".*"; };
+            criteria = {class = ".*";};
           }
           {
             command = "opacity 0.95";
-            criteria = { app_id = ".*"; };
+            criteria = {app_id = ".*";};
           }
         ];
       };
 
-      focus = { followMouse = "always"; };
+      focus = {followMouse = "always";};
     };
     extraConfig = ''
       workspace 1 output DP-1
@@ -177,20 +175,20 @@
       workspace 8 output DP-2
       workspace 9 output DP-2
       workspace 10 output DP-2
-      
+
       output DP-2 pos 0 0 res 1600x900@60Hz
       output DP-1 pos 1600 0 res 2560x1440@165Hz
-      bar {  
+      bar {
         id 0
         position top
         mode hide
 
         status_command while echo "Up $(function displaytime { local T=$1; local D=$((T/60/60/24)); local H=$((T/60/60%24)); local M=$((T/60%60)); local S=$((T%60)); (( $D > 0 && $D != 1 )) && printf '%d days ' $D; (( $D > 0 && $D == 1 )) && printf '%d day ' $D; (( $H > 0 && $H != 1 )) && printf '%d hours ' $H; (( $H > 0 && $H == 1 )) && printf '%d hour ' $H; (( $M > 0 && $M != 1 )) && printf '%d minutes ' $M; (( $M > 0 && $M == 1 )) && printf '%d minute ' $M; (( $D > 0 || $H > 0 || $M > 0 )) && printf 'and '; (( $S != 1 )) && printf '%d seconds' $S; (( $S == 1 )) && printf '%d second' $S; }; displaytime $(cat /proc/uptime | cut -d '.' -f1)) '|' Kernel $(uname -r) '|' $(date '+%A %B %-d %-I:%M:%S %p %Z %Y')"; do sleep 1; done
-        
+
         colors {
           statusline #${tx}
           background #${bg}
-	        focused_workspace #${bg} #${hl} #${bg}
+         focused_workspace #${bg} #${hl} #${bg}
           inactive_workspace #${bg} #${bg} #${tx}
           urgent_workspace #${bg} #${bg} #${ar}
         }
@@ -209,10 +207,10 @@
         before-sleep 'swaylock -f -c 000000'
       set $lockman exec bash ~/.config/sway/lockman.sh
       bindsym ${mod}+l exec $lockman
-      '';
+    '';
   };
 
-  programs.swaylock = { enable = true; };
-  
+  programs.swaylock = {enable = true;};
+
   #programs.
 }
