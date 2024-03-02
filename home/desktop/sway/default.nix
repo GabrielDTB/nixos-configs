@@ -8,6 +8,11 @@
     wl-clipboard
     acpilight
   ];
+
+  home.sessionVariables = {
+    MOZ_ENABLE_WAYLAND = 1;
+    XDG_CURRENT_DESKTOP = "sway"; 
+  };
   
   #programs.tofi.enable = true;
   xdg.configFile."sway/tofi.ini".text = (builtins.readFile ./tofi.ini);
@@ -173,8 +178,8 @@
       workspace 9 output DP-2
       workspace 10 output DP-2
       
-      output DP-2 pos -1600 0 res 1600x900@60Hz
-      output DP-1 pos 0 0 res 2560x1440@165Hz
+      output DP-2 pos 0 0 res 1600x900@60Hz
+      output DP-1 pos 1600 0 res 2560x1440@165Hz
       bar {  
         id 0
         position top

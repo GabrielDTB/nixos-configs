@@ -80,6 +80,13 @@
     };
   };
 
+  programs.thunar.enable = true;
+  programs.xfconf.enable = true;
+  programs.thunar.plugins = with pkgs.xfce; [
+    thunar-archive-plugin
+    thunar-volman
+  ];
+  programs.file-roller.enable = true;
   security.sudo.extraConfig = ''
     Defaults timestamp_timeout=360
   '';

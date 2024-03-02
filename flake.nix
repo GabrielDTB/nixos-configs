@@ -25,6 +25,7 @@
       ];
     in
     rec {
+      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
       packages = forAllSystems (system:
         let pkgs = nixpkgs.legacyPackages.${system};
         in import ./pkgs { inherit pkgs; }
