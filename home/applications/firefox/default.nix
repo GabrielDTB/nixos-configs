@@ -17,7 +17,7 @@
 in {
   programs.firefox = {
     enable = true;
-    package = pkgs.wrapFirefox pkgs.firefox-unwrapped {
+    package = pkgs.wrapFirefox pkgs.unstable.firefox-unwrapped {
       extraPolicies = {
         AppAutoUpdate = false;
         BackgroundAppUpdate = false;
