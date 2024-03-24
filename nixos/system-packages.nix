@@ -18,7 +18,10 @@
     dracula-theme # gtk theme
     gnome3.adwaita-icon-theme # default gnome cursors
     curl
-    busybox
+    gnumake
+    clang
+    gcc
+    valgrind
   ];
 
   programs.tmux = {
