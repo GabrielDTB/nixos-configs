@@ -55,6 +55,7 @@
         specialArgs = {inherit inputs outputs;};
         modules = [
           ./nixos
+          ./software
           home-manager.nixosModules.home-manager
           {
             home-manager.users.gabe = {

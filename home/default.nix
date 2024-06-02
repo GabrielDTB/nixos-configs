@@ -8,48 +8,54 @@
     homeDirectory = "/home/gabe";
   };
   imports = [
+    # ./direnv
+    ./firefox
+    # ./git
+    ./helix
+    # ./hledger
+    ./kitty
+    # ./neovim
+    # ./obsidian
+    # ./osu
+    # ./signal
+    # ./starship
+    ./sway
     ./theming
-    ./terminal/kitty
-    ./desktop/sway
-    ./development/git
-    ./terminal/neovim
-    # ./applications/firefox
-    ./development/helix
-    # ./applications/osu
-    # ./applications/obsidian
-    ./terminal/starship
-    ./terminal/nushell
-    ./development/direnv
+    # ./tofi
+    # ./vlc
+    # ./zsh
 
-    ./applications/bundles/media
-    ./applications/bundles/internet
-    ./applications/bundles/games
-    ./applications/bundles/productivity
-    ./applications/bundles/communication
+    # ./applications/bundles/media
+    # ./applications/bundles/internet
+    # ./applications/bundles/games
+    # ./applications/bundles/productivity
+    # ./applications/bundles/communication
   ];
 
   home.packages = with pkgs; [
     pavucontrol
-    sl
-    noto-fonts
-    noto-fonts-extra
-    noto-fonts-emoji
-    babelstone-han
-    cmatrix
-    airshipper
-    prismlauncher
-    digikam
-    imhex
-    rstudio
-    p7zip
-    qbittorrent
-    kopia
-    lutris
+    # sl
+    # noto-fonts
+    # noto-fonts-extra
+    # noto-fonts-emoji
+    # babelstone-han
+    # cmatrix
+    # airshipper
+    # prismlauncher
+    # digikam
+    # imhex
+    # rstudio
+    # p7zip
+    # qbittorrent
+    # kopia
+    # lutris
     wineWowPackages.staging
     # winetricks
-    croc
-    lazygit
-    qrencode
+    # croc
+    # lazygit
+    # qrencode
+    # ardour
+    # eclipses.eclipse-java
   ];
 
   fonts.fontconfig.enable = true;

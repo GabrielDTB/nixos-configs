@@ -22,6 +22,10 @@
     clang
     gcc
     valgrind
+    coreutils
+    unstable.eza
+    unzip
+    zip
   ];
 
   programs.tmux = {
@@ -30,4 +34,6 @@
       set -sg escape-time 0
     '';
   };
+
+  programs.zsh.enable = true;
 }

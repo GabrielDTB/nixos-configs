@@ -6,6 +6,14 @@
     group = "users";
     extraGroups = ["wheel" "video" "audio" "disk" "libvirtd"];
     uid = 1000;
-    shell = pkgs.nushell;
+    shell = pkgs.zsh;
+  };
+  users.users.tamy = {
+    isNormalUser = true;
+    createHome = true;
+    home = "/home/tamy";
+    group = "users";
+    uid = 1001;
+    shell = pkgs.zsh;
   };
 }

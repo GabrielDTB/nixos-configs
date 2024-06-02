@@ -55,7 +55,7 @@
       options = ["subvol=@ml" "compress-force=zstd:3" "noatime"];
     };
     "/home/gabe/Videos" = pkgs.lib.mkForce {
-      device = "/dev/sda1";
+      device = "/dev/disk/by-label/data";
       fsType = "btrfs";
       options = ["subvol=@videos" "compress-force=zstd:3" "noatime"];
     };

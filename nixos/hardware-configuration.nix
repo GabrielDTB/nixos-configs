@@ -42,7 +42,36 @@
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking = {
-    useDHCP = false;
+    # useNetworkd = lib.mkDefault true;
+    # defaultGateway6 = {
+    #   address = "fe80::1";
+    #   interface = "br0";
+    # };
+    # useDHCP = true;
+    # enableIPv6 = true;
+
+    # firewall = {
+    #   allowedUDPPorts = [ 7769 ];
+    # };
+    # wireguard.interfaces = {
+    #   wg0 = {
+    #     ips = [ "198.8.59.68/27" "2a0f:85c1:31:dead:4::/48" ]; #HERE
+    #     # listenPort = 7769;
+
+    #     privateKeyFile = "/home/gabe/wireguard-keys/private";
+
+    #     peers = [
+    #       {
+    #         publicKey = "MSDXVSk9GDSz2V1Un/B9GPCAv2aHhFzFYK35H1vRNkE="; # HERE
+    #         allowedIPs = [ "198.8.59.65/32" "0.0.0.0/0" "::/0" ];
+
+    #         endpoint = "198.8.59.1:7769"; #HERE
+
+    #         persistentKeepalive = 25;
+    #       }
+    #     ];
+    #   };
+    # };
     bridges.br0.interfaces = ["enp5s0"];
     interfaces.br0.ipv4.addresses = [
       {
@@ -56,7 +85,6 @@
       "1.1.1.1"
     ];
   };
-  networking.enableIPv6 = false;
 
   # networking.interfaces.enp5s0.useDHCP = lib.mkDefault true;
   # networking.interfaces.wlp4s0.useDHCP = lib.mkDefault true;

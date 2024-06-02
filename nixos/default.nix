@@ -31,13 +31,19 @@
   services.foldingathome.enable = true;
   services.openssh = {
     enable = true;
-    settings.PasswordAuthentication = false;
-    settings.KbdInteractiveAuthentication = false;
+    settings = {
+      PasswordAuthentication = false;
+      KbdInteractiveAuthentication = false;
+      X11Forwarding = true;
+    };
   };
   users.users."gabe".openssh.authorizedKeys.keys = [
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAxWwpJxQlIenoxGRuVSjI9soGmEWxe9Wnql4UcNg+g0" # content of authorized_keys file
     # note: ssh-copy-id will add user@your-machine after the public key
     # but we can remove the "@your-machine" part
+  ];
+  users.users."tamy".openssh.authorizedKeys.keys = [
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGen0SD+FLfJBQXRl7eEntG+DSKscR2JOi1BF/bRdc9a for_gabee"
   ];
   boot.kernelPackages = pkgs.linuxPackages_zen;
   boot.kernelParams = ["pcie_acs_override=downstream,multifunction"];
@@ -49,6 +55,10 @@
   #    };
   #  };
   #};
+
+  virtualisation.docker.enable = true;
+  users.users.gabe.extraGroups = [ "docker" ];
+  virtualisation.docker.storageDriver = "btrfs";
 
   # boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
 
