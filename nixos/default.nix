@@ -6,13 +6,6 @@
   pkgs,
   ...
 }:
-#let
-#  unstableTarball =
-#    fetchTarball {
-#      url = "https://github.com/NixOS/nixpkgs-channels/archive/nixpkgs-unstable.tar.gz";
-#      sha256 = "0fcqpsy6y7dgn0y0wgpa56gsg0b0p8avlpjrd79fp4mp9bl18nda";
-#    };
-#in
 {
   imports = [
     # Include the results of the hardware scan.
@@ -25,6 +18,7 @@
     ./users.nix
     # Snapshots
     ./immich.nix
+    ./immich_container.nix
   ];
 
   boot.supportedFilesystems = ["ntfs"];
@@ -48,28 +42,11 @@
   boot.kernelPackages = pkgs.linuxPackages_zen;
   boot.kernelParams = ["pcie_acs_override=downstream,multifunction"];
 
-  #nixpkgs.config = {
-  #  packageOverrides = pkgs: {
-  #    unstable = import unstableTarball {
-  #      config = config.nixpkgs.config;
-  #    };
-  #  };
-  #};
 
-  virtualisation.docker.enable = true;
-  users.users.gabe.extraGroups = [ "docker" ];
-  virtualisation.docker.storageDriver = "btrfs";
+  # virtualisation.docker.enable = true;
+  # users.users.gabe.extraGroups = [ "docker" ];
+  # virtualisation.docker.storageDriver = "btrfs";
 
-  # boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
-
-  # networking = {
-  #   # extraHosts = ''
-  #   # 192.168.122.198 immich.services.gabrieltb.me
-  #   # '';
-  #   firewall.extraCommands = ''
-  #     iptables -t nat -A PREROUTING -p tcp --dport 443 -j DNAT --to-destination 192.168.122.198:443
-  #   '';
-  # };
   nixpkgs = {
     # You can add overlays here
     overlays = [
@@ -110,10 +87,6 @@
   boot.loader.efi.canTouchEfiVariables = true;
   networking = {
     hostName = "gbox";
-    extraHosts = ''
-      192.168.1.216   immich
-      192.168.1.171   kopia
-    '';
   };
   time.timeZone = "America/New_York";
   security.polkit.enable = true;
@@ -125,7 +98,7 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
-  services.jellyfin.enable = true;
+  # services.jellyfin.enable = true;
   hardware.opengl = {
     enable = true;
     # driSupport = true;
@@ -153,7 +126,7 @@
   #   ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x03[0-9]*", ATTR{power/control}="auto", ATTR{remove}="1"
   # '';
   # boot.blacklistedKernelModules = [ "nouveau" "nvidia" "nvidia_drm" "nvidia_modeset" ];
-  hardware.opentabletdriver.enable = true;
+  # hardware.opentabletdriver.enable = true;
   xdg.portal = {
     enable = true;
     wlr = {
