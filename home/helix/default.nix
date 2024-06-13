@@ -20,14 +20,14 @@
         middle-click-paste = false;
         scroll-lines = 1;
         line-number = "relative";
-        gutters = [ "diagnostics" "line-numbers" "spacer" "diff" ];
+        gutters = ["diagnostics" "line-numbers" "spacer" "diff"];
         auto-completion = false;
         # preview-completion-insert = false;
         completion-replace = true;
-        rulers = [ 101 ];
+        rulers = [101];
         lsp = {
-           display-messages = true;
-           display-inlay-hints = true;
+          display-messages = true;
+          display-inlay-hints = true;
         };
         cursor-shape = {
           insert = "bar";
@@ -39,7 +39,6 @@
           character = "│";
           skip-levels = 1;
         };
-        
       };
       keys = {
         normal = {

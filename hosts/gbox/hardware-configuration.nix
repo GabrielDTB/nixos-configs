@@ -1,4 +1,37 @@
-{pkgs, ...}: {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
+  boot = {
+    initrd = {
+      availableKernelModules = ["nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod"];
+      kernelModules = ["kvm-amd"];
+      luks.devices."enclave".device =  "/dev/disk/by-label/enc";
+      # luks.devices."enclave".device = "/dev/disk/by-uuid/c05994a7-fd1f-4af4-8263-4c054604497d";
+    };
+  };
+
+  # fileSystems."/" = {
+  #   device = "/dev/disk/by-uuid/414ff2b5-8a76-4df9-ad8b-2f7cd6dd57c7";
+  #   fsType = "btrfs";
+  # };
+
+  # fileSystems."/boot" = {
+  #   device = "/dev/disk/by-uuid/F692-19D3";
+  #   fsType = "vfat";
+  # };
+
+  # fileSystems."/swap" = {
+  #   device = "/dev/disk/by-uuid/666a612e-c2f6-4e37-8c34-c0402aa1e96d";
+  #   fsType = "btrfs";
+  #   options = ["subvol=@swap"];
+  # };
+
+  nixpkgs.hostPlatform.system = "x86_64-linux";
+  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
   systemd.services = {
     create-swapfile = {
       serviceConfig.Type = "oneshot";
@@ -16,57 +49,56 @@
     };
   };
 
-  boot.initrd.luks.devices."enclave".device = pkgs.lib.mkForce "/dev/disk/by-label/enc";
 
   fileSystems = {
-    "/" = pkgs.lib.mkForce {
+    "/" =  {
       device = "/dev/disk/by-label/nixos";
       fsType = "btrfs";
       options = ["subvol=@" "compress-force=zstd:3" "noatime"];
     };
-    "/boot" = pkgs.lib.mkForce {
+    "/boot" =  {
       device = "/dev/disk/by-label/boot";
       fsType = "vfat";
       options = ["defaults"];
     };
-    "/swap" = pkgs.lib.mkForce {
+    "/swap" =  {
       device = "/dev/disk/by-label/enclave";
       fsType = "btrfs";
       options = ["subvol=@swap" "compress-force=zstd:3" "noatime"];
     };
-    "/home" = pkgs.lib.mkForce {
+    "/home" =  {
       device = "/dev/disk/by-label/nixos";
       fsType = "btrfs";
       options = ["subvol=@home" "compress-force=zstd:3" "noatime"];
     };
-    "/home/gabe/Enclave" = pkgs.lib.mkForce {
+    "/home/gabe/Enclave" =  {
       device = "/dev/disk/by-label/enclave";
       fsType = "btrfs";
       options = ["subvol=@gabe" "compress-force=zstd:3" "noatime"];
     };
-    "/home/gabe/Games" = pkgs.lib.mkForce {
+    "/home/gabe/Games" =  {
       device = "/dev/disk/by-label/ssd";
       fsType = "btrfs";
       options = ["subvol=@games" "compress-force=zstd:3" "noatime"];
     };
-    "/home/gabe/ml" = pkgs.lib.mkForce {
+    "/home/gabe/ml" =  {
       device = "/dev/disk/by-label/ssd";
       fsType = "btrfs";
       options = ["subvol=@ml" "compress-force=zstd:3" "noatime"];
     };
-    "/home/gabe/Videos" = pkgs.lib.mkForce {
+    "/home/gabe/Videos" =  {
       device = "/dev/disk/by-label/data";
       fsType = "btrfs";
       options = ["subvol=@videos" "compress-force=zstd:3" "noatime"];
     };
-    "/minecraft" = pkgs.lib.mkForce {
+    "/minecraft" =  {
       device = "/dev/disk/by-label/ssd";
       fsType = "btrfs";
       options = ["subvol=@minecraft" "compress-force=zstd:3" "noatime"];
     };
   };
 
-  swapDevices = pkgs.lib.mkForce [
+  swapDevices =  [
     {
       device = "/swap/swapfile";
       size = 1024 * 32; # RAM size

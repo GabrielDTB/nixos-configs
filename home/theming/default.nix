@@ -1,6 +1,9 @@
-{ lib, pkgs, ... }:
-with lib;
 {
+  lib,
+  pkgs,
+  ...
+}:
+with lib; {
   options.theming = {
     color = {
       background = mkOption {
@@ -30,7 +33,7 @@ with lib;
 
   config = {
     home.packages = with pkgs; [
-      (nerdfonts.override { fonts = [ "Iosevka" ]; })
+      (nerdfonts.override {fonts = ["Iosevka"];})
     ];
   };
 
@@ -38,22 +41,22 @@ with lib;
   # };
   # lib.colors.background = "";
   # options = with pkgs.lib.mkOption; {
-    # colors = mkOption {
-    #   default = {
-    #     background = "282c32";
-    #     highlight = "61afef";
-    #     text = "abb2bf";
-    #     error = "e06c75";
-    #   };
-      # background = mkOption {
-      #   default = "282c32";
-      # highlight = mkOption {
-      #   default = "61afef";
-    # };
-        # text = "abb2bf";
-        # error = "e06c75";
-      # };
-    # };
+  # colors = mkOption {
+  #   default = {
+  #     background = "282c32";
+  #     highlight = "61afef";
+  #     text = "abb2bf";
+  #     error = "e06c75";
+  #   };
+  # background = mkOption {
+  #   default = "282c32";
+  # highlight = mkOption {
+  #   default = "61afef";
+  # };
+  # text = "abb2bf";
+  # error = "e06c75";
+  # };
+  # };
   # };
   # config = {
   #   colors = {
