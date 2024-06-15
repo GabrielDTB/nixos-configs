@@ -3,7 +3,7 @@
     lldb # For debugging
     rust-analyzer # Rust LSP
     nil # Nix LSP
-    nixfmt # Nix formatter
+    # nixfmt # Nix formatter
     # taplo # TOML LSP
   ];
   # xdg.configFile."helix/languages.toml".text = ''
