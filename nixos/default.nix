@@ -8,17 +8,8 @@
 }:
 {
   imports = [
-    # Include the results of the hardware scan.
-    ./hardware-configuration.nix
-    # Disk layouts.
-    ./disks.nix
     # System packages.
     ./system-packages.nix
-    # Users.
-    ./users.nix
-    # Snapshots
-    ./immich.nix
-    ./immich_container.nix
   ];
 
   boot.supportedFilesystems = ["ntfs"];

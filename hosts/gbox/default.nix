@@ -1,7 +1,11 @@
 {inputs, outputs, ...}: {
   imports = [
+    ./hardware-configuration.nix
+    ./disks.nix
+    
     ../common/global
     ../common/users/gabe
+    ../common/users/tamy
 
     ../common/optional/developing.nix
   ];
