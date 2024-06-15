@@ -23,6 +23,7 @@
   };
 
   environment.systemPackages = with pkgs; [
+    wl-screenrec
     virt-manager
     vim
     neovim
@@ -35,10 +36,10 @@
     greetd.tuigreet
     helix
     v4l-utils
-    ffmpeg
+    ffmpeg-full
     slurp
     grim
-    wf-recorder-fix
+    wf-recorder
     dracula-theme # gtk theme
     gnome3.adwaita-icon-theme # default gnome cursors
     curl

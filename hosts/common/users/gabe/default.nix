@@ -8,7 +8,7 @@
     createHome = true;
     home = "/home/gabe";
     group = "users";
-    extraGroups = ["wheel" "video" "audio" "disk" "libvirtd"];
+    extraGroups = ["wheel" "video" "audio" "disk" "libvirtd" "render"];
     uid = 1000;
     shell = zsh;
     openssh.authorizedKeys.keys = [
