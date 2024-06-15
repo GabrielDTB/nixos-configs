@@ -52,8 +52,6 @@
       "gbox" = lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [
-          ./nixos
-          ./software
           ./hosts/gbox
         ];
       };
