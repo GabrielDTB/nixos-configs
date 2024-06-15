@@ -23,14 +23,6 @@
 
   boot.supportedFilesystems = ["ntfs"];
   services.foldingathome.enable = true;
-  services.openssh = {
-    enable = true;
-    settings = {
-      PasswordAuthentication = false;
-      KbdInteractiveAuthentication = false;
-      X11Forwarding = true;
-    };
-  };
   users.users."gabe".openssh.authorizedKeys.keys = [
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAxWwpJxQlIenoxGRuVSjI9soGmEWxe9Wnql4UcNg+g0" # content of authorized_keys file
     # note: ssh-copy-id will add user@your-machine after the public key
@@ -191,6 +183,4 @@
     blacklist nouveau
     options nouveau modeset=0
   '';
-
-  system.stateVersion = "23.05"; # Don't change. Just affects defaults.
 }
