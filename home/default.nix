@@ -58,6 +58,14 @@
     # eclipses.eclipse-java
   ];
 
+  gtk = {
+    enable = true;
+    theme = {
+      name = "Materia-dark";
+      package = pkgs.materia-theme;
+    };
+  };
+
   fonts.fontconfig.enable = true;
 
   systemd.user.services.kopia = {
