@@ -15,7 +15,7 @@
   programs.helix = {
     enable = true;
     settings = {
-      theme = "onedark";
+      # theme = "onedark";
       editor = {
         middle-click-paste = false;
         scroll-lines = 1;

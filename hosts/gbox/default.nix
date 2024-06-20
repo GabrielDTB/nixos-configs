@@ -5,6 +5,7 @@
     ./immich.nix
     ./immich-container.nix
     ./software
+    ./stylix
     
     ../common/global
     ../common/users/gabe
@@ -19,6 +20,7 @@
     ../common/optional/bluetooth.nix
   ];
 
+  networking.hostName = "gbox";
   boot.supportedFilesystems = ["ntfs"];
   boot.kernelPackages = pkgs.linuxPackages_zen;
   boot.kernelParams = ["pcie_acs_override=downstream,multifunction"];

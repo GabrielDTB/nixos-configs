@@ -60,10 +60,10 @@
 
   gtk = {
     enable = true;
-    theme = {
-      name = "Materia-dark";
-      package = pkgs.materia-theme;
-    };
+    # theme = {
+    #   name = "Materia-dark";
+    #   package = pkgs.materia-theme;
+    # };
   };
 
   fonts.fontconfig.enable = true;

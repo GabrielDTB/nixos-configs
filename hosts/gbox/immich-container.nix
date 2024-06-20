@@ -12,6 +12,7 @@ let
   postgresPassword = "hunter2"; # TODO: use secrets (is this necessary?)
   postgresUser = "immich";
   postgresDb = "immich";
+  postgresBackupRoot = "${immichRoot}/database_backups";
 
   extraOptions = [
     # Force DNS resolution to only be the podman dnsname name server; by default podman provides a resolv.conf
@@ -150,6 +151,22 @@ in {
         POSTGRES_USER = postgresUser;
         POSTGRES_DB = postgresDb;
         POSTGRES_INITDB_ARGS = "--data-checksums";
+      };
+      extraOptions = extraOptions;
+    };
+
+    immich_postgres_backup = {
+      image = "prodrigestivill/postgres-backup-local:14";
+      volumes = [ "${postgresBackupRoot}:/database_backups" ];
+      environment = {
+        POSTGRES_PASSWORD = postgresPassword;
+        POSTGRES_USER = postgresUser;
+        POSTGRES_DB = postgresDb;
+        POSTGRES_INITDB_ARGS = "--data-checksums";
+        POSTGRES_HOST = "immich_postgres";
+        SCHEDULE = "@daily";
+        BACKUP_NUM_KEEP = "7";
+        BACKUP_DIR = "/database_backups";
       };
       extraOptions = extraOptions;
     };

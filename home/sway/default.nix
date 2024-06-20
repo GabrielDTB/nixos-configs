@@ -1,12 +1,15 @@
 {pkgs, config, ...}: 
 with config.theming; {
   home.packages = with pkgs; [
-    tofi
+    # tofi
     grim
     slurp
     wl-clipboard
     acpilight
   ];
+
+  programs.tofi.enable = true;
+  programs.alacritty.enable = true;
 
   home.sessionVariables = {
     MOZ_ENABLE_WAYLAND = 1;
@@ -14,7 +17,7 @@ with config.theming; {
   };
 
   #programs.tofi.enable = true;
-  xdg.configFile."sway/tofi.ini".text = builtins.readFile ./tofi.ini;
+  # xdg.configFile."sway/tofi.ini".text = builtins.readFile ./tofi.ini;
   home.file.".config/sway/lockman.sh".text = builtins.readFile ./lockman.sh;
 
   wayland.windowManager.sway = let
@@ -30,7 +33,7 @@ with config.theming; {
     in rec {
       modifier = mod;
       terminal = "kitty -1";
-      menu = "dmenu_path | tofi-run -c ~/.config/sway/tofi.ini | xargs swaymsg exec MOZ_ENABLE_WAYLAND=1  --";
+      menu = "dmenu_path | tofi-run | xargs swaymsg exec MOZ_ENABLE_WAYLAND=1  --";
 
       keybindings = {
         "${mod}+Return" = "exec ${terminal}";
@@ -126,7 +129,7 @@ with config.theming; {
       #  };
       #}];
 
-      colors = {
+      colors = pkgs.lib.mkDefault {
         focused = {
           background = hl;
           border = hl;
@@ -151,14 +154,14 @@ with config.theming; {
             command = "floating enable";
             criteria = {app_id = "pavucontrol";};
           }
-          {
-            command = "opacity 0.95";
-            criteria = {class = ".*";};
-          }
-          {
-            command = "opacity 0.95";
-            criteria = {app_id = ".*";};
-          }
+          # {
+          #   command = "opacity 0.95";
+          #   criteria = {class = ".*";};
+          # }
+          # {
+          #   command = "opacity 0.95";
+          #   criteria = {app_id = ".*";};
+          # }
         ];
       };
 

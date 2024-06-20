@@ -14,6 +14,8 @@
     systems.url = "github:nix-systems/default-linux";
 
     rust-overlay.url = "github:oxalica/rust-overlay";
+
+    stylix.url = "github:danth/stylix";
   };
 
   outputs = {
@@ -22,6 +24,7 @@
     home-manager,
     systems,
     rust-overlay,
+    stylix,
     ...
   } @ inputs: let
     inherit (self) outputs;

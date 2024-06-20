@@ -1,6 +1,5 @@
 {pkgs, ...}: {
   imports = [
-    ./direnv
     ./git
     ./hledger
     ./obsidian
