@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
-let
+{
+  config,
+  pkgs,
+  ...
+}: let
   immichHost = "immich.services.gabrieltb.me";
 
   immichRoot = "/immich";
@@ -31,15 +33,15 @@ in {
     };
   };
 
-  networking.firewall.interfaces."podman+".allowedUDPPorts = [ 53 5353 ];
-  networking.firewall.allowedTCPPorts = [ 80 443 ];
+  networking.firewall.interfaces."podman+".allowedUDPPorts = [53 5353];
+  networking.firewall.allowedTCPPorts = [80 443];
   # networking.firewall.enable = false;
   # To make redis happy.
-  boot.kernel.sysctl = { "vm.overcommit_memory" = 1; };
+  boot.kernel.sysctl = {"vm.overcommit_memory" = 1;};
 
   systemd.services.create-immich-network = with config.virtualisation.oci-containers; {
     serviceConfig.Type = "oneshot";
-    wantedBy = [ 
+    wantedBy = [
       "${backend}-immich_server.service"
       "${backend}-immich_microservices.service"
       "${backend}-immich_machine_learning.service"
@@ -70,7 +72,6 @@ in {
     defaults.email = "gabriel@gabrieltb.me";
   };
 
-
   # The primary source for this configuration is the recommended docker-compose installation of immich from
   # https://immich.app/docs/install/docker-compose, which linkes to:
   # - https://github.com/immich-app/immich/releases/latest/download/docker-compose.yml
@@ -84,9 +85,9 @@ in {
   # - set the "Machine Learning Settings" > "URL" to http://immich_machine_learning:3003
 
   virtualisation.oci-containers.containers = {
-    immich_server = {   
+    immich_server = {
       image = "ghcr.io/immich-app/immich-server:${immichVersion}";
-      cmd = [ "start.sh" "immich" ];
+      cmd = ["start.sh" "immich"];
       volumes = [
         "${immichPhotos}:/usr/src/app/upload"
         "/etc/localtime:/etc/localtime:ro"
@@ -99,7 +100,7 @@ in {
         DB_PASSWORD = postgresPassword;
         REDIS_HOSTNAME = "immich_redis";
       };
-      ports = [ "127.0.0.1:2283:3001" ];
+      ports = ["127.0.0.1:2283:3001"];
       dependsOn = [
         "immich_redis"
         "immich_postgres"
@@ -109,7 +110,7 @@ in {
 
     immich_microservices = {
       image = "ghcr.io/immich-app/immich-server:${immichVersion}";
-      cmd = [ "start.sh" "microservices" ];
+      cmd = ["start.sh" "microservices"];
       volumes = [
         "${immichPhotos}:/usr/src/app/upload"
         "/etc/localtime:/etc/localtime:ro"
@@ -131,7 +132,7 @@ in {
 
     immich_machine_learning = {
       image = "ghcr.io/immich-app/immich-machine-learning:${immichVersion}";
-      volumes = [ "${immichAppdataRoot}/model-cache:/cache" ];
+      volumes = ["${immichAppdataRoot}/model-cache:/cache"];
       environment = {
         IMMICH_VERSION = immichVersion;
       };
@@ -145,7 +146,7 @@ in {
 
     immich_postgres = {
       image = "registry.hub.docker.com/tensorchord/pgvecto-rs:pg14-v0.2.0@sha256:90724186f0a3517cf6914295b5ab410db9ce23190a2d9d0b9dd6463e3fa298f0";
-      volumes = [ "${postgresRoot}:/var/lib/postgresql/data" ];
+      volumes = ["${postgresRoot}:/var/lib/postgresql/data"];
       environment = {
         POSTGRES_PASSWORD = postgresPassword;
         POSTGRES_USER = postgresUser;
@@ -157,7 +158,7 @@ in {
 
     immich_postgres_backup = {
       image = "prodrigestivill/postgres-backup-local:14";
-      volumes = [ "${postgresBackupRoot}:/database_backups" ];
+      volumes = ["${postgresBackupRoot}:/database_backups"];
       environment = {
         POSTGRES_PASSWORD = postgresPassword;
         POSTGRES_USER = postgresUser;
@@ -171,5 +172,12 @@ in {
       extraOptions = extraOptions;
     };
   };
-}
 
+  fileSystems = {
+    "/vms" = pkgs.lib.mkForce {
+      device = "/dev/sda1";
+      fsType = "btrfs";
+      options = ["subvol=@vms" "noatime"];
+    };
+  };
+}

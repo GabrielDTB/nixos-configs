@@ -1,4 +1,8 @@
-{pkgs, config, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   imports = [
     ./gtk.nix
     ./qt.nix
@@ -32,7 +36,7 @@
     rtkit.enable = true;
   };
 
-  services = { 
+  services = {
     dbus.enable = true;
     pipewire = {
       enable = true;

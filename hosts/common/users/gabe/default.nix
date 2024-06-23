@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   home-manager.users.gabe = {
-    imports = [../../../../home];
+    imports = [../../../../home/users/gabe];
   };
 
   users.users.gabe = with pkgs; {

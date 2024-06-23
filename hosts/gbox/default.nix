@@ -1,12 +1,16 @@
-{inputs, pkgs, lib, config, ...}: {
+{
+  inputs,
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
   imports = [
     ./hardware-configuration.nix
     ./disks.nix
-    ./immich.nix
-    ./immich-container.nix
-    ./software
-    ./stylix
-    
+    ./immich
+    ./hledger
+
     ../common/global
     ../common/users/gabe
     ../common/users/tamy
@@ -18,6 +22,13 @@
     ../common/optional/graphical-environment-full.nix
     ../common/optional/zsh.nix
     ../common/optional/bluetooth.nix
+    ../common/optional/stylix
+    ../common/optional/git
+    ../common/optional/obsidian
+    ../common/optional/osu
+    ../common/optional/signal
+    ../common/optional/starship
+    ../common/optional/zsh
   ];
 
   networking.hostName = "gbox";
@@ -28,9 +39,6 @@
   security.sudo.extraConfig = ''
     Defaults timestamp_timeout=360
   '';
-
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
 
   time.timeZone = "America/New_York";
 
@@ -48,4 +56,14 @@
     blacklist nouveau
     options nouveau modeset=0
   '';
+
+  environment.systemPackages = with pkgs; [
+    vlc
+    croc
+    kopia
+    lazygit
+    qbittorrent
+    p7zip
+    prismlauncher
+  ];
 }

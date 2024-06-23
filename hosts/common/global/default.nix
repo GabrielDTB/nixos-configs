@@ -1,4 +1,11 @@
-{inputs, outputs, lib, config, pkgs, ...}: {
+{
+  inputs,
+  outputs,
+  lib,
+  config,
+  pkgs,
+  ...
+}: {
   imports = [
     # TODO: Remove home manager dependency.
     inputs.home-manager.nixosModules.home-manager
@@ -10,7 +17,7 @@
   };
 
   nixpkgs = {
-    overlays = (builtins.attrValues outputs.overlays);
+    overlays = builtins.attrValues outputs.overlays;
     config = {
       allowUnfree = true;
     };
@@ -60,7 +67,16 @@
 
     # Nicities to have on every system.
     btop
+
+    # Fonts for no tofu.
+    noto-fonts
+    noto-fonts-extra
+    noto-fonts-emoji
+    babelstone-han
   ];
+
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
   system.stateVersion = "23.05";
 }

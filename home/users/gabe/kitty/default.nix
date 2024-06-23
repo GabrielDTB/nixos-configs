@@ -1,4 +1,8 @@
-{ pkgs, config, ...}: 
+{
+  pkgs,
+  config,
+  ...
+}:
 # with config.theming;
 {
   # home.packages = with pkgs; [
@@ -7,7 +11,7 @@
   #   noto-fonts-emoji
   #   babelstone-han
   # ];
-  
+
   programs.kitty = {
     enable = true;
     # Base theme.

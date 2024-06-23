@@ -1,4 +1,8 @@
-{pkgs, config, ...}: 
+{
+  pkgs,
+  config,
+  ...
+}:
 with config.theming; {
   home.packages = with pkgs; [
     # tofi

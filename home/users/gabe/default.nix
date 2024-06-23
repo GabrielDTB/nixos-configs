@@ -1,6 +1,7 @@
 {
   outputs,
   pkgs,
+  config,
   ...
 }: {
   home = {
@@ -8,10 +9,9 @@
     homeDirectory = "/home/gabe";
   };
   imports = [
+    ./features
     # ./direnv
-    ./firefox
     # ./git
-    ./helix
     # ./hledger
     ./kitty
     # ./neovim
