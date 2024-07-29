@@ -25,6 +25,34 @@
     "--network=immich-network"
   ];
 in {
+  systemd.services.kopia = {
+    description = "Kopia backup";
+    after = ["network.target"];
+    serviceConfig = {
+      User = "root";
+      Type = "oneshot";
+      ExecStart = toString (
+        pkgs.writeShellScript "kopia-backup-script.sh" ''
+          set -eou pipefail
+
+          ${pkgs.kopia}/bin/kopia snapshot create /immich/photos/
+          ${pkgs.kopia}/bin/kopia snapshot create /immich/database_backups/
+        ''
+      );
+    };
+    # Install.WantedBy = [ "default.target" ];
+  };
+  systemd.timers.kopia = {
+    description = "Kopia backup schedule";
+    timerConfig = {
+      User = "root";
+      Unit = "oneshot";
+      OnBootSec = "1h";
+      OnUnitActiveSec = "1h";
+    };
+    wantedBy = ["timers.target"];
+  };
+
   virtualisation = {
     containers.enable = true;
     podman = {

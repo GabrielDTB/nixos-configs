@@ -21,6 +21,7 @@
     # ./starship
     ./sway
     ./theming
+    ./hyprland.nix
     # ./tofi
     # ./vlc
     # ./zsh
@@ -31,6 +32,43 @@
     # ./applications/bundles/productivity
     # ./applications/bundles/communication
   ];
+
+  programs.zsh = {
+    enable = true;
+    shellAliases = {
+      "screenshare" = "wf-recorder --muxer=v4l2 --codec=rawvideo --file=/dev/video0 -x yuv420p -tD";
+      "areashare" = "wf-recorder -g \"$(slurp)\" --muxer=v4l2 --codec=rawvideo --file=/dev/video0 -x yuv420p -tD";
+      "ls" = "eza";
+      "ll" = "eza -l";
+      "la" = "eza -a";
+      "lla" = "eza -la";
+      "lal" = "eza -al";
+      "nrs" = "sudo nixos-rebuild switch";
+      "nrb" = "sudo nixos-rebuild boot";
+      "cd" = "z";
+    };
+    history = {
+      size = 10000;
+      path = "$HOME/.config/zsh/.zsh_history";
+    };
+    enableCompletion = true;
+    autosuggestion.enable = true;
+    syntaxHighlighting.enable = true;
+
+    # setOptions = [
+    #   "AUTO_CD"
+    #   "CHASE_DOTS"
+    #   "HIST_IGNORE_DUPS"
+    #   "INC_APPEND_HISTORY"
+    #   "HIST_FCNTL_LOCK"
+    #   "HIST_FIND_NO_DUPS"
+    #   "EXTENDED_HISTORY"
+    # ];
+  };
+  programs.zoxide = {
+    enable = true;
+    enableZshIntegration = true;
+  };
 
   home.packages = with pkgs; [
     pavucontrol
@@ -67,34 +105,6 @@
   };
 
   fonts.fontconfig.enable = true;
-
-  systemd.user.services.kopia = {
-    Unit = {
-      Description = "Kopia backup";
-      After = ["network.target"];
-    };
-    Service = {
-      Type = "oneshot";
-      ExecStart = toString (
-        pkgs.writeShellScript "kopia-backup-script.sh" ''
-          set -eou pipefail
-
-          ${pkgs.kopia}/bin/kopia snapshot create /home/gabe/Enclave/Zettelkasten/
-          ${pkgs.kopia}/bin/kopia snapshot create /home/gabe/SM-P610/
-        ''
-      );
-    };
-    # Install.WantedBy = [ "default.target" ];
-  };
-  systemd.user.timers.kopia = {
-    Unit.Description = "Kopia backup schedule";
-    Timer = {
-      Unit = "oneshot";
-      OnBootSec = "1h";
-      OnUnitActiveSec = "1h";
-    };
-    Install.WantedBy = ["timers.target"];
-  };
 
   nixpkgs = {
     # You can add overlays here

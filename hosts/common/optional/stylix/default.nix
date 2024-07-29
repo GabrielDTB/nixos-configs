@@ -1,6 +1,7 @@
 {
   inputs,
   pkgs,
+  config,
   ...
 }: let
   fromNerdfonts = with pkgs; font: (nerdfonts.override {fonts = [font];});
