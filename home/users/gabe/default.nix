@@ -33,6 +33,12 @@
     # ./applications/bundles/communication
   ];
 
+  programs.git = {
+    enable = true;
+    userName = "Gabriel Talbert Bunt";
+    userEmail = "gabriel@gabrieltb.me";
+  };
+
   programs.zsh = {
     enable = true;
     shellAliases = {

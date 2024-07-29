@@ -1,11 +1,7 @@
 {...}: {
   imports = [
-    ./helix
-    ./firefox
+    ./helix.nix
+    ./firefox.nix
+    ./core-replacements.nix
   ];
-  programs.git = {
-    enable = true;
-    userName = "Gabriel Talbert Bunt";
-    userEmail = "gabriel@gabrieltb.me";
-  };
 }
