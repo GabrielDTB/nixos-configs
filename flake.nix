@@ -46,11 +46,17 @@
     devShells = forEachSystem (pkgs: import ./shell.nix {inherit pkgs;});
     formatter = forEachSystem (pkgs: pkgs.alejandra);
 
-    nixosConfigurations = {
-      "gbox" = lib.nixosSystem {
+    nixosConfigurations = with lib; {
+      "gbox" = nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [
           ./hosts/gbox
+        ];
+      };
+      "gtop" = nixosSystem {
+        specialArgs = {inherit inputs outputs;};
+        modules = [
+          ./hosts/gtop
         ];
       };
     };

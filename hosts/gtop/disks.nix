@@ -46,32 +46,12 @@
       fsType = "btrfs";
       options = ["subvol=@gabe" "compress-force=zstd:3" "noatime"];
     };
-    "/home/gabe/Games" = {
-      device = "/dev/disk/by-label/ssd";
-      fsType = "btrfs";
-      options = ["subvol=@games" "compress-force=zstd:3" "noatime"];
-    };
-    "/home/gabe/ml" = {
-      device = "/dev/disk/by-label/ssd";
-      fsType = "btrfs";
-      options = ["subvol=@ml" "compress-force=zstd:3" "noatime"];
-    };
-    "/home/gabe/Videos" = {
-      device = "/dev/disk/by-label/data";
-      fsType = "btrfs";
-      options = ["subvol=@videos" "compress-force=zstd:3" "noatime"];
-    };
-    "/minecraft" = {
-      device = "/dev/disk/by-label/ssd";
-      fsType = "btrfs";
-      options = ["subvol=@minecraft" "compress-force=zstd:3" "noatime"];
-    };
   };
 
   swapDevices = [
     {
       device = "/swap/swapfile";
-      size = 1024 * 32; # RAM size
+      size = 1024 * 16; # Double RAM size to compensate for low RAM
     }
   ];
 }

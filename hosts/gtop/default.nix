@@ -2,32 +2,26 @@
   imports = [
     ./hardware-configuration.nix
     ./disks.nix
-    ./immich
-    ./hledger
 
     ../common/global
     ../common/users/gabe
     ../common/users/tamy
 
-    # ../common/optional/developing.nix
+    ../common/optional/developing.nix
     ../common/optional/virtualization.nix
     ../common/optional/ssh.nix
-    # ../common/optional/core-replacements.nix
+    ../common/optional/core-replacements.nix
     ../common/optional/graphical-environment-full.nix
-    # ../common/optional/zsh.nix
+    ../common/optional/zsh.nix
+    ../common/optional/bluetooth.nix
     ../common/optional/stylix
     ../common/optional/git
-    # ../common/optional/obsidian
-    # ../common/optional/osu
-    # ../common/optional/signal
-    # ../common/optional/starship
-    # ../common/optional/zsh
+    ../common/optional/obsidian
+    ../common/optional/osu
+    ../common/optional/signal
+    ../common/optional/starship
+    ../common/optional/zsh
   ];
-
-  features = {
-    bluetooth.enable = true;
-    steam.enable = true;
-  };
 
   services.greetd = {
     enable = true;

@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   home-manager.users.gabe = {
-    imports = [../../../../home/users/gabe];
+    imports = [../../../../home/gabe];
+    features.nixos.enable = true;
   };
 
   users.users.gabe = with pkgs; {
