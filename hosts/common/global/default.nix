@@ -5,14 +5,15 @@
   config,
   ...
 }: {
-  imports = [
-    ../../features
-  ] ++ [inputs.home-manager.nixosModules.home-manager];
+  imports =
+    [
+      ../../features
+    ]
+    ++ [inputs.home-manager.nixosModules.home-manager];
 
   home-manager = {
     extraSpecialArgs = {inherit inputs outputs;};
   };
-
 
   nixpkgs = with builtins; {
     overlays = attrValues outputs.overlays;
@@ -35,9 +36,4 @@
       auto-optimise-store = true;
     };
   };
-
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
-  system.stateVersion = "23.05";
 }

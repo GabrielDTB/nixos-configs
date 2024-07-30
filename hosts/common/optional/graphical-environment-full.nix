@@ -11,6 +11,6 @@
   #       thunar-volman
   #     ];
   #   };
-    # file-roller.enable = true;
+  # file-roller.enable = true;
   # };
 }

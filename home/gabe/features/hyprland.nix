@@ -18,13 +18,19 @@ mkFeature {
 
     wayland.windowManager.hyprland = {
       enable = true;
-      settings = {
+      settings = with lib; {
         "$mod" = "SUPER";
         "$terminal" = "kitty";
         # "$fileManager" = "thunar";
         "$menu" = "tofi-run";
 
-        bind = lib.flatten [
+        monitor = flatten [
+          "desc:BOE 0x095F, 2256x1504@60, auto, 1.175"
+          "desc:PanaScope Pixio PX277P, 2560x1440@165, auto, 1"
+          ", preferred, auto, 1" # catch-all
+        ];
+
+        bind = flatten [
           "$mod, RETURN, exec, $terminal"
           "$mod, D, exec, $menu | xargs hyprctl dispatch exec --"
 
@@ -43,14 +49,15 @@ mkFeature {
           "$mod, S, togglespecialworkspace, magic"
           "$mod SHIFT, S, movetoworkspace, special:magic"
 
-          (with lib;
+          (
             map (x: let
               ws = toString x;
               key = toString (mod x 10);
             in [
               "$mod, ${key}, workspace, ${ws}"
               "$mod SHIFT, ${key}, movetoworkspace, ${ws}"
-            ]) (range 1 10))
+            ]) (range 1 10)
+          )
 
           "$mod, TAB, hyprexpo:expo, toggle"
         ];

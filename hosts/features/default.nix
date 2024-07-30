@@ -22,8 +22,12 @@
 in
   with builtins; {
     imports =
-  lib.mapAttrsToList (name: value: (import ./${if (lib.hasSuffix ".nix" name) then name else name + "/default.nix"} {inherit mkFeature lib config pkgs inputs outputs;}))
-    (lib.filterAttrs (name: value: name != "default.nix" && (lib.hasSuffix ".nix" name || value == "directory"))
-      (readDir ./.));
-
+      lib.mapAttrsToList (name: value: (import
+        ./${
+          if (lib.hasSuffix ".nix" name)
+          then name
+          else name + "/default.nix"
+        } {inherit mkFeature lib config pkgs inputs outputs;}))
+      (lib.filterAttrs (name: value: name != "default.nix" && (lib.hasSuffix ".nix" name || value == "directory"))
+        (readDir ./.));
   }

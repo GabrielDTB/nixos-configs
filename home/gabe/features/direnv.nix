@@ -1,7 +1,4 @@
-{
-  mkFeature,
-  ...
-}:
+{mkFeature, ...}:
 mkFeature {
   name = "direnv";
   enableDefault = true;

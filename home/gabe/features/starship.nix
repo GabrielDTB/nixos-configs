@@ -1,7 +1,4 @@
-{
-  mkFeature,
-  ...
-}:
+{mkFeature, ...}:
 mkFeature {
   name = "starship";
   enableDefault = true;
