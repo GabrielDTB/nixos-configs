@@ -15,7 +15,7 @@
       kernelModules = [];
     };
     kernelModules = ["kvm-intel"];
-    kernelParams = [ "quiet" ];
+    kernelParams = ["quiet"];
     extraModulePackages = [];
   };
 
