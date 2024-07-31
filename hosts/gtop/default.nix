@@ -3,18 +3,23 @@
     ./hardware-configuration.nix
     ./disks.nix
 
-    ../common/global
-    ../common/users/gabe
-    ../common/users/tamy
-
-    ../common/optional/graphical-environment-full.nix
-    ../common/optional/stylix
-    ../common/optional/git
+    ../common
   ];
 
   features = {
+    graphical-environment.enable = true;
     bluetooth.enable = true;
     steam.enable = true;
+  };
+
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd hyprland";
+        user = "greeter";
+      };
+    };
   };
 
   networking.hostName = "gtop";

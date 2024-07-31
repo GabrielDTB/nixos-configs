@@ -5,33 +5,17 @@
     ./immich
     ./hledger
 
-    ../common/global
-    ../common/users/gabe
-    ../common/users/tamy
-
-    # ../common/optional/developing.nix
-    ../common/optional/virtualization.nix
-    ../common/optional/ssh.nix
-    # ../common/optional/core-replacements.nix
-    ../common/optional/graphical-environment-full.nix
-    # ../common/optional/zsh.nix
-    ../common/optional/stylix
-    ../common/optional/git
-    # ../common/optional/obsidian
-    # ../common/optional/osu
-    # ../common/optional/signal
-    # ../common/optional/starship
-    # ../common/optional/zsh
+    ../common
   ];
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
-  system.stateVersion = "23.05";
-
   features = {
+    graphical-environment.enable = true;
     bluetooth.enable = true;
     steam.enable = true;
+    virtualization.enable = true;
+    ssh-daemon.enable = true;
+
+    tamy.enable = true;
   };
 
   services.greetd = {
@@ -43,9 +27,6 @@
       };
     };
   };
-
-  programs.ssh.forwardX11 = true;
-  services.openssh.settings.X11Forwarding = true;
 
   systemd.services.er-backup = {
     description = "Elden Ring backup";
@@ -61,7 +42,6 @@
         ''
       );
     };
-    # Install.WantedBy = [ "default.target" ];
   };
   systemd.timers.er-backup = {
     description = "Elden ring backup schedule";
@@ -73,31 +53,6 @@
     };
     wantedBy = ["timers.target"];
   };
-  # systemd.services.kopia-er = {
-  #   description = "Kopia backup";
-  #   after = ["network.target"];
-  #   serviceConfig = {
-  #     Type = "oneshot";
-  #     User = "gabe";
-  #     ExecStart = toString (
-  #       pkgs.writeShellScript "kopia-backup-script.sh" ''
-  #         set -eou pipefail
-
-  #         ${pkgs.kopia}/bin/kopia snapshot create "/home/gabe/Games/SteamLibrary/steamapps/compatdata/1245620/pfx/drive_c/users/steamuser/AppData/Roaming/EldenRing/76561198815520289"
-  #       ''
-  #     );
-  #   };
-  #   # Install.WantedBy = [ "default.target" ];
-  # };
-  # systemd.timers.kopia-er = {
-  #   description = "Kopia backup schedule";
-  #   timerConfig = {
-  #     Unit = "oneshot";
-  #     OnBootSec = "5m";
-  #     OnUnitActiveSec = "5m";
-  #   };
-  #   wantedBy = ["timers.target"];
-  # };
 
   networking.hostName = "gbox";
   boot.supportedFilesystems = ["ntfs"];
@@ -141,4 +96,9 @@
     unstable.ghidra
     unstable.imhex
   ];
+
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+
+  system.stateVersion = "23.05";
 }

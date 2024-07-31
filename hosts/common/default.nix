@@ -7,13 +7,10 @@
 }: {
   imports =
     [
-      ../../features
+      ./features
     ]
-    ++ [inputs.home-manager.nixosModules.home-manager];
-
-  home-manager = {
-    extraSpecialArgs = {inherit inputs outputs;};
-  };
+    ++ [inputs.home-manager.nixosModules.home-manager]
+    ++ [inputs.stylix.nixosModules.stylix];
 
   nixpkgs = with builtins; {
     overlays = attrValues outputs.overlays;
