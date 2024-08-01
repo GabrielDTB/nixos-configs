@@ -25,9 +25,13 @@ mkFeature {
         };
 
         monospace = {
-          package = monaspace;
-          name = "Monaspace Neon";
+          package = fromNerdfonts "FiraCode";
+          name = "Fira Code Nerd Font";
         };
+        # monospace = {
+        #   package = monaspace;
+        #   name = "Monaspace Neon";
+        # };
 
         emoji = {
           package = noto-fonts-color-emoji;

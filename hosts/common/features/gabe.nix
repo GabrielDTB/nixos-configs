@@ -21,7 +21,7 @@ mkFeature {
       # createHome = true;
       # home = "/home/gabe";
       # group = "users";
-      extraGroups = ["wheel" "video" "audio" "disk" "libvirtd" "render" "adbusers"];
+      extraGroups = ["wheel" "video" "audio" "disk" "libvirtd" "render" "adbusers" "input"];
       uid = 1000;
       shell = zsh;
       ignoreShellProgramCheck = true;

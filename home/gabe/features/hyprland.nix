@@ -9,6 +9,10 @@ mkFeature {
   name = "hyprland";
   enableDefault = true;
   body = {
+    home.packages = with pkgs; [
+      killall
+    ];
+
     features = {
       tofi.enable = true;
       thunar.enable = true;
@@ -18,69 +22,75 @@ mkFeature {
 
     wayland.windowManager.hyprland = {
       enable = true;
-      settings = with lib; {
-        "$mod" = "SUPER";
-        "$terminal" = "kitty";
-        # "$fileManager" = "thunar";
-        "$menu" = "tofi-run";
+      settings = let
+        modifier = "SUPER_L";
+        terminal = "kitty";
+        menu = "tofi-run";
+      in
+        with lib; {
+          monitor = flatten [
+            "desc:BOE 0x095F, 2256x1504@60, auto, 1.175"
+            "desc:PanaScope Pixio PX277P, 2560x1440@165, auto, 1"
+            ", preferred, auto, 1" # catch-all
+          ];
 
-        monitor = flatten [
-          "desc:BOE 0x095F, 2256x1504@60, auto, 1.175"
-          "desc:PanaScope Pixio PX277P, 2560x1440@165, auto, 1"
-          ", preferred, auto, 1" # catch-all
-        ];
+          bind = flatten [
+            "${modifier}, RETURN, exec, ${terminal}"
+            "${modifier}, D, exec, ${menu} | xargs hyprctl dispatch exec --"
 
-        bind = flatten [
-          "$mod, RETURN, exec, $terminal"
-          "$mod, D, exec, $menu | xargs hyprctl dispatch exec --"
+            "${modifier}, C, killactive,"
+            "${modifier} ALT, ESCAPE, exit,"
+            "${modifier}, L, exec, hyprlock"
 
-          "$mod, C, killactive,"
-          "$mod ALT, ESCAPE, exit,"
-          "$mod, L, exec, hyprlock"
+            "${modifier}, F, fullscreen,"
+            "${modifier} SHIFT, SPACE, togglefloating,"
 
-          "$mod, F, fullscreen,"
-          "$mod SHIFT, SPACE, togglefloating,"
+            "${modifier}, LEFT, movefocus, l"
+            "${modifier}, RIGHT, movefocus, r"
+            "${modifier}, UP, movefocus, u"
+            "${modifier}, DOWN, movefocus, d"
 
-          "$mod, LEFT, movefocus, l"
-          "$mod, RIGHT, movefocus, r"
-          "$mod, UP, movefocus, u"
-          "$mod, DOWN, movefocus, d"
+            "${modifier}, S, togglespecialworkspace, magic"
+            "${modifier} SHIFT, S, movetoworkspace, special:magic"
 
-          "$mod, S, togglespecialworkspace, magic"
-          "$mod SHIFT, S, movetoworkspace, special:magic"
+            "${modifier}, P, exec, killall -SIGUSR1 .waybar-wrapped"
+            (
+              map (x: let
+                ws = toString x;
+                key = toString (mod x 10);
+              in [
+                "${modifier}, ${key}, workspace, ${ws}"
+                "${modifier} SHIFT, ${key}, movetoworkspace, ${ws}"
+              ]) (range 1 10)
+            )
 
-          (
-            map (x: let
-              ws = toString x;
-              key = toString (mod x 10);
-            in [
-              "$mod, ${key}, workspace, ${ws}"
-              "$mod SHIFT, ${key}, movetoworkspace, ${ws}"
-            ]) (range 1 10)
-          )
+            "${modifier}, TAB, hyprexpo:expo, toggle"
+          ];
 
-          "$mod, TAB, hyprexpo:expo, toggle"
-        ];
+          # bindm = let
+          #   mousebutton = index: "mouse:${toString (index + 271)}";
+          # in [
+          #   "${modifier}, ${mousebutton 1}, movewindow"
+          #   "${modifier}, ${mousebutton 2}, resizewindow"
+          # ];
 
-        bindm = let
-          mousebutton = index: "mouse:${toString (index + 271)}";
-        in [
-          "$mod, ${mousebutton 1}, movewindow"
-          "$mod, ${mousebutton 2}, resizewindow"
-        ];
+          bindit = [", SUPER_L, exec, killall -SIGUSR1 .waybar-wrapped"];
+          binditr = [", SUPER_L, exec, killall -SIGUSR1 .waybar-wrapped"];
 
-        input = {
-          follow_mouse = 2;
-          float_switch_override_focus = 0;
-          special_fallthrough = true;
+          input = {
+            follow_mouse = 2;
+            float_switch_override_focus = 0;
+            special_fallthrough = true;
+          };
+
+          "misc:middle_click_paste" = false;
+          exec-once = [
+            "waybar"
+          ];
         };
 
-        "misc:middle_click_paste" = false;
-        # windowrulev2 = "suppressevent maximize, class:.*"; # You'll probably like this.
-      };
-
-      plugins = [
-        pkgs.hyprlandPlugins.hyprexpo
+      plugins = with pkgs.hyprlandPlugins; [
+        hyprexpo
       ];
     };
 
@@ -125,6 +135,186 @@ mkFeature {
           position = "0, 0";
           halign = "center";
           valign = "center";
+        };
+      };
+    };
+
+    programs.waybar = {
+      enable = true;
+      style = ''
+        window#waybar.* {
+          font-size: 12pt;
+          font-family: Fira Code Nerd Font;
+        }
+        
+        #idle_inhibitor,
+        #pulseaudio,
+        #tray,
+        #usage,
+        #net {
+          background-color: @base01;
+          border-radius: 10px;
+          padding-left: 0.5em;
+          padding-right: 0.5em;
+          margin-left: 0.3em;
+        }
+
+        #battery,
+        #memory,
+        #network {
+          margin-right: 0.8em;
+        }
+
+        #bluetooth {
+          padding-right: 0.3em;
+        }
+      '';
+      settings = {
+        mainBar = {
+          mode = "hide";
+          start_hidden = true;
+
+          layer = "top";
+          position = "top";
+          height = 20;
+          spacing = 5;
+
+          modules-left = [
+            "hyprland/workspaces"
+            "group/usage"
+          ];
+          modules-center = [
+            "clock"
+          ];
+          modules-right = [
+            "group/bat"
+            "idle_inhibitor"
+            "pulseaudio"
+            "group/net"
+            "tray"
+          ];
+
+          "group/usage" = {
+            orientation = "horizontal";
+            modules = [
+              "memory"
+              "cpu"
+            ];
+          };
+
+          "group/bat" = {
+            orientation = "horizontal";
+            modules = [
+              "battery"
+              "backlight"
+            ];
+          };
+
+          "group/net" = {
+            orientation = "horizontal";
+            modules = [
+              "network"
+              "bluetooth"
+            ];
+          };
+
+          "hyprland/workspaces" = {
+            all-outputs = true;
+            disable-scroll = true;
+          };
+
+          idle_inhibitor = {
+            format = "{icon} ";
+            format-icons = {
+              activated = "";
+              deactivated = "";
+            };
+          };
+
+          "clock" = {
+            format = "{:%Y.%m.%d | %H:%M}";
+            tooltip-format = ''<span><tt><small>{calendar}</small></tt></span>'';
+          };
+
+          battery = {
+            interval = 10;
+            # states = {
+            #   warning = 30;
+            #   critical = 15;
+            # };
+            format = "{icon} {capacity}%";
+            format-charging = " {icon} {capacity}%";
+            format-plugged = " {capacity}%";
+            format-alt = "{icon} {time}";
+            format-icons = [
+              ""
+              ""
+              ""
+              ""
+              ""
+            ];
+            tooltip = true;
+          };
+          
+          cpu = {
+            interval = 1;
+            format = " {usage}%";
+            states = {
+              warning = 70;
+              critical = 90;
+            };
+          };
+
+          memory = {
+            interval = 1;
+            format = " {used:0.1f}G ({}%)";
+          };
+
+          network = {
+            interval = 5;
+            format-wifi = "";
+            format-ethernet = "";
+            format-disconnected = "󰤮";
+            format-icons = ["󰤯" "󰤟" "󰤢" "󰤥" "󰤨"];
+            tooltip-format-wifi = "{essid} ({signalStrength}%)";
+            tooltip-format-ethernet = "{ifname} {ipaddr}";
+            tooltip-format-disconnected = "Disconnected";
+          };
+
+          bluetooth = {
+            format = "󰂯";
+            format-disabled = "󰂲";
+            format-connected = "󰂰";
+            tooltip-format = ''{controller_alias}\t{controller_address}'';
+            tooltip-format-connected = ''{controller_alias}\t{controller_address}\n\n{device_enumerate}'';
+            tooltip-format-enumerate-connected = ''{device_alias}\t{device_address}'';
+            on-click = "blueman-manager";
+          };
+
+          backlight = {
+            format = "{icon} {percent}";
+            format-icons = ["" "" "" "" "" "" "" "" ""];
+          };
+
+          pulseaudio = {
+            scroll-step = 2;
+            format = "{icon} {volume}% {format_source}";
+            format-bluetooth = "{icon} {volume}% {format_source}";
+            format-bluetooth-muted = "󰝟 {format_source}";
+            format-muted = "󰝟 {format_source}";
+            format-source = "{volume}%";
+            format-source-muted = "";
+            format-icons = {
+              headphones = "";
+              default = ["" "" ""];
+            };
+            on-click = "pavucontrol";
+          };
+          
+
+          tray = {
+            spacing = 10;
+          };
         };
       };
     };
