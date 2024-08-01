@@ -11,6 +11,7 @@ mkFeature {
   body = {
     home.packages = with pkgs; [
       killall
+      brightnessctl
     ];
 
     features = {
@@ -54,6 +55,7 @@ mkFeature {
             "${modifier} SHIFT, S, movetoworkspace, special:magic"
 
             "${modifier}, P, exec, killall -SIGUSR1 .waybar-wrapped"
+
             (
               map (x: let
                 ws = toString x;
@@ -65,6 +67,14 @@ mkFeature {
             )
 
             "${modifier}, TAB, hyprexpo:expo, toggle"
+          ];
+
+          binde = [
+            ", XF86MonBrightnessUp, exec, brightnessctl set +3%"
+            ", XF86MonBrightnessDown, exec, brightnessctl set 3%-"
+            ", XF86AudioRaiseVolume, exec, wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+"
+            ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+            ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
           ];
 
           # bindm = let
@@ -151,6 +161,7 @@ mkFeature {
         #pulseaudio,
         #tray,
         #usage,
+        #bat,
         #net {
           background-color: @base01;
           border-radius: 10px;
@@ -292,8 +303,9 @@ mkFeature {
           };
 
           backlight = {
-            format = "{icon} {percent}";
+            format = "{icon} {percent}%";
             format-icons = ["" "" "" "" "" "" "" "" ""];
+            tooltip = false;
           };
 
           pulseaudio = {
