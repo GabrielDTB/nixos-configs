@@ -84,8 +84,6 @@
   '';
 
   environment.systemPackages = with pkgs; [
-    vlc
-    unstable.croc
     qbittorrent
     p7zip
     prismlauncher
