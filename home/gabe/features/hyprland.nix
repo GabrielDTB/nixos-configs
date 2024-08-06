@@ -12,6 +12,7 @@ mkFeature {
     home.packages = with pkgs; [
       killall
       brightnessctl
+      wl-clipboard-rs
     ];
 
     features = {
@@ -54,7 +55,11 @@ mkFeature {
             "${modifier}, S, togglespecialworkspace, magic"
             "${modifier} SHIFT, S, movetoworkspace, special:magic"
 
-            "${modifier}, P, exec, killall -SIGUSR1 .waybar-wrapped"
+            "${modifier}, SPACE, exec, killall -SIGUSR1 .waybar-wrapped"
+
+            ''${modifier}, P, exec, grim -t png - | wl-copy -t image/png''
+            ''${modifier} SHIFT, P, exec, grim -g "$(slurp)" -t png - | wl-copy -t image/png''
+            ''${modifier} CONTROL, P, exec, grim -o $(swaymsg -t get_outputs | jq -r ".[] | select(.focused) | .name") -t png - | wl-copy -t image/png''
 
             (
               map (x: let
@@ -156,7 +161,7 @@ mkFeature {
           font-size: 12pt;
           font-family: Fira Code Nerd Font;
         }
-        
+
         #idle_inhibitor,
         #pulseaudio,
         #tray,
@@ -198,8 +203,8 @@ mkFeature {
             "clock"
           ];
           modules-right = [
-            "group/bat"
             "idle_inhibitor"
+            "group/bat"
             "pulseaudio"
             "group/net"
             "tray"
@@ -266,7 +271,7 @@ mkFeature {
             ];
             tooltip = true;
           };
-          
+
           cpu = {
             interval = 1;
             format = " {usage}%";
@@ -322,7 +327,6 @@ mkFeature {
             };
             on-click = "pavucontrol";
           };
-          
 
           tray = {
             spacing = 10;

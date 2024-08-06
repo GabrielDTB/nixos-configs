@@ -14,6 +14,8 @@
     steam.enable = true;
     virtualization.enable = true;
     ssh-daemon.enable = true;
+    kopia.enable = true;
+    hledger.enable = true;
 
     tamy.enable = true;
   };
@@ -83,10 +85,7 @@
 
   environment.systemPackages = with pkgs; [
     vlc
-    steam
     unstable.croc
-    kopia
-    lazygit
     qbittorrent
     p7zip
     prismlauncher
