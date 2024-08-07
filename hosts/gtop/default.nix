@@ -22,8 +22,13 @@
     };
   };
 
-  networking.hostName = "gtop";
-  networking.networkmanager.enable = true;
+  networking = {
+    hostName = "gtop";
+    networkmanager.enable = true;
+    extraHosts = ''
+      108.35.129.44 gbox
+    '';
+  };
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
