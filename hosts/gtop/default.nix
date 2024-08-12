@@ -4,6 +4,7 @@
     ./disks.nix
 
     ../common
+    ../gbox/hledger
   ];
 
   features = {

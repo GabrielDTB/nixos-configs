@@ -36,6 +36,13 @@ mkFeature {
             ", preferred, auto, 1" # catch-all
           ];
 
+          general = {
+            gaps_in = 0;
+            gaps_out = 0;
+          };
+
+          animations.enabled = false;
+
           bind = flatten [
             "${modifier}, RETURN, exec, ${terminal}"
             "${modifier}, D, exec, ${menu} | xargs hyprctl dispatch exec --"
@@ -82,12 +89,12 @@ mkFeature {
             ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
           ];
 
-          # bindm = let
-          #   mousebutton = index: "mouse:${toString (index + 271)}";
-          # in [
-          #   "${modifier}, ${mousebutton 1}, movewindow"
-          #   "${modifier}, ${mousebutton 2}, resizewindow"
-          # ];
+          bindm = let
+            mousebutton = index: "mouse:${toString (index + 271)}";
+          in [
+            "${modifier}, ${mousebutton 1}, movewindow"
+            "${modifier}, ${mousebutton 2}, resizewindow"
+          ];
 
           bindit = [", SUPER_L, exec, killall -SIGUSR1 .waybar-wrapped"];
           binditr = [", SUPER_L, exec, killall -SIGUSR1 .waybar-wrapped"];
@@ -97,6 +104,10 @@ mkFeature {
             float_switch_override_focus = 0;
             special_fallthrough = true;
           };
+
+          windowrulev2 = [
+            "float, class:floating"
+          ];
 
           "misc:middle_click_paste" = false;
           exec-once = [
@@ -295,6 +306,7 @@ mkFeature {
             tooltip-format-wifi = "{essid} ({signalStrength}%)";
             tooltip-format-ethernet = "{ifname} {ipaddr}";
             tooltip-format-disconnected = "Disconnected";
+            on-click = "kitty --class floating nmtui";
           };
 
           bluetooth = {
