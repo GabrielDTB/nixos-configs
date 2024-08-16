@@ -11,6 +11,11 @@
     graphical-environment.enable = true;
     bluetooth.enable = true;
     steam.enable = true;
+    ssh-daemon.enable = true;
+  };
+
+  home-manager.users.gabe = {
+    features.libreoffice.enable = true;
   };
 
   services.greetd = {
