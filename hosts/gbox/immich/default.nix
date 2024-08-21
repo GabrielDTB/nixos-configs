@@ -8,7 +8,7 @@
   immichRoot = "/immich";
   immichPhotos = "${immichRoot}/photos";
   immichAppdataRoot = "${immichRoot}/appdata";
-  immichVersion = "v1.105.1";
+  immichVersion = "v1.112.1";
 
   postgresRoot = "${immichAppdataRoot}/pgsql";
   postgresPassword = "hunter2"; # TODO: use secrets (is this necessary?)
@@ -115,7 +115,6 @@ in {
   virtualisation.oci-containers.containers = {
     immich_server = {
       image = "ghcr.io/immich-app/immich-server:${immichVersion}";
-      cmd = ["start.sh" "immich"];
       volumes = [
         "${immichPhotos}:/usr/src/app/upload"
         "/etc/localtime:/etc/localtime:ro"
@@ -129,28 +128,6 @@ in {
         REDIS_HOSTNAME = "immich_redis";
       };
       ports = ["127.0.0.1:2283:3001"];
-      dependsOn = [
-        "immich_redis"
-        "immich_postgres"
-      ];
-      extraOptions = extraOptions;
-    };
-
-    immich_microservices = {
-      image = "ghcr.io/immich-app/immich-server:${immichVersion}";
-      cmd = ["start.sh" "microservices"];
-      volumes = [
-        "${immichPhotos}:/usr/src/app/upload"
-        "/etc/localtime:/etc/localtime:ro"
-      ];
-      environment = {
-        IMMICH_VERSION = immichVersion;
-        DB_HOSTNAME = "immich_postgres";
-        DB_USERNAME = postgresUser;
-        DB_DATABASE_NAME = postgresDb;
-        DB_PASSWORD = postgresPassword;
-        REDIS_HOSTNAME = "immich_redis";
-      };
       dependsOn = [
         "immich_redis"
         "immich_postgres"

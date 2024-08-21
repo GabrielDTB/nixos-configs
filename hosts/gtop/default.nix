@@ -16,6 +16,7 @@
 
   home-manager.users.gabe = {
     features.libreoffice.enable = true;
+    features.hyprland.enableSleep = true;
   };
 
   services.greetd = {

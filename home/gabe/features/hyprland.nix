@@ -12,9 +12,9 @@ in
     enableDefault = true;
     options = with lib;
     with types; {
-      hibernationSupport = mkOption {
+      enableSleep = mkOption {
         type = bool;
-      };
+      } // {default = false;};
     };
     body = {
       home.packages = with pkgs; [
@@ -97,10 +97,7 @@ in
             ];
 
             bindl = [
-              (", switch:[Lid Switch], exec, " + 
-              (if config.features.${name}.hibernationSupport
-              then ''systemctl suspend-then-hibernate''
-              else ''systemctl suspend''))
+              (mkIf config.features.${name}.enableSleep '', switch:[Lid Switch], exec, systemctl suspend'')
             ];
 
             bindel = [
@@ -393,13 +390,10 @@ in
               on-timeout = ''hyprctl dispatch dpms off'';
               on-resume = ''hyprctl dispatch dpms on'';
             }
-            {
+            (lib.mkIf config.features.${name}.enableSleep {
               timeout = 15 * 60;
-              on-timeout =
-                if config.features.${name}.hibernationSupport
-                then ''systemctl suspend-then-hibernate''
-                else ''systemctl suspend'';
-            }
+              on-timeout = '', switch:[Lid Switch], exec, systemctl suspend'';
+            })
           ];
         };
       };
@@ -423,10 +417,7 @@ in
           }
           {
             label = "suspend";
-            action =
-              if config.features.${name}.hibernationSupport
-              then ''systemctl suspend-then-hibernate''
-              else ''systemctl suspend'';
+            action = ''systemctl suspend'';
             text = "Sleep";
             keybind = "s";
           }

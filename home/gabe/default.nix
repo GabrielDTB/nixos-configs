@@ -20,7 +20,6 @@
   features = {
     hyprland = {
       enable = true;
-      hibernationSupport = true;
     };
   };
 
