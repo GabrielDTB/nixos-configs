@@ -61,11 +61,6 @@
       fsType = "btrfs";
       options = ["subvol=@videos" "compress-force=zstd:3" "noatime"];
     };
-    "/minecraft" = {
-      device = "/dev/disk/by-label/ssd";
-      fsType = "btrfs";
-      options = ["subvol=@minecraft" "compress-force=zstd:3" "noatime"];
-    };
   };
 
   swapDevices = [

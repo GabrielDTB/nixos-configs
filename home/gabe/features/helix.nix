@@ -11,6 +11,8 @@ mkFeature {
       lldb # For debugging
       rust-analyzer # Rust LSP
       nil # Nix LSP
+      python312Packages.python-lsp-server # python lsp -- version shouldn't matter much
+      black # python formatter
     ];
 
     programs.helix = {

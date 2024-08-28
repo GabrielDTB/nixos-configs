@@ -16,8 +16,18 @@
     ssh-daemon.enable = true;
     kopia.enable = true;
     hledger.enable = true;
+    osu.enable = true;
 
     tamy.enable = true;
+  };
+
+  home-manager.users.gabe = {
+    features.libreoffice.enable = true;
+    features.hyprland = {
+      monitors = [
+        "desc:PanaScope Pixio PX277P, 2560x1440@165, auto, 1"
+      ];
+    };
   };
 
   services.greetd = {
@@ -92,7 +102,10 @@
     xboxdrv
     unstable.ghidra
     unstable.imhex
+    unstable.lutris
   ];
+
+  zramSwap.enable = true;
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;

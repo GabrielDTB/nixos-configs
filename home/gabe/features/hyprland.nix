@@ -14,7 +14,12 @@ in
     with types; {
       enableSleep = mkOption {
         type = bool;
-      } // {default = false;};
+        default = false;
+      };
+      monitors = mkOption {
+        type = listOf str;
+        default = [];
+      };
     };
     body = {
       home.packages = with pkgs; [
@@ -38,11 +43,12 @@ in
           menu = "tofi-run";
         in
           with lib; {
-            monitor = flatten [
-              "desc:BOE 0x095F, 2256x1504@60, auto, 1.333333"
-              "desc:PanaScope Pixio PX277P, 2560x1440@165, auto, 1"
-              ", preferred, auto, 1" # catch-all
-            ];
+            monitor = config.features.${name}.monitors;
+            # [
+            #   "desc:BOE 0x095F, 2256x1504@60, auto, 1.333333"
+            #   "desc:PanaScope Pixio PX277P, 2560x1440@165, auto, 1"
+            #   ", preferred, auto, 1" # catch-all
+            # ];
 
             general = {
               gaps_in = 0;
