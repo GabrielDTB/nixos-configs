@@ -57,6 +57,8 @@
     wantedBy = ["timers.target"];
   };
 
+  programs.noisetorch.enable = true;
+
   networking.hostName = "gbox";
   boot.supportedFilesystems = ["ntfs"];
   boot.kernelPackages = pkgs.linuxPackages_zen;
