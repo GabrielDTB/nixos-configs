@@ -1,4 +1,4 @@
-{outputs, ...}: {
+{outputs, lib, ...}: {
   home = {
     username = "gabe";
     homeDirectory = "/home/gabe";
@@ -7,6 +7,10 @@
   imports = [
     ./features
   ];
+
+  features = {
+    basic-utils.enable = true;
+  };
 
   nixpkgs = with builtins; {
     overlays = attrValues outputs.overlays;
@@ -17,10 +21,10 @@
     };
   };
 
-  features = {
-    hyprland = {
-      enable = true;
-    };
+  home.sessionVariables = {
+    EDITOR = "hx";
+    BROWSER = "firefox";
+    TERMINAL = "kitty";
   };
 
   dconf.settings = {

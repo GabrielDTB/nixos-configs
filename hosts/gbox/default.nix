@@ -17,6 +17,7 @@
     kopia.enable = true;
     hledger.enable = true;
     osu.enable = true;
+    tuigreet.enable = true;
 
     tamy.enable = true;
   };
@@ -27,16 +28,6 @@
       monitors = [
         "desc:PanaScope Pixio PX277P, 2560x1440@165, auto, 1"
       ];
-    };
-  };
-
-  services.greetd = {
-    enable = true;
-    settings = {
-      default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd hyprland";
-        user = "greeter";
-      };
     };
   };
 

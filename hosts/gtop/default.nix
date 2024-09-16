@@ -12,6 +12,7 @@
     bluetooth.enable = true;
     steam.enable = true;
     ssh-daemon.enable = true;
+    printing.enable = true;
   };
 
   home-manager.users.gabe = {
@@ -21,16 +22,6 @@
       monitors = [
         "desc:BOE 0x095F, 2256x1504@60, auto, 1.333333"
       ];
-    };
-  };
-
-  services.greetd = {
-    enable = true;
-    settings = {
-      default_session = {
-        command = ''${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd "hyprland >/dev/null"'';
-        user = "greeter";
-      };
     };
   };
 
@@ -60,6 +51,11 @@
   security.sudo.extraConfig = ''
     Defaults timestamp_timeout=360
   '';
+
+  environment.systemPackages = with pkgs; [
+    unstable.tor-browser-bundle-bin
+    zathura
+  ];
 
   time.timeZone = "America/New_York";
 

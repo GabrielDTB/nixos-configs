@@ -5,7 +5,6 @@
 }:
 mkFeature {
   name = "basic-utils";
-  enableDefault = true;
   body = {
     home.packages = with pkgs; [
       coreutils-full
