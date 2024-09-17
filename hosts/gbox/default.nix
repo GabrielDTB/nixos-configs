@@ -76,9 +76,16 @@
     extraPackages = with pkgs; [mesa.drivers rocm-opencl-icd];
   };
 
-  services.udev.packages = [
-    pkgs.android-udev-rules
-  ];
+  services.udev = {
+    packages = [
+      pkgs.android-udev-rules
+    ];
+    extraRules = ''
+      SUBSYSTEM=="input", ATTRS{name}=="Wireless Controller", MODE="0666", SYMLINK+="dualshock4-bt"
+      SUBSYSTEM=="input", ATTRS{name}=="*Controller Motion Sensors", RUN+="${pkgs.coreutils}/bin/rm %E{DEVNAME}", ENV{ID_INPUT_JOYSTICK}=""
+      SUBSYSTEM=="input", ATTRS{name}=="*Controller Touchpad", RUN+="${pkgs.coreutils}/bin/rm %E{DEVNAME}", ENV{ID_INPUT_JOYSTICK}=""
+    '';
+  };
   programs.adb.enable = true;
 
   boot.extraModprobeConfig = ''
