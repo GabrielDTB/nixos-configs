@@ -3,7 +3,6 @@
     ./hardware-configuration.nix
     ./disks.nix
     ./immich
-    ./hledger
 
     ../common
   ];
@@ -23,11 +22,13 @@
   };
 
   home-manager.users.gabe = {
-    features.libreoffice.enable = true;
-    features.hyprland = {
-      monitors = [
-        "desc:PanaScope Pixio PX277P, 2560x1440@165, auto, 1"
-      ];
+    features = {
+      libreoffice.enable = true;
+      hyprland = {
+        monitors = [
+          "desc:PanaScope Pixio PX277P, 2560x1440@165, auto, 1"
+        ];
+      };
     };
   };
 

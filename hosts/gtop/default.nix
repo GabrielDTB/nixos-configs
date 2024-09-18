@@ -4,7 +4,6 @@
     ./disks.nix
 
     ../common
-    ../gbox/hledger
   ];
 
   features = {
@@ -13,15 +12,18 @@
     steam.enable = true;
     ssh-daemon.enable = true;
     printing.enable = true;
+    tuigreet.enable = true;
   };
 
   home-manager.users.gabe = {
-    features.libreoffice.enable = true;
-    features.hyprland = {
-      enableSleep = true;
-      monitors = [
-        "desc:BOE 0x095F, 2256x1504@60, auto, 1.333333"
-      ];
+    features = {
+      libreoffice.enable = true;
+      hyprland = {
+        enableSleep = true;
+        monitors = [
+          "desc:BOE 0x095F, 2256x1504@60, auto, 1.333333"
+        ];
+      };
     };
   };
 
