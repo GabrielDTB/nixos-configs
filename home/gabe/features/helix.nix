@@ -13,6 +13,7 @@ mkFeature {
       nil # Nix LSP
       python312Packages.python-lsp-server # python lsp -- version shouldn't matter much
       black # python formatter
+      jdt-language-server
     ];
 
     programs.helix = {
