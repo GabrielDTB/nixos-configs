@@ -26,6 +26,7 @@ in
         killall
         brightnessctl
         wl-clipboard-rs
+        wlsunset
       ];
 
       features = {
@@ -137,6 +138,7 @@ in
             "misc:middle_click_paste" = false;
             exec-once = [
               "waybar"
+              "wlsunset -l 40.7 -L -73.9"
             ];
           };
 
