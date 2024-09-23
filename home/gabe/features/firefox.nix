@@ -32,7 +32,7 @@ mkFeature {
           DisableFirefoxScreenshots = true;
           DisableFirefoxStudies = true;
           DisablePocket = true;
-          DisableSystemAddonUpdate = true;
+          # DisableSystemAddonUpdate = true;
           DisableTelemetry = true;
           DisplayBookmarksToolbar = "never";
           DisplayMenuBar = "never";
@@ -51,7 +51,7 @@ mkFeature {
             (extension "darkreader" "addon@darkreader.org")
             (extension "web-scrobbler" "{799c0914-748b-41df-a25c-22d008f9e83f}")
           ];
-          ExtensionUpdate = false;
+          # ExtensionUpdate = false;
           FirefoxHome = {
             Search = true;
             Pocket = false;

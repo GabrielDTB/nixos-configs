@@ -11,7 +11,7 @@ mkFeature {
   in {
     stylix = {
       enable = true;
-      image = ./windows11.jpg;
+      image = ./EEEEE.jpg;
       base16Scheme = "${pkgs.base16-schemes}/share/themes/onedark.yaml";
       fonts = with pkgs; {
         serif = {
