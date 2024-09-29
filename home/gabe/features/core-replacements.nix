@@ -4,13 +4,9 @@ mkFeature {
   enableDefault = true;
   body = {
     programs = {
-      eza = {
-        enable = true;
-      };
-
-      zoxide = {
-        enable = true;
-      };
+      eza.enable = true;
+      zoxide.enable = true;
+      ripgrep.enable = true;
     };
 
     home.shellAliases = {
