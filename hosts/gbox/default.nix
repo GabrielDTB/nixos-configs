@@ -104,6 +104,7 @@
     unstable.ghidra
     unstable.imhex
     unstable.lutris
+    zathura
   ];
 
   zramSwap.enable = true;
