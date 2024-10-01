@@ -26,7 +26,7 @@ mkFeature {
           gutters = ["diagnostics" "line-numbers" "spacer" "diff"];
           auto-completion = false;
           completion-replace = true;
-          rulers = [101];
+          rulers = [81];
           lsp = {
             display-messages = true;
             display-inlay-hints = true;
