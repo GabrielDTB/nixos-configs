@@ -52,8 +52,9 @@ in
             # ];
 
             general = {
-              gaps_in = 0;
-              gaps_out = 0;
+              gaps_in = 2.5;
+              gaps_out = 5;
+              layout = "master";
             };
 
             decoration = {
@@ -133,7 +134,16 @@ in
 
             windowrulev2 = [
               "float, class:floating"
+              "noborder, onworkspace:w[t1]"
             ];
+
+            dwindle = {
+              no_gaps_when_only = 1;
+            };
+
+            master = {
+              no_gaps_when_only = 1;
+            };
 
             "misc:middle_click_paste" = false;
             exec-once = [
@@ -407,6 +417,7 @@ in
       };
 
       services.hyprpaper.enable = true;
+      # programs.wpaperd.enable = true;
 
       programs.wlogout = {
         enable = true;
