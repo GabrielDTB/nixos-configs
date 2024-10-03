@@ -41,6 +41,10 @@ mkFeature {
             character = "│";
             skip-levels = 1;
           };
+          soft-wrap = {
+            enable = true;
+            wrap-indicator = "";
+          };
         };
         keys = {
           normal = {
