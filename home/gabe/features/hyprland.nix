@@ -137,13 +137,13 @@ in
               "noborder, onworkspace:w[t1]"
             ];
 
-            dwindle = {
-              no_gaps_when_only = 1;
-            };
+            # dwindle = {
+            #   no_gaps_when_only = 1;
+            # };
 
-            master = {
-              no_gaps_when_only = 1;
-            };
+            # master = {
+            #   no_gaps_when_only = 1;
+            # };
 
             "misc:middle_click_paste" = false;
             exec-once = [
