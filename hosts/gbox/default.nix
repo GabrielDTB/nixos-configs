@@ -17,6 +17,7 @@
     hledger.enable = true;
     osu.enable = true;
     tuigreet.enable = true;
+    sync-home.enable = true;
 
     tamy.enable = true;
   };

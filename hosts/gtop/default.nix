@@ -13,6 +13,7 @@
     ssh-daemon.enable = true;
     printing.enable = true;
     tuigreet.enable = true;
+    sync-home.enable = true;
   };
 
   home-manager.users.gabe = {
