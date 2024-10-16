@@ -13,8 +13,6 @@
     hardware.url = "github:nixos/nixos-hardware";
     systems.url = "github:nix-systems/default-linux";
 
-    rust-overlay.url = "github:oxalica/rust-overlay";
-
     stylix.url = "github:danth/stylix";
   };
 
@@ -23,7 +21,6 @@
     nixpkgs,
     home-manager,
     systems,
-    rust-overlay,
     stylix,
     ...
   } @ inputs: let
