@@ -10,6 +10,7 @@
 
   features = {
     basic-utils.enable = true;
+    syncthing.enable = true;
   };
 
   nixpkgs = with builtins; {
