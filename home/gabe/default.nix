@@ -11,6 +11,8 @@
   features = {
     basic-utils.enable = true;
     syncthing.enable = true;
+    firefox.enable = true;
+    signal.enable = true;
   };
 
   nixpkgs = with builtins; {
