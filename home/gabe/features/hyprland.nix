@@ -9,7 +9,6 @@
 in
   mkFeature {
     name = name;
-    enableDefault = true;
     options = with lib;
     with types; {
       enableSleep = mkOption {

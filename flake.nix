@@ -14,6 +14,8 @@
     systems.url = "github:nix-systems/default-linux";
 
     stylix.url = "github:danth/stylix";
+
+    nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
   };
 
   outputs = {
@@ -22,6 +24,7 @@
     home-manager,
     systems,
     stylix,
+    nixos-cosmic,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -48,6 +51,13 @@
         specialArgs = {inherit inputs outputs;};
         modules = [
           ./hosts/gbox
+          {
+            nix.settings = {
+              substituters = [ "https://cosmic.cachix.org/" ];
+              trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
+            };
+          }
+          nixos-cosmic.nixosModules.default
         ];
       };
       "gtop" = nixosSystem {

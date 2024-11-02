@@ -7,7 +7,8 @@
 mkFeature {
   name = "graphical-environment";
   body = {
-    programs.hyprland.enable = true;
+    # programs.hyprland.enable = true;
+    features.cosmic.enable = true;
 
     environment.systemPackages = with pkgs; [
       # Screen recording / screenshotting.
