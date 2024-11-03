@@ -1,34 +1,50 @@
-{pkgs, ...}: {
+{pkgs, inputs, outputs, ...}: 
+let
+  features = (map (x: ../../users/gabe + x) [
+    /.
+    /basic-utils
+    /btop
+    /core-replacements
+    /cosmic
+    /croc
+    /direnv
+    /firefox
+    /git
+    /helix
+    /hledger
+    /lazygit
+    /libreoffice
+    /mpv
+    /nixos-aliases
+    /osu
+    /signal
+    /ssh-from
+    /ssh-from/gtop
+    /steam
+    /stylix
+    /syncthing
+    /tmux
+    /virtualization
+    /zsh
+  ]);
+  in
+{
   imports = [
     ./hardware-configuration.nix
     ./disks.nix
+    ./kopia.nix
     ./immich
 
     ../common
-  ];
+  ] ++ (map (x: (import x).nixos or {}) features);
 
-  features = {
-    graphical-environment.enable = true;
-    bluetooth.enable = true;
-    steam.enable = true;
-    virtualization.enable = true;
-    ssh-daemon.enable = true;
-    kopia.enable = true;
-    hledger.enable = true;
-    osu.enable = true;
-    # tuigreet.enable = true;
-    # sync-home.enable = true;
-
-    tamy.enable = true;
-  };
-
-  home-manager.users.gabe = {
-    features = {
-      libreoffice.enable = true;
-      hyprland = {
-        monitors = [
-          "desc:PanaScope Pixio PX277P, 2560x1440@165, auto, 1"
-        ];
+  home-manager = {
+    extraSpecialArgs = {inherit inputs outputs;};
+    users.gabe = {
+      imports = (map (x: (import x).home-manager or {}) features);
+      home = {
+        username = "gabe";
+        homeDirectory = "/home/gabe";
       };
     };
   };

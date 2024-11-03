@@ -6,10 +6,10 @@
   ...
 }: {
   imports =
-    [
-      ./features
-    ]
-    ++ [inputs.home-manager.nixosModules.home-manager]
+    # [
+    #   ./features
+    # ]
+    [inputs.home-manager.nixosModules.home-manager]
     ++ [inputs.stylix.nixosModules.stylix];
 
   nixpkgs = with builtins; {

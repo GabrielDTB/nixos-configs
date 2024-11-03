@@ -1,29 +1,43 @@
-{pkgs, ...}: {
+{pkgs, inputs, outputs, ...}: 
+let
+  features = (map (x: ../../users/gabe + x) [
+    /.
+    /basic-utils
+    /btop
+    /core-replacements
+    /cosmic
+    /croc
+    /direnv
+    /firefox
+    /git
+    /helix
+    /lazygit
+    /libreoffice
+    /mpv
+    /nixos-aliases
+    /signal
+    /steam
+    /stylix
+    /syncthing
+    /tmux
+    /zsh
+  ]);
+  in
+{
   imports = [
     ./hardware-configuration.nix
     ./disks.nix
 
     ../common
-  ];
+  ] ++ (map (x: (import x).nixos or {}) features);
 
-  features = {
-    graphical-environment.enable = true;
-    bluetooth.enable = true;
-    steam.enable = true;
-    ssh-daemon.enable = true;
-    printing.enable = true;
-    tuigreet.enable = true;
-    # sync-home.enable = true;
-  };
-
-  home-manager.users.gabe = {
-    features = {
-      libreoffice.enable = true;
-      hyprland = {
-        enableSleep = true;
-        monitors = [
-          "desc:BOE 0x095F, 2256x1504@60, auto, 1.333333"
-        ];
+  home-manager = {
+    extraSpecialArgs = {inherit inputs outputs;};
+    users.gabe = {
+      imports = (map (x: (import x).home-manager or {}) features);
+      home = {
+        username = "gabe";
+        homeDirectory = "/home/gabe";
       };
     };
   };
@@ -56,7 +70,6 @@
   '';
 
   environment.systemPackages = with pkgs; [
-    unstable.tor-browser-bundle-bin
     zathura
   ];
 
