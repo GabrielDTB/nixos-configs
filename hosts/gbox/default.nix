@@ -17,6 +17,7 @@ let
     /mpv
     /nixos-aliases
     /osu
+    /shattered-pixel-dungeon
     /signal
     /ssh-from
     /ssh-from/gtop
