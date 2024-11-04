@@ -1,9 +1,4 @@
-{
-  pkgs,
-  inputs,
-  outputs,
-  ...
-}: let
+{...}: let
   features = map (x: ../../users/gabe + x) [
     /.
     /basic-utils
@@ -24,21 +19,20 @@
     /stylix
     /syncthing
     /tmux
+    /zathura
     /zsh
   ];
 in {
   imports =
     [
-      ./hardware-configuration.nix
       ./disks.nix
-
-      ../common
+      ./hardware-configuration.nix
+      ./swap.nix
     ]
     ++ (map (x: (import x).nixos or {}) features);
 
-  home-manager = {
-    extraSpecialArgs = {inherit inputs outputs;};
-    users.gabe = {
+  home-manager.users = {
+    gabe = {
       imports = map (x: (import x).home-manager or {}) features;
       home = {
         username = "gabe";
@@ -49,12 +43,12 @@ in {
 
   networking = {
     hostName = "gtop";
-    networkmanager.enable = true;
     extraHosts = ''
       108.35.129.44 gbox
     '';
   };
 
+  # Fast boot.
   boot = {
     loader = {
       systemd-boot = {
@@ -73,10 +67,6 @@ in {
   security.sudo.extraConfig = ''
     Defaults timestamp_timeout=360
   '';
-
-  environment.systemPackages = with pkgs; [
-    zathura
-  ];
 
   time.timeZone = "America/New_York";
 

@@ -1,19 +1,4 @@
 {pkgs, ...}: {
-  systemd.services.create-swapfile = {
-    serviceConfig.Type = "oneshot";
-    wantedBy = ["swap-swapfile.swap"];
-    script = ''
-      swapfile="/swap/swapfile"
-      if [[ -f "$swapfile" ]]; then
-        echo "Swap file $swapfile already exists, taking no action"
-      else
-        echo "Setting up swap file $swapfile"
-        ${pkgs.coreutils}/bin/truncate -s 0 "$swapfile"
-        ${pkgs.e2fsprogs}/bin/chattr +C "$swapfile"
-      fi
-    '';
-  };
-
   boot.initrd.luks.devices = {
     "enclave" = {
       device = "/dev/disk/by-label/enc";
@@ -30,11 +15,6 @@
       device = "/dev/disk/by-label/boot";
       fsType = "vfat";
       options = ["defaults"];
-    };
-    "/swap" = {
-      device = "/dev/disk/by-label/enclave";
-      fsType = "btrfs";
-      options = ["subvol=@swap" "compress-force=zstd:3" "noatime"];
     };
     "/home" = {
       device = "/dev/disk/by-label/nixos";
@@ -62,11 +42,4 @@
       options = ["subvol=@videos" "compress-force=zstd:3" "noatime"];
     };
   };
-
-  swapDevices = [
-    {
-      device = "/swap/swapfile";
-      size = 1024 * 32; # RAM size
-    }
-  ];
 }
