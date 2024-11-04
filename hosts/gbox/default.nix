@@ -1,6 +1,10 @@
-{pkgs, inputs, outputs, ...}: 
-let
-  features = (map (x: ../../users/gabe + x) [
+{
+  pkgs,
+  inputs,
+  outputs,
+  ...
+}: let
+  features = map (x: ../../users/gabe + x) [
     /.
     /basic-utils
     /btop
@@ -27,22 +31,23 @@ let
     /tmux
     /virtualization
     /zsh
-  ]);
-  in
-{
-  imports = [
-    ./hardware-configuration.nix
-    ./disks.nix
-    ./kopia.nix
-    ./immich
+  ];
+in {
+  imports =
+    [
+      ./hardware-configuration.nix
+      ./disks.nix
+      ./kopia.nix
+      ./immich
 
-    ../common
-  ] ++ (map (x: (import x).nixos or {}) features);
+      ../common
+    ]
+    ++ (map (x: (import x).nixos or {}) features);
 
   home-manager = {
     extraSpecialArgs = {inherit inputs outputs;};
     users.gabe = {
-      imports = (map (x: (import x).home-manager or {}) features);
+      imports = map (x: (import x).home-manager or {}) features;
       home = {
         username = "gabe";
         homeDirectory = "/home/gabe";
@@ -80,7 +85,7 @@ let
 
   # services.foldingathome = {
   #   # for heating during winter
-  #   enable = true; 
+  #   enable = true;
   #   daemonNiceLevel = 19;
   # };
 
@@ -107,7 +112,7 @@ let
   #     #   # platform = "AMD Accelerated Parallel Processing";
   #     #   platform = 0;
   #     # };
-      
+
   #     cuda = false;
   #     pools = [
   #       {

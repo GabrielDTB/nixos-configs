@@ -1,5 +1,4 @@
-{pkgs, ...}:
-let
+{pkgs, ...}: let
   lock-false = {
     Value = false;
     Status = "locked";

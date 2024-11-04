@@ -1,6 +1,10 @@
-{pkgs, inputs, outputs, ...}: 
-let
-  features = (map (x: ../../users/gabe + x) [
+{
+  pkgs,
+  inputs,
+  outputs,
+  ...
+}: let
+  features = map (x: ../../users/gabe + x) [
     /.
     /basic-utils
     /btop
@@ -21,20 +25,21 @@ let
     /syncthing
     /tmux
     /zsh
-  ]);
-  in
-{
-  imports = [
-    ./hardware-configuration.nix
-    ./disks.nix
+  ];
+in {
+  imports =
+    [
+      ./hardware-configuration.nix
+      ./disks.nix
 
-    ../common
-  ] ++ (map (x: (import x).nixos or {}) features);
+      ../common
+    ]
+    ++ (map (x: (import x).nixos or {}) features);
 
   home-manager = {
     extraSpecialArgs = {inherit inputs outputs;};
     users.gabe = {
-      imports = (map (x: (import x).home-manager or {}) features);
+      imports = map (x: (import x).home-manager or {}) features;
       home = {
         username = "gabe";
         homeDirectory = "/home/gabe";

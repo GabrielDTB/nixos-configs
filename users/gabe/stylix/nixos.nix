@@ -2,8 +2,7 @@
   lib,
   pkgs,
   ...
-}:
-let
+}: let
   fromNerdfonts = with pkgs; font: (nerdfonts.override {fonts = [font];});
 in {
   stylix = {
