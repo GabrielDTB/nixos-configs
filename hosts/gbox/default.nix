@@ -77,7 +77,7 @@ in {
   '';
 
   environment.systemPackages = with pkgs; [
-    qbittorrent
+    unstable.qbittorrent
     p7zip
     prismlauncher
     xboxdrv
