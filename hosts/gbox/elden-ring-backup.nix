@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   systemd.services.er-backup = {
     description = "Elden Ring backup";
     after = ["network.target"];

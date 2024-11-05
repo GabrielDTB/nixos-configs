@@ -21,7 +21,6 @@
     inherit lib;
     inherit (lib) formatter devShells;
 
-    overlays = import ./overlays {inherit inputs;};
     nixosConfigurations = import ./hosts {inherit inputs outputs lib;};
   };
 }

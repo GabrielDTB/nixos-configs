@@ -1,10 +1,13 @@
 {
   lib,
+  inputs,
   pkgs,
   ...
 }: let
   fromNerdfonts = with pkgs; font: (nerdfonts.override {fonts = [font];});
 in {
+  imports = [inputs.stylix.nixosModules.stylix];
+
   stylix = {
     enable = true;
     image = ./paper_squares.jpg;

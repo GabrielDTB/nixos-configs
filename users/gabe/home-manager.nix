@@ -1,12 +1,6 @@
-{outputs, ...}: {
-  nixpkgs = {
-    overlays = outputs.overlays;
+{...}: {
+  imports = (import ../../modules).home-manager;
 
-    config = {
-      allowUnfree = true;
-      allowUnfreePredicate = _: true;
-    };
-  };
   systemd.user.startServices = "sd-switch";
   programs.home-manager.enable = true;
   home.stateVersion = "23.05";
