@@ -11,6 +11,7 @@
     /git
     /helix
     /hledger
+    /jellyfin
     /lazygit
     /libreoffice
     /mpv
