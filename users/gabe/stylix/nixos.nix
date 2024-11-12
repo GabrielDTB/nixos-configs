@@ -10,7 +10,7 @@ in {
 
   stylix = {
     enable = true;
-    image = ./paper_squares.jpg;
+    image = ./eighanface.png;
     # base16Scheme = "${pkgs.base16-schemes}/share/themes/primer-dark.yaml";
     base16Scheme = "${pkgs.base16-schemes}/share/themes/colors.yaml";
     override = {
