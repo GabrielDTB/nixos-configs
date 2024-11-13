@@ -8,6 +8,7 @@
     /croc
     /direnv
     /firefox
+    /gimp
     /git
     /helix
     /lazygit
