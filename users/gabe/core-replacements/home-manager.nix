@@ -1,9 +1,17 @@
-{...}: {
+{pkgs, ...}: {
   programs = {
     eza.enable = true;
     zoxide.enable = true;
-    ripgrep.enable = true;
+    ripgrep = {
+      enable = true;
+      package = pkgs.ripgrep-all;
+    };
+    bat.enable = true;
+    fzf.enable = true;
   };
+
+  # Not cross-shell. Whatever.
+  programs.zsh.initExtra = "source ${./rga-fzf.sh}";
 
   home.shellAliases = {
     ls = "eza";
@@ -14,6 +22,8 @@
 
     cd = "z";
 
-    grep = "rg";
+    grep = "rga";
+
+    cat = "bat";
   };
 }

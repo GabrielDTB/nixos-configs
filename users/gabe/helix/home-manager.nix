@@ -3,12 +3,18 @@
     nil
   ];
 
-  home.sessionVariables = {
-    EDITOR = "hx";
-  };
+  # xdg.desktopEntries.helix = {
+  #   name = "helix";
+  #   exec = "hx";
+  #   terminal = true;
+  #   type = "Application";
+  #   categories = ["TextTools" "TextEditor" "ConsoleOnly" "Development"];
+  #   mimeType = ["text/plain"];
+  # };
 
   programs.helix = {
     enable = true;
+    defaultEditor = true;
     settings = {
       editor = {
         middle-click-paste = false;
