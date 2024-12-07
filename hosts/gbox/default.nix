@@ -60,7 +60,7 @@ in {
   '';
 
   boot.supportedFilesystems = ["ntfs"];
-  boot.kernelPackages = pkgs.linuxPackages_zen;
+  # boot.kernelPackages = pkgs.linuxPackages_zen;
   boot.kernelParams = ["pcie_acs_override=downstream,multifunction"];
 
   hardware.opengl = {
@@ -73,10 +73,13 @@ in {
     ];
   };
 
-  boot.extraModprobeConfig = ''
-    blacklist nouveau
-    options nouveau modeset=0
-  '';
+  # boot.extraModprobeConfig = ''
+  #   blacklist nouveau
+  #   options nouveau modeset=0
+  # '';
+  boot.extraModulePackages = [ pkgs.unstable.linuxPackages.nvidia_x11 ];
+  boot.blacklistedKernelModules = [ "nouveau" "nvidia_drm" "nvidia_modeset" "nvidia" ];
+  # packages = [ pkgs. ];
 
   environment.systemPackages = with pkgs; [
     unstable.qbittorrent
@@ -84,6 +87,7 @@ in {
     prismlauncher
     xboxdrv
     clinfo
+    unstable.linuxPackages.nvidia_x11
   ];
 
   boot.loader.systemd-boot.enable = true;
