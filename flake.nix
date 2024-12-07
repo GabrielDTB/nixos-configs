@@ -2,15 +2,15 @@
   description = "Unified system configuration.";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.05";
+      url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     hardware.url = "github:nixos/nixos-hardware";
     systems.url = "github:nix-systems/default-linux";
-    stylix.url = "github:danth/stylix/release-24.05";
+    stylix.url = "github:danth/stylix/release-24.11";
     nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
   };
 

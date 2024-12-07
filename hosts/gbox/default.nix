@@ -63,12 +63,12 @@ in {
   # boot.kernelPackages = pkgs.linuxPackages_zen;
   boot.kernelParams = ["pcie_acs_override=downstream,multifunction"];
 
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
-    driSupport32Bit = true;
+    enable32Bit = true;
     extraPackages = with pkgs; [
       mesa.drivers
-      rocm-opencl-icd
+      # rocm-opencl-icd
       rocmPackages.clr.icd
     ];
   };
