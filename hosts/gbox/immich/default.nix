@@ -8,7 +8,7 @@
   immichRoot = "/immich";
   immichPhotos = "${immichRoot}/photos";
   immichAppdataRoot = "${immichRoot}/appdata";
-  immichVersion = "v1.118.2";
+  immichVersion = "v1.121.0";
 
   postgresRoot = "${immichAppdataRoot}/pgsql";
   postgresPassword = "hunter2"; # TODO: use secrets (is this necessary?)
