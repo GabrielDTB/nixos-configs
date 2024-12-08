@@ -8,7 +8,7 @@
   immichRoot = "/immich";
   immichPhotos = "${immichRoot}/photos";
   immichAppdataRoot = "${immichRoot}/appdata";
-  immichVersion = "v1.112.1";
+  immichVersion = "v1.118.2";
 
   postgresRoot = "${immichAppdataRoot}/pgsql";
   postgresPassword = "hunter2"; # TODO: use secrets (is this necessary?)
@@ -71,7 +71,6 @@ in {
     serviceConfig.Type = "oneshot";
     wantedBy = [
       "${backend}-immich_server.service"
-      "${backend}-immich_microservices.service"
       "${backend}-immich_machine_learning.service"
       "${backend}-immich_redis.service"
       "${backend}-immich_postgres.service"
@@ -127,7 +126,7 @@ in {
         DB_PASSWORD = postgresPassword;
         REDIS_HOSTNAME = "immich_redis";
       };
-      ports = ["127.0.0.1:2283:3001"];
+      ports = ["127.0.0.1:2283:2283"];
       dependsOn = [
         "immich_redis"
         "immich_postgres"
