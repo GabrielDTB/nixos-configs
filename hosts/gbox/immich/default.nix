@@ -2,13 +2,35 @@
   config,
   pkgs,
   ...
-}: let
-  immichHost = "immich.services.gabrieltb.me";
-in {
+}: {
   services.immich = {
     enable = true;
     environment.IMMICH_MACHINE_LEARNING_URL = "http://localhost:3003";
   };
+  users.users.immich.extraGroups = [ "video" "render" ];
+
+  services.nginx = {
+    enable = true;
+    virtualHosts."immich.services.gabrieltb.me" = {
+      enableACME = true;
+      forceSSL = true;
+      locations."/" = {
+        proxyPass = "http://localhost:${toString config.services.immich.port}";
+        proxyWebsockets = true;
+      };
+      # https://immich.app/docs/administration/reverse-proxy
+      extraConfig =
+      ''
+        client_max_body_size 50000M;
+      '';
+    };
+  };
+  security.acme = {
+    acceptTerms = true;
+    defaults.email = "gabriel@gabrieltb.me";
+  };
+  networking.firewall.allowedTCPPorts = [ 80 443 ];
+
   systemd.services.kopia = {
     description = "Kopia backup";
     after = ["network.target"];
@@ -34,20 +56,5 @@ in {
       OnUnitActiveSec = "1h";
     };
     wantedBy = ["timers.target"];
-  };
-
-  services.caddy = {
-    enable = true;
-    virtualHosts."immich.services.gabrieltb.me".extraConfig = ''
-      reverse_proxy http://127.0.0.1:2283
-    '';
-  };
-
-  fileSystems = {
-    "/vms" = pkgs.lib.mkForce {
-      device = "/dev/sda1";
-      fsType = "btrfs";
-      options = ["subvol=@vms" "noatime"];
-    };
   };
 }
