@@ -15,6 +15,7 @@
     /libreoffice
     /mpv
     /nixos-aliases
+    /prism-launcher
     /signal
     /steam
     /stylix
