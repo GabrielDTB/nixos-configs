@@ -13,4 +13,8 @@
     extraGroups = ["wheel" "video" "audio" "disk" "render" "adbusers" "input"];
     uid = 1000;
   };
+
+  nix.settings.trusted-users = [
+    "@wheel"
+  ];
 }
