@@ -46,9 +46,6 @@ in {
 
   networking = {
     hostName = "gtop";
-    extraHosts = ''
-      108.35.129.44 gbox
-    '';
   };
 
   # Fast boot.
