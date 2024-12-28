@@ -10,6 +10,7 @@
     /firefox
     /gimp
     /git
+    /headscale
     /helix
     /hledger
     /jellyfin
