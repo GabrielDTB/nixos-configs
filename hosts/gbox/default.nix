@@ -41,6 +41,7 @@ in {
       ./immich
       ./kopia.nix
       ./swap.nix
+      ./tailscale.nix
     ]
     ++ (map (x: (import x).nixos or {}) features);
 
