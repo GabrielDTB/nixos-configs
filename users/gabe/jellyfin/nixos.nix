@@ -2,6 +2,7 @@
   services.jellyfin = {
     enable = true;
     user = "gabe";
+    openFirewall = true;
   };
   environment.systemPackages = with pkgs; [
     jellyfin
