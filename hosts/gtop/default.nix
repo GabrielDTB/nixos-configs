@@ -30,6 +30,7 @@ in {
       ./disks.nix
       ./hardware-configuration.nix
       ./swap.nix
+      ./tailscale.nix
     ]
     ++ (map (x: (import x).nixos or {}) features);
 
