@@ -1,6 +1,7 @@
 {...}: let
   features = map (x: ../../users/gabe + x) [
     /.
+    /adb
     /basic-utils
     /btop
     /core-replacements
