@@ -1,5 +1,4 @@
-{config, ...}: 
-{
+{config, ...}: {
   services = {
     headscale = {
       enable = true;
@@ -32,5 +31,5 @@
   # # DERP port (https://tailscale.com/kb/1082/firewall-ports)
   # networking.firewall.allowedUDPPorts = [3478];
 
-  environment.systemPackages = [ config.services.headscale.package ];
+  environment.systemPackages = [config.services.headscale.package];
 }

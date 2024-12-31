@@ -7,7 +7,7 @@
     enable = true;
     environment.IMMICH_MACHINE_LEARNING_URL = "http://localhost:3003";
   };
-  users.users.immich.extraGroups = [ "video" "render" ];
+  users.users.immich.extraGroups = ["video" "render"];
 
   services.nginx = {
     enable = true;
@@ -19,8 +19,7 @@
         proxyWebsockets = true;
       };
       # https://immich.app/docs/administration/reverse-proxy
-      extraConfig =
-      ''
+      extraConfig = ''
         client_max_body_size 50000M;
       '';
     };
@@ -29,7 +28,7 @@
     acceptTerms = true;
     defaults.email = "gabriel@gabrieltb.me";
   };
-  networking.firewall.allowedTCPPorts = [ 80 443 ];
+  networking.firewall.allowedTCPPorts = [80 443];
 
   systemd.services.kopia = {
     description = "Kopia backup";
