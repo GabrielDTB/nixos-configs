@@ -42,6 +42,7 @@
 
           ${pkgs.kopia}/bin/kopia snapshot create /immich/photos/
           ${pkgs.kopia}/bin/kopia snapshot create /immich/database_backups/
+          ${pkgs.kopia}/bin/kopia snapshot create /var/lib/immich/
         ''
       );
     };
