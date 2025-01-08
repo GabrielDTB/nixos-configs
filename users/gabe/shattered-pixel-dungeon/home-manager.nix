@@ -1,5 +1,5 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
-    unstable.shattered-pixel-dungeon
+    shattered-pixel-dungeon
   ];
 }

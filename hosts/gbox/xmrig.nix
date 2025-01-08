@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   services.xmrig = {
     enable = true;
-    package = pkgs.unstable.xmrig;
+    package = pkgs.xmrig;
     settings = {
       autosave = true;
       cpu = {

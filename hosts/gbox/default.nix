@@ -79,17 +79,17 @@ in {
   #   blacklist nouveau
   #   options nouveau modeset=0
   # '';
-  boot.extraModulePackages = [pkgs.unstable.linuxPackages.nvidia_x11];
+  boot.extraModulePackages = [pkgs.linuxPackages.nvidia_x11];
   boot.blacklistedKernelModules = ["nouveau" "nvidia_drm" "nvidia_modeset" "nvidia"];
   # packages = [ pkgs. ];
 
   environment.systemPackages = with pkgs; [
-    unstable.qbittorrent
+    qbittorrent
     p7zip
     prismlauncher
     xboxdrv
     clinfo
-    unstable.linuxPackages.nvidia_x11
+    linuxPackages.nvidia_x11
   ];
 
   boot.loader.systemd-boot.enable = true;

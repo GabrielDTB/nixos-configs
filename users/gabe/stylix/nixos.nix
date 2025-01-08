@@ -3,15 +3,12 @@
   inputs,
   pkgs,
   ...
-}: let
-  fromNerdfonts = with pkgs; font: (nerdfonts.override {fonts = [font];});
-in {
+}: {
   imports = [inputs.stylix.nixosModules.stylix];
 
   stylix = {
     enable = true;
     image = ./eighanface.png;
-    # base16Scheme = "${pkgs.base16-schemes}/share/themes/primer-dark.yaml";
     base16Scheme = "${pkgs.base16-schemes}/share/themes/colors.yaml";
     override = {
       base00 = "0c0c0c";
@@ -24,9 +21,7 @@ in {
       base07 = "f2f2f2";
       base09 = "ff69b4";
       base0D = "1080ff";
-      # base0D = "1A8EF3";
     };
-    # base16Scheme = "${pkgs.base16-schemes}/share/themes/onedark.yaml";
     fonts = with pkgs; {
       serif = {
         package = noto-fonts;
@@ -39,13 +34,9 @@ in {
       };
 
       monospace = {
-        package = fromNerdfonts "FiraCode";
-        name = "Fira Code Nerd Font";
+        package = nerd-fonts.fira-code;
+        name = "Fira Code Nerd Font Mono";
       };
-      # monospace = {
-      #   package = monaspace;
-      #   name = "Monaspace Neon";
-      # };
 
       emoji = {
         package = noto-fonts-color-emoji;
