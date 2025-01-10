@@ -11,7 +11,7 @@
   };
 
   # Not cross-shell. Whatever.
-  programs.zsh.initExtra = "source ${./rga-fzf.sh}";
+  # programs.zsh.initExtra = "source ${./rga-fzf.sh}";
 
   home.shellAliases = {
     ls = "eza";

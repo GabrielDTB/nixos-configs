@@ -9,6 +9,7 @@
     /croc
     /direnv
     /firefox
+    /fish
     /ghostty
     /gimp
     /git
@@ -19,12 +20,12 @@
     /nixos-aliases
     /prism-launcher
     /signal
+    /starship
     /steam
     /stylix
     /syncthing
     /tmux
     /zathura
-    /zsh
   ];
 in {
   imports =
