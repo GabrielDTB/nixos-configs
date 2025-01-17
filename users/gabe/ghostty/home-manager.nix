@@ -1,4 +1,4 @@
-{...}: {
+{pkgs, ...}: {
   programs.ghostty = {
     enable = true;
     enableFishIntegration = true;
@@ -13,4 +13,7 @@
       confirm-close-surface = false;
     };
   };
+  home.packages = with pkgs; [
+    viu
+  ];
 }
