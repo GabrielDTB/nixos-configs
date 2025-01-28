@@ -14,10 +14,6 @@
     preferAbbrs = true;
     shellAbbrs = config.home.shellAliases;
     plugins = with pkgs.fishPlugins; [
-      # {
-      #   name = "tide";
-      #   inherit (tide) src;
-      # }
       {
         name = "async-prompt";
         inherit (async-prompt) src;
@@ -27,5 +23,14 @@
         inherit (transient-fish) src;
       }
     ];
+    functions = {
+      transient_prompt_func = ''
+        set --local color green
+        if test $transient_pipestatus[-1] -ne 0
+          set color red
+        end
+        echo -en (set_color brblack)(date "+%H:%M:%S")(set_color $color)" ❯ "(set_color normal)
+      '';
+    };
   };
 }

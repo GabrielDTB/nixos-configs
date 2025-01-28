@@ -68,7 +68,7 @@
     "$memory_usage"
     "$battery"
     # Other
-    "$cmd_duration"
+    "$time"
     "$line_break"
     "$directory"
     "$line_break"
@@ -106,10 +106,10 @@
     "$spack"
     "$status"
     "$sudo"
-    "$time"
     "$username"
     "$vcsh"
     "$custom"
+    "$cmd_duration"
   ];
 in {
   imports = [

@@ -222,6 +222,7 @@
         format = "([$symbol$workspace]($style) )";
       };
       time = {
+        style = "bright-black";
         format = "([$time]($style) )";
       };
       typst = {
