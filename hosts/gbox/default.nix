@@ -17,6 +17,7 @@
     /lazygit
     /libreoffice
     /mpv
+    /nix-index
     /nixos-aliases
     /osu
     /shattered-pixel-dungeon

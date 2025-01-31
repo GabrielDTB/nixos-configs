@@ -1,4 +1,4 @@
-{...}: let
+{pkgs, ...}: let
   features = map (x: ../../users/gabe + x) [
     /.
     /adb
@@ -17,6 +17,7 @@
     /lazygit
     /libreoffice
     /mpv
+    /nix-index
     /nixos-aliases
     /prism-launcher
     /signal

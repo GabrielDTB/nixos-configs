@@ -16,13 +16,13 @@
     enable = true;
   };
 
-  boot = {
-    resumeDevice = "/dev/disk/by-label/root";
-    kernelParams = [
-      "resume_offset=3941632" # btrfs inspect-internal map-swapfile -r /swap/swapfile
-    ];
-  };
-  systemd.sleep.extraConfig = ''
-    HibernateDelaySec=4500s
-  '';
+  # boot = {
+  #   resumeDevice = "/dev/disk/by-label/root";
+  #   kernelParams = [
+  #     "resume_offset=3941632" # btrfs inspect-internal map-swapfile -r /swap/swapfile
+  #   ];
+  # };
+  # systemd.sleep.extraConfig = ''
+  #   HibernateDelaySec=4500s
+  # '';
 }
