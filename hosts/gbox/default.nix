@@ -8,6 +8,8 @@
     /croc
     /direnv
     /firefox
+    /fish
+    /ghostty
     /gimp
     /git
     /headscale
@@ -24,13 +26,13 @@
     /signal
     /ssh-from
     /ssh-from/gtop
+    /starship
     /steam
     /stylix
     /syncthing
     /tmux
     /virtualization
     /zathura
-    /zsh
   ];
 in {
   imports =
@@ -88,7 +90,6 @@ in {
     qbittorrent
     p7zip
     prismlauncher
-    xboxdrv
     clinfo
     linuxPackages.nvidia_x11
   ];
