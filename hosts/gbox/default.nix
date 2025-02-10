@@ -22,6 +22,7 @@
     /nix-index
     /nixos-aliases
     /osu
+    /scanning
     /shattered-pixel-dungeon
     /signal
     /ssh-from
