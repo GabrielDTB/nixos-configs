@@ -3,6 +3,10 @@
     enable = true;
     userName = "Gabriel Talbert Bunt";
     userEmail = "gabriel@gabrieltb.me";
+    ignores = [
+      "/.envrc"
+      "/.direnv/"
+    ];
     extraConfig = {
       credential = {
         helper = "store";
