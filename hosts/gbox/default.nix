@@ -22,6 +22,7 @@
     /nix-index
     /nixos-aliases
     /osu
+    /paperless
     /scanning
     /shattered-pixel-dungeon
     /signal
