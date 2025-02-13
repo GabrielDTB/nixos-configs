@@ -9,6 +9,7 @@
     systems.url = "github:nix-systems/default-linux";
     stylix.url = "github:danth/stylix";
     nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
+    zen-browser.url = "github:0xc000022070/zen-browser-flake";
   };
 
   outputs = {self, ...} @ inputs: let

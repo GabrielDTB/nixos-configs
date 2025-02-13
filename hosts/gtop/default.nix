@@ -27,6 +27,7 @@
     /syncthing
     /tmux
     /zathura
+    /zen-browser
   ];
 in {
   imports =
