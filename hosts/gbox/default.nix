@@ -35,6 +35,7 @@
     /tmux
     /virtualization
     /zathura
+    /zen-browser
   ];
 in {
   imports =
