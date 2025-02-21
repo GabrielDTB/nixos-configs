@@ -63,6 +63,11 @@ in {
 
   networking.hostName = "gbox";
 
+  nix.settings = {
+    trusted-users = [ "gabe" ];
+    secret-key-files = /home/gabe/.ssh/cache-priv-key.pem;
+  };
+
   security.sudo.extraConfig = ''
     Defaults timestamp_timeout=360
   '';
