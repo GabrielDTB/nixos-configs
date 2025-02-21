@@ -49,6 +49,8 @@ in {
     };
   };
 
+  services.printing.enable = true;
+
   networking = {
     hostName = "gtop";
   };
