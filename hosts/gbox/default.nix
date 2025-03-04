@@ -1,4 +1,4 @@
-{pkgs, ...}: let
+{pkgs, config, ...}: let
   features = map (x: ../../users/gabe + x) [
     /.
     /basic-utils
@@ -90,9 +90,18 @@ in {
   #   blacklist nouveau
   #   options nouveau modeset=0
   # '';
-  boot.extraModulePackages = [pkgs.linuxPackages.nvidia_x11];
-  boot.blacklistedKernelModules = ["nouveau" "nvidia_drm" "nvidia_modeset" "nvidia"];
+  # boot.extraModulePackages = [pkgs.linuxPackages.nvidia_x11];
+  # boot.blacklistedKernelModules = ["nouveau" "nvidia_drm" "nvidia_modeset" "nvidia"];
+  hardware.nvidia = {
+    modesetting.enable = false;
+    powerManagement.enable = true;
+    open = false;
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
+  };
   # packages = [ pkgs. ];
+
+  boot.initrd.kernelModules = [ "amdgpu" ];
+  services.xserver.videoDrivers = [ "amdgpu" "nvidia" ];
 
   environment.systemPackages = with pkgs; [
     qbittorrent
