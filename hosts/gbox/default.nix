@@ -9,6 +9,7 @@
     /direnv
     /firefox
     /fish
+    /fonts
     /ghostty
     /gimp
     /git
