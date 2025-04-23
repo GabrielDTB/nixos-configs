@@ -7,7 +7,6 @@
     /cosmic
     /croc
     /direnv
-    /firefox
     /fish
     /fonts
     /ghostty
@@ -81,7 +80,7 @@ in {
     enable = true;
     enable32Bit = true;
     extraPackages = with pkgs; [
-      mesa.drivers
+      mesa
       # rocm-opencl-icd
       rocmPackages.clr.icd
     ];
@@ -111,7 +110,7 @@ in {
     clinfo
     linuxPackages.nvidia_x11
     (let base = pkgs.appimageTools.defaultFhsEnvArgs; in
-    pkgs.buildFHSUserEnv (base // {
+    pkgs.buildFHSEnv (base // {
       name = "fhs";
       targetPkgs = pkgs: (base.targetPkgs pkgs) ++ [pkgs.pkg-config];
       profile = "export FHS=1";
