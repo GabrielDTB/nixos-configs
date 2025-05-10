@@ -62,12 +62,23 @@ in {
     hostName = "gfrm";
   };
 
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
+
   # Fast boot.
   boot = {
     loader = {
-      systemd-boot = {
+      # systemd-boot = {
+      #   enable = true;
+      #   editor = false;
+      # };
+      grub = {
         enable = true;
-        editor = false;
+        efiSupport = true;
+        device = "nodev";
+        timeoutStyle = "hidden";
       };
       efi.canTouchEfiVariables = true;
       timeout = 0;
