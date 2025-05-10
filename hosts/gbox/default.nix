@@ -104,6 +104,7 @@ in {
   services.xserver.videoDrivers = [ "amdgpu" "nvidia" ];
 
   environment.systemPackages = with pkgs; [
+    lmstudio
     qbittorrent
     p7zip
     prismlauncher
