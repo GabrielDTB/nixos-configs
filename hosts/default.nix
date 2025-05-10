@@ -6,6 +6,7 @@
   hosts = {
     "gbox" = ./gbox;
     "gtop" = ./gtop;
+    "gfrm" = ./gfrm;
   };
   commonModules = map (x: x {inherit inputs outputs lib;}) (import ../modules).nixos;
 in
