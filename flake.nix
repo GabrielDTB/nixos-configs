@@ -7,7 +7,7 @@
     home-manager.url = "github:nix-community/home-manager/master";
     hardware.url = "github:nixos/nixos-hardware";
     systems.url = "github:nix-systems/default-linux";
-    stylix.url = "github:danth/stylix/8b0d9317edd57c5374adcf6957ae4775875c2a9d";
+    stylix.url = "github:danth/stylix";
     nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     disko = {
