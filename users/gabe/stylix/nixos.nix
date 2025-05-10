@@ -7,7 +7,7 @@
 
   stylix = {
     enable = true;
-    image = ./eighanface.png;
+    image = ./paper_squares.jpg;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/colors.yaml";
     override = {
       base00 = "0c0c0c";
