@@ -8,6 +8,7 @@
     /cosmic
     /croc
     /direnv
+    /easyeffects
     /fish
     /fonts
     /ghostty
