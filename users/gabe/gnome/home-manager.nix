@@ -1,8 +1,4 @@
-{
-  pkgs,
-  ...
-}:
-{
+{pkgs, ...}: {
   programs.gnome-shell = {
     extensions = with pkgs.gnomeExtensions; [
       blur-my-shell

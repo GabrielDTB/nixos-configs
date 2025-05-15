@@ -1,4 +1,8 @@
-{pkgs, config, ...}: let
+{
+  pkgs,
+  config,
+  ...
+}: let
   features = map (x: ../../users/gabe + x) [
     /.
     /basic-utils
@@ -64,7 +68,7 @@ in {
   networking.hostName = "gbox";
 
   nix.settings = {
-    trusted-users = [ "gabe" ];
+    trusted-users = ["gabe"];
     secret-key-files = /home/gabe/.ssh/cache-priv-key.pem;
   };
 
@@ -100,8 +104,8 @@ in {
   };
   # packages = [ pkgs. ];
 
-  boot.initrd.kernelModules = [ "amdgpu" ];
-  services.xserver.videoDrivers = [ "amdgpu" "nvidia" ];
+  boot.initrd.kernelModules = ["amdgpu"];
+  services.xserver.videoDrivers = ["amdgpu" "nvidia"];
 
   environment.systemPackages = with pkgs; [
     lmstudio
@@ -110,14 +114,17 @@ in {
     prismlauncher
     clinfo
     linuxPackages.nvidia_x11
-    (let base = pkgs.appimageTools.defaultFhsEnvArgs; in
-    pkgs.buildFHSEnv (base // {
-      name = "fhs";
-      targetPkgs = pkgs: (base.targetPkgs pkgs) ++ [pkgs.pkg-config];
-      profile = "export FHS=1";
-      runScript = "fish";
-      extraOutputsToInstall = ["dev"];
-    }))
+    (let
+      base = pkgs.appimageTools.defaultFhsEnvArgs;
+    in
+      pkgs.buildFHSEnv (base
+        // {
+          name = "fhs";
+          targetPkgs = pkgs: (base.targetPkgs pkgs) ++ [pkgs.pkg-config];
+          profile = "export FHS=1";
+          runScript = "fish";
+          extraOutputsToInstall = ["dev"];
+        }))
   ];
 
   boot.loader.systemd-boot.enable = true;

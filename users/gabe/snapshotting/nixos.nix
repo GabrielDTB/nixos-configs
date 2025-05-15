@@ -1,5 +1,4 @@
-{...}:
-{
+{...}: {
   services.snapper = {
     persistentTimer = true;
     configs = {

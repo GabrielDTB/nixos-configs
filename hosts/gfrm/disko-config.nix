@@ -6,8 +6,7 @@
 #   disko.devices.disk.data1.device = "/dev/sdb";
 #   disko.devices.disk.data2.device = "/dev/sdc";
 # }
-{ disk ? "/dev/nvme0n1", ... }: 
-{
+{disk ? "/dev/nvme0n1", ...}: {
   disko.devices = {
     disk.root = {
       type = "disk";
@@ -22,7 +21,7 @@
               type = "filesystem";
               format = "vfat";
               mountpoint = "/boot";
-              mountOptions = [ "umask=0077" ];
+              mountOptions = ["umask=0077"];
             };
           };
           alpha = {
@@ -56,18 +55,39 @@
             size = "100%";
             content = {
               type = "btrfs";
-              extraArgs = [ "-f" ]; # Override existing partition
+              extraArgs = ["-f"]; # Override existing partition
               subvolumes = let
-                mountOptions = [ "compress=zstd" "noatime" ];
+                mountOptions = ["compress=zstd" "noatime"];
               in {
-                "@" = { };
-                "@/root" = { mountpoint = "/"; inherit mountOptions; };
-                "@/home" = { mountpoint = "/home"; inherit mountOptions; };
-                "@/nix" = { mountpoint = "/nix"; inherit mountOptions; };
-                "@/persist" = { mountpoint = "/persist"; inherit mountOptions; };
-                "@/var-lib" = { mountpoint = "/var/lib"; inherit mountOptions; };
-                "@/var-log" = { mountpoint = "/var/log"; inherit mountOptions; };
-                "@/var-tmp" = { mountpoint = "/var/tmp"; inherit mountOptions; };
+                "@" = {};
+                "@/root" = {
+                  mountpoint = "/";
+                  inherit mountOptions;
+                };
+                "@/home" = {
+                  mountpoint = "/home";
+                  inherit mountOptions;
+                };
+                "@/nix" = {
+                  mountpoint = "/nix";
+                  inherit mountOptions;
+                };
+                "@/persist" = {
+                  mountpoint = "/persist";
+                  inherit mountOptions;
+                };
+                "@/var-lib" = {
+                  mountpoint = "/var/lib";
+                  inherit mountOptions;
+                };
+                "@/var-log" = {
+                  mountpoint = "/var/log";
+                  inherit mountOptions;
+                };
+                "@/var-tmp" = {
+                  mountpoint = "/var/tmp";
+                  inherit mountOptions;
+                };
               };
             };
           };
@@ -76,4 +96,3 @@
     };
   };
 }
-

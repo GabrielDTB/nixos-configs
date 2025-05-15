@@ -1,4 +1,8 @@
-{pkgs, inputs, ...}: let
+{
+  pkgs,
+  inputs,
+  ...
+}: let
   features = map (x: ../../users/gabe + x) [
     /.
     /adb

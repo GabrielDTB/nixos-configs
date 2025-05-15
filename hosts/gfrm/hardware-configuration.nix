@@ -11,7 +11,7 @@
 
   boot = {
     initrd = {
-      availableKernelModules = [ "nvme" "xhci_pci" "thunderbolt" "usb_storage" "sd_mod" ];
+      availableKernelModules = ["nvme" "xhci_pci" "thunderbolt" "usb_storage" "sd_mod"];
       kernelModules = ["dm-snapshot"];
     };
     kernelModules = ["kvm-amd"];
