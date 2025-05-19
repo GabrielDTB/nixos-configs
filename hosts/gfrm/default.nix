@@ -60,6 +60,15 @@ in {
   services.fprintd.enable = true;
 
   services.printing.enable = true;
+  hardware.printers.ensurePrinters = [
+    {
+      name = "Gateway4";
+      description = "HP Laserjet Pro M880";
+      location = "Gateway South 4th Floor";
+      deviceUri = "ipps://cspm880.cs.stevens.edu/ipp/print";
+      model = "everywhere";
+    }
+  ];
 
   hardware.bluetooth.enable = true;
 
