@@ -28,6 +28,7 @@
     /osu
     /paperless
     /scanning
+    /scripts
     /shattered-pixel-dungeon
     /signal
     /ssh-from
