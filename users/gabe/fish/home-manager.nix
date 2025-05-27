@@ -39,7 +39,7 @@
         end
 
         set requested_snippet $argv[1]
-        set source_path ${../../../snippets}/$requested_snippet
+        set source_path ${../snippets}/$requested_snippet
         set dest_path $argv[2]
 
         if not test -f $source_path
