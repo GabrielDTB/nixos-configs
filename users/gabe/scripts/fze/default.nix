@@ -1,7 +1,7 @@
 { lib, stdenv, makeWrapper, haskellPackages, ripgrep, fzf, bat }:
 
 let
-  ghc = haskellPackages.ghcWithPackages (p: [ p.turtle p.relude ]);
+  ghc = haskellPackages.ghcWithPackages (p: [ p.relude p.shh ]);
 in
 
 stdenv.mkDerivation {
