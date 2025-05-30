@@ -28,6 +28,7 @@
     /nixos-aliases
     /osu
     /prism-launcher
+    /scripts
     /signal
     /starship
     /steam
