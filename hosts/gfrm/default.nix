@@ -6,6 +6,7 @@
   features = map (x: ../../users/gabe + x) [
     /.
     /adb
+    /aider
     /basic-utils
     /btop
     /core-replacements
