@@ -53,6 +53,7 @@ in {
       ./kopia.nix
       ./swap.nix
       ./tailscale.nix
+      ./bees.nix
     ]
     ++ (map (x: (import x).nixos or {}) features);
 
