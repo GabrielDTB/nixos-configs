@@ -31,11 +31,6 @@
       fsType = "btrfs";
       options = ["subvol=@games" "compress-force=zstd:3" "noatime"];
     };
-    "/home/gabe/ml" = {
-      device = "/dev/disk/by-label/ssd";
-      fsType = "btrfs";
-      options = ["subvol=@ml" "compress-force=zstd:3" "noatime"];
-    };
     "/home/gabe/Videos" = {
       device = "/dev/disk/by-label/data";
       fsType = "btrfs";

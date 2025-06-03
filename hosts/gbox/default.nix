@@ -37,6 +37,7 @@
     /steam
     /stylix
     /syncthing
+    /thunar
     /tmux
     /virtualization
     /zathura
