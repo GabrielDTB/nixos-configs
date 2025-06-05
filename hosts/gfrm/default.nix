@@ -34,6 +34,7 @@
     /steam
     /stylix
     /syncthing
+    /thunar
     /tmux
     /zathura
     /zen-browser
