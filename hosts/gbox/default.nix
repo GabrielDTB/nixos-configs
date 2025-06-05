@@ -7,6 +7,7 @@
     /.
     /basic-utils
     /btop
+    /computer-vision
     /core-replacements
     /cosmic
     /croc
