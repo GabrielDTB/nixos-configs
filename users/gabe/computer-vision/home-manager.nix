@@ -11,5 +11,6 @@
 in {
   home.packages = with pkgsP; [
     colmap
+    ffmpeg-full
   ];
 }
