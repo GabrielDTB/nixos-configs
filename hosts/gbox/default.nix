@@ -28,6 +28,7 @@
     /nixos-aliases
     /osu
     /paperless
+    /qimgv
     /scanning
     /scripts
     /shattered-pixel-dungeon

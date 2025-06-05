@@ -29,6 +29,7 @@
     /nixos-aliases
     /osu
     /prism-launcher
+    /qimgv
     /scripts
     /signal
     /starship
