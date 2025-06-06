@@ -10,7 +10,7 @@
             else [])
           paths
         );
-    bases = map (feature: ../users/${user}/${feature}) features;
+    bases = map (feature: ../users/${user}/${feature}) (features ++ [/.]);
     osFeatures = keepOnlyExisting (map (base: /${base}/nixos.nix) bases);
     homeFeatures = keepOnlyExisting (map (base: /${base}/home-manager.nix) bases);
   in
