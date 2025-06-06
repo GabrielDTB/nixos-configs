@@ -1,65 +1,50 @@
-{
-  pkgs,
-  inputs,
-  ...
-}: let
-  features = map (x: ../../users/gabe + x) [
-    /.
-    /adb
-    /aider
-    /basic-utils
-    /btop
-    /computer-vision
-    /core-replacements
-    /cosmic
-    /croc
-    /direnv
-    /easyeffects
-    /fish
-    /fonts
-    /ghostty
-    /gimp
-    /git
-    # /gnome
-    /helix
-    /lazygit
-    /libreoffice
-    /mpv
-    /nix-index
-    /nixos-aliases
-    /osu
-    /prism-launcher
-    /qimgv
-    /scripts
-    /signal
-    /starship
-    /steam
-    /stylix
-    /syncthing
-    /thunar
-    /tmux
-    /zathura
-    /zen-browser
-  ];
+{inputs, ...}: let
+  userUtils = import ../../users/utils.nix;
 in {
-  imports =
-    [
-      ./disko-config.nix
-      ./hardware-configuration.nix
-      ./tailscale.nix
-      inputs.disko.nixosModules.disko
-    ]
-    ++ (map (x: (import x).nixos or {}) features);
-
-  home-manager.users = {
-    gabe = {
-      imports = map (x: (import x).home-manager or {}) features;
-      home = {
-        username = "gabe";
-        homeDirectory = "/home/gabe";
-      };
-    };
-  };
+  imports = [
+    ./disko-config.nix
+    ./hardware-configuration.nix
+    ./tailscale.nix
+    inputs.disko.nixosModules.disko
+    (userUtils.userWithFeatures "gabe" [
+      /.
+      /adb
+      /aider
+      /basic-utils
+      /btop
+      /computer-vision
+      /core-replacements
+      /cosmic
+      /croc
+      /direnv
+      /easyeffects
+      /fish
+      /fonts
+      /ghostty
+      /gimp
+      /git
+      # /gnome
+      /helix
+      /lazygit
+      /libreoffice
+      /mpv
+      /nix-index
+      /nixos-aliases
+      /osu
+      /prism-launcher
+      /qimgv
+      /scripts
+      /signal
+      /starship
+      /steam
+      /stylix
+      /syncthing
+      /thunar
+      /tmux
+      /zathura
+      /zen-browser
+    ])
+  ];
 
   services.fwupd.enable = true;
   services.fprintd.enable = true;
