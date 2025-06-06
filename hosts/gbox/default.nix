@@ -3,70 +3,60 @@
   config,
   ...
 }: let
-  features = map (x: ../../users/gabe + x) [
-    /.
-    /basic-utils
-    /btop
-    /computer-vision
-    /core-replacements
-    /cosmic
-    /croc
-    /direnv
-    /fish
-    /fonts
-    /ghostty
-    /gimp
-    /git
-    /headscale
-    /helix
-    /hledger
-    /jellyfin
-    /lazygit
-    /libreoffice
-    /mpv
-    /nix-index
-    /nixos-aliases
-    /osu
-    /paperless
-    /qimgv
-    /scanning
-    /scripts
-    /shattered-pixel-dungeon
-    /signal
-    /ssh-from
-    /ssh-from/gtop
-    /starship
-    /steam
-    /stylix
-    /syncthing
-    /thunar
-    /tmux
-    /virtualization
-    /zathura
-    /zen-browser
-  ];
+  userUtils = import ../../users/utils.nix;
 in {
-  imports =
-    [
-      ./disks.nix
-      ./elden-ring-backup.nix
-      ./disable-ds4-touchpad.nix
-      ./hardware-configuration.nix
-      ./immich
-      ./kopia.nix
-      ./swap.nix
-      ./tailscale.nix
-      ./bees.nix
-    ]
-    ++ (map (x: (import x).nixos or {}) features);
-
-  home-manager.users.gabe = {
-    imports = map (x: (import x).home-manager or {}) features;
-    home = {
-      username = "gabe";
-      homeDirectory = "/home/gabe";
-    };
-  };
+  imports = [
+    ./disks.nix
+    ./elden-ring-backup.nix
+    ./disable-ds4-touchpad.nix
+    ./hardware-configuration.nix
+    ./immich
+    ./kopia.nix
+    ./swap.nix
+    ./tailscale.nix
+    ./bees.nix
+    (userUtils.userWithFeatures "gabe" [
+      /basic-utils
+      /btop
+      /computer-vision
+      /core-replacements
+      /cosmic
+      /croc
+      /direnv
+      /fish
+      /fonts
+      /ghostty
+      /gimp
+      /git
+      /headscale
+      /helix
+      /hledger
+      /jellyfin
+      /lazygit
+      /libreoffice
+      /mpv
+      /nix-index
+      /nixos-aliases
+      /osu
+      /paperless
+      /qimgv
+      /scanning
+      /scripts
+      /shattered-pixel-dungeon
+      /signal
+      /ssh-from
+      /ssh-from/gtop
+      /starship
+      /steam
+      /stylix
+      /syncthing
+      /thunar
+      /tmux
+      /virtualization
+      /zathura
+      /zen-browser
+    ])
+  ];
 
   programs.noisetorch.enable = true;
 

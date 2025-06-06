@@ -7,7 +7,7 @@ in {
     ./tailscale.nix
     inputs.disko.nixosModules.disko
     (userUtils.userWithFeatures "gabe" [
-      /.
+      # /.
       /adb
       /aider
       /basic-utils
@@ -49,16 +49,16 @@ in {
   services.fwupd.enable = true;
   services.fprintd.enable = true;
 
-  services.printing.enable = true;
-  hardware.printers.ensurePrinters = [
-    {
-      name = "Gateway4";
-      description = "HP Laserjet Pro M880";
-      location = "Gateway South 4th Floor";
-      deviceUri = "ipps://cspm880.cs.stevens.edu/ipp/print";
-      model = "everywhere";
-    }
-  ];
+  # services.printing.enable = true;
+  # hardware.printers.ensurePrinters = [
+  #   {
+  #     name = "Gateway4";
+  #     description = "HP Laserjet Pro M880";
+  #     location = "Gateway South 4th Floor";
+  #     deviceUri = "ipps://cspm880.cs.stevens.edu/ipp/print";
+  #     model = "everywhere";
+  #   }
+  # ];
 
   hardware.bluetooth.enable = true;
 
