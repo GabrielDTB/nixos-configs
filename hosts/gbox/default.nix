@@ -53,6 +53,7 @@ in {
       /thunar
       /tmux
       /virtualization
+      /xpra
       /zathura
       /zen-browser
     ])

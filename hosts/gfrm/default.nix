@@ -41,6 +41,7 @@ in {
       /syncthing
       /thunar
       /tmux
+      /xpra
       /zathura
       /zen-browser
     ])
