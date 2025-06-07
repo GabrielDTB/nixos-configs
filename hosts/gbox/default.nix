@@ -39,6 +39,7 @@ in {
       /nixos-aliases
       /osu
       /paperless
+      /qbittorrent
       /qimgv
       /scanning
       /scripts
@@ -106,7 +107,6 @@ in {
 
   environment.systemPackages = with pkgs; [
     lmstudio
-    qbittorrent
     p7zip
     prismlauncher
     clinfo
