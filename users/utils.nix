@@ -11,8 +11,8 @@
           paths
         );
     bases = map (feature: ../users/${user}/${feature}) (features ++ [/.]);
-    osFeatures = keepOnlyExisting (map (base: /${base}/nixos.nix) bases);
-    homeFeatures = keepOnlyExisting (map (base: /${base}/home-manager.nix) bases);
+    osFeatures = keepOnlyExisting (map (base: /${base}/os.nix) bases);
+    homeFeatures = keepOnlyExisting (map (base: /${base}/home.nix) bases);
   in
     {...}: {
       imports = osFeatures;
