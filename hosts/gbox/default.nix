@@ -50,6 +50,7 @@ in {
       /steam
       /stylix
       /syncthing
+      /thelounge
       /thunar
       /tmux
       /virtualization
