@@ -18,6 +18,7 @@ in {
     (userUtils.userWithFeatures "gabe" [
       /basic-utils
       /btop
+      /calibre
       /computer-vision
       /core-replacements
       /cosmic
