@@ -16,6 +16,7 @@ in {
     ./tailscale.nix
     ./bees.nix
     (userUtils.userWithFeatures "gabe" [
+      /adb
       /basic-utils
       /btop
       /calibre
