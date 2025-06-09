@@ -48,7 +48,7 @@ in {
       /shattered-pixel-dungeon
       /signal
       /ssh-from
-      /ssh-from/gtop
+      /ssh-from/gfrm
       /starship
       /steam
       /stylix
