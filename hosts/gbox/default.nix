@@ -39,6 +39,7 @@ in {
       /mpv
       /nix-index
       /nixos-aliases
+      /open-webui
       /osu
       /paperless
       /qbittorrent
