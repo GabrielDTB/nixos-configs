@@ -18,7 +18,7 @@ in {
       /cosmic
       /croc
       /direnv
-      /easyeffects
+      # /easyeffects
       /ffmpeg
       /fish
       /fonts
