@@ -5,6 +5,7 @@ in {
     ./disko-config.nix
     ./hardware-configuration.nix
     ./tailscale.nix
+    ./bees.nix
     inputs.disko.nixosModules.disko
     (userUtils.userWithFeatures "gabe" [
       # /.
