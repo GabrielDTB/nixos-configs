@@ -13,12 +13,13 @@ in {
       /aider
       /basic-utils
       /btop
-      /computer-vision
+      /colmap
       /core-replacements
       /cosmic
       /croc
       /direnv
       /easyeffects
+      /ffmpeg
       /fish
       /fonts
       /ghostty
@@ -28,6 +29,7 @@ in {
       /helix
       /lazygit
       /libreoffice
+      /meshlab
       /mpv
       /nix-index
       /nixos-aliases

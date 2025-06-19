@@ -20,11 +20,12 @@ in {
       /basic-utils
       /btop
       /calibre
-      /computer-vision
+      /colmap-gbox
       /core-replacements
       /cosmic
       /croc
       /direnv
+      /ffmpeg
       /fish
       /fonts
       /ghostty
@@ -36,6 +37,7 @@ in {
       /jellyfin
       /lazygit
       /libreoffice
+      /meshlab
       /mpv
       /nix-index
       /nixos-aliases
