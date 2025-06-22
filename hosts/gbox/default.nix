@@ -41,7 +41,7 @@ in {
       /mpv
       /nix-index
       /nixos-aliases
-      /ollama
+      # /ollama
       /open-webui
       /osu
       /paperless
