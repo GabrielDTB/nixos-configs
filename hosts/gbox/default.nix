@@ -20,7 +20,7 @@ in {
       /basic-utils
       /btop
       /calibre
-      /colmap-gbox
+      # /colmap-gbox
       /core-replacements
       /cosmic
       /croc
