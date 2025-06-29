@@ -39,6 +39,7 @@ in {
       /libreoffice
       /meshlab
       /mpv
+      /music
       /nix-index
       /nixos-aliases
       # /ollama
