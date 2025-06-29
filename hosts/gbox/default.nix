@@ -44,7 +44,7 @@ in {
       # /ollama
       /open-webui
       /osu
-      /paperless
+      # /paperless
       /qbittorrent
       /qimgv
       /scanning
@@ -67,6 +67,7 @@ in {
     ])
   ];
 
+  # nixpkgs.config.cuda-support = true;
   programs.noisetorch.enable = true;
 
   networking.hostName = "gbox";
