@@ -13,7 +13,7 @@ in {
       /aider
       /basic-utils
       /btop
-      /colmap
+      # /colmap
       /core-replacements
       /cosmic
       /croc
