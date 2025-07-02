@@ -20,6 +20,7 @@ in {
       /direnv
       # /easyeffects
       /ffmpeg
+      /fhs
       /fish
       /fonts
       /ghostty

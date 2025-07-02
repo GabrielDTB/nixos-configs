@@ -26,6 +26,7 @@ in {
       /croc
       /direnv
       /ffmpeg
+      /fhs
       /fish
       /fonts
       /ghostty
@@ -119,17 +120,6 @@ in {
     prismlauncher
     clinfo
     linuxPackages.nvidia_x11
-    (let
-      base = pkgs.appimageTools.defaultFhsEnvArgs;
-    in
-      pkgs.buildFHSEnv (base
-        // {
-          name = "fhs";
-          targetPkgs = pkgs: (base.targetPkgs pkgs) ++ [pkgs.pkg-config];
-          profile = "export FHS=1";
-          runScript = "fish";
-          extraOutputsToInstall = ["dev"];
-        }))
   ];
 
   boot.loader.systemd-boot.enable = true;
