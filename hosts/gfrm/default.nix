@@ -17,6 +17,7 @@ in {
       /core-replacements
       /cosmic
       /croc
+      /devenv
       /direnv
       # /easyeffects
       /ffmpeg

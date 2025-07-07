@@ -24,6 +24,7 @@ in {
       /core-replacements
       /cosmic
       /croc
+      /devenv
       /direnv
       /ffmpeg
       /fhs
