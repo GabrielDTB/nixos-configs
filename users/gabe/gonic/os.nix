@@ -7,6 +7,7 @@ in {
       music-path = gp + "/music";
       podcast-path = gp + "/podcasts";
       playlists-path = gp + "/playlists";
+      listen-addr = "100.64.0.5";
     };
   };
   fileSystems = {
