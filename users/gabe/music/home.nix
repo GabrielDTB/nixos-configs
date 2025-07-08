@@ -3,6 +3,6 @@
     enable = true;
   };
   home.packages = with pkgs; [
-    feishin
+    supersonic-wayland
   ];
 }

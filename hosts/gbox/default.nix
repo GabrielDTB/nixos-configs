@@ -33,6 +33,7 @@ in {
       /ghostty
       /gimp
       /git
+      /gonic
       /headscale
       /helix
       /hledger
