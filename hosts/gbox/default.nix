@@ -45,6 +45,7 @@ in {
       /music
       /nix-index
       /nixos-aliases
+      /obsidian
       # /ollama
       /open-webui
       /osu
