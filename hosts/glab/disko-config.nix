@@ -55,7 +55,7 @@
             size = "100%";
             content = {
               type = "btrfs";
-              extraArgs = ["-f"]; # Override existing partition
+              extraArgs = ["-f" "-L nixos"]; # Override existing partition
               subvolumes = let
                 mountOptions = ["compress=zstd" "noatime"];
               in {
