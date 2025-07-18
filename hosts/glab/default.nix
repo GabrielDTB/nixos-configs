@@ -38,6 +38,7 @@ in {
       /music
       /nix-index
       /nixos-aliases
+      /obsidian
       /qimgv
       /scripts
       /ssh-from
