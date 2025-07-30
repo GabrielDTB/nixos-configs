@@ -68,6 +68,7 @@ in {
       /virtualization
       /xpra
       /zathura
+      /zellij
       /zen-browser
     ])
   ];
