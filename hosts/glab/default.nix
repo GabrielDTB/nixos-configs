@@ -67,9 +67,7 @@ in {
 
   boot.supportedFilesystems = ["ntfs"];
 
-  
   boot.kernelParams = ["pcie_acs_override=downstream,multifunction"];
-
 
   hardware = {
     graphics = {
@@ -81,7 +79,7 @@ in {
       package = pkgs.linuxPackages.nvidiaPackages.stable;
     };
   };
-  services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver.videoDrivers = ["nvidia"];
   nixpkgs.config.cudaSupport = true;
 
   environment.systemPackages = with pkgs; [
