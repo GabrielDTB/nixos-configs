@@ -4,7 +4,7 @@
       hledger
     ];
     sessionVariables = {
-      LEDGER_FILE = "$HOME/accounting/2024.journal";
+      LEDGER_FILE = "$HOME/accounting/2025.journal";
     };
   };
 }
