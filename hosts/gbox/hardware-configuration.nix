@@ -16,7 +16,6 @@
   boot.initrd.kernelModules = [];
   boot.kernelModules = ["kvm-amd" "wl"];
   boot.kernelParams = ["quiet"];
-  boot.extraModulePackages = [config.boot.kernelPackages.broadcom_sta];
 
   # networking.interfaces.enp5s0.useDHCP = lib.mkDefault true;
   # networking.interfaces.wlp4s0.useDHCP = lib.mkDefault true;

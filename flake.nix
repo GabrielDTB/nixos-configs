@@ -8,7 +8,6 @@
     hardware.url = "github:nixos/nixos-hardware";
     systems.url = "github:nix-systems/default-linux";
     stylix.url = "github:danth/stylix";
-    nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     disko = {
       url = "github:nix-community/disko";
