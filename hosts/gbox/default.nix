@@ -29,6 +29,7 @@ in {
       /ffmpeg
       /fhs
       /fish
+      /flatpak
       /fonts
       /ghostty
       /gimp
