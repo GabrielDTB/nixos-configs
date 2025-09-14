@@ -18,6 +18,7 @@ in {
     (userUtils.userWithFeatures "gabe" [
       /adb
       /basic-utils
+      /beets
       /btop
       /calibre
       # /colmap-gbox
