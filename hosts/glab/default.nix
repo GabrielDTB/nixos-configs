@@ -39,6 +39,7 @@ in {
       /nix-index
       /nixos-aliases
       /obsidian
+      /podman
       /qimgv
       /scripts
       /ssh-from
@@ -57,7 +58,6 @@ in {
     ])
   ];
 
-  services.fprintd.enable = true;
   services.printing.enable = true;
   hardware.printers.ensurePrinters = [
     {
