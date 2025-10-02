@@ -35,6 +35,7 @@ in {
       /mpv
       /nix-index
       /nixos-aliases
+      /obsidian
       /osu
       /prism-launcher
       /qimgv
