@@ -2,9 +2,7 @@
   inputs,
   pkgs,
   ...
-}: let
-  userUtils = import ../../users/utils.nix;
-in {
+}: {
   imports = [
     ./disko-config.nix
     ./hardware-configuration.nix
@@ -12,7 +10,7 @@ in {
     ./tailscale.nix
     ./bees.nix
     inputs.disko.nixosModules.disko
-    (userUtils.userWithFeatures "gabe" [
+    ((import ../../features/utils.nix).getFeatures [
       /adb
       /basic-utils
       /btop

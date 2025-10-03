@@ -20,7 +20,8 @@
         "duplicates"
       ];
     };
-    package = with pkgs; (beets.override {
+    package = with pkgs; (
+      beets.override {
         pluginOverrides = {
           fetchart.enable = true;
         };

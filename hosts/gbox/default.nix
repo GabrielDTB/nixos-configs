@@ -2,9 +2,7 @@
   pkgs,
   config,
   ...
-}: let
-  userUtils = import ../../users/utils.nix;
-in {
+}: {
   imports = [
     ./disks.nix
     ./elden-ring-backup.nix
@@ -15,7 +13,7 @@ in {
     ./swap.nix
     ./tailscale.nix
     ./bees.nix
-    (userUtils.userWithFeatures "gabe" [
+    ((import ../../features/utils.nix).getFeatures [
       /adb
       /basic-utils
       /beets

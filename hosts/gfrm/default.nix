@@ -1,13 +1,11 @@
-{inputs, ...}: let
-  userUtils = import ../../users/utils.nix;
-in {
+{inputs, ...}: {
   imports = [
     ./disko-config.nix
     ./hardware-configuration.nix
     ./tailscale.nix
     ./bees.nix
     inputs.disko.nixosModules.disko
-    (userUtils.userWithFeatures "gabe" [
+    ((import ../../features/utils.nix).getFeatures [
       # /.
       /adb
       /aider
@@ -82,10 +80,6 @@ in {
   # Fast boot.
   boot = {
     loader = {
-      # systemd-boot = {
-      #   enable = true;
-      #   editor = false;
-      # };
       grub = {
         enable = true;
         efiSupport = true;
