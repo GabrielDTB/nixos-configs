@@ -15,7 +15,6 @@
       /basic-utils
       /btop
       # /colmap-gbox
-      /colemak-dh-ortho
       /core-replacements
       /cosmic
       /croc
