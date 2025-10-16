@@ -13,6 +13,7 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    musnix.url = "github:musnix/musnix";
   };
 
   outputs = {self, ...} @ inputs: let

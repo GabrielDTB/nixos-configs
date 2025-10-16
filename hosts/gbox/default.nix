@@ -15,6 +15,7 @@
     ./bees.nix
     ((import ../../features/utils.nix).getFeatures [
       /adb
+      /aider
       /basic-utils
       /beets
       /btop
@@ -43,6 +44,7 @@
       /meshlab
       /mpv
       /music
+      /music-making
       /nix-index
       /nixos-aliases
       /obsidian
@@ -50,6 +52,7 @@
       /open-webui
       /osu
       # /paperless
+      /podman
       /qbittorrent
       /qimgv
       /scanning
@@ -100,6 +103,11 @@
       rocmPackages.clr.icd
     ];
   };
+
+  networking.extraHosts = ''
+    127.0.0.1 youtube.com
+    127.0.0.1 www.youtube.com
+  '';
 
   # boot.extraModprobeConfig = ''
   #   blacklist nouveau
