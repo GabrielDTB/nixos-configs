@@ -25,8 +25,7 @@
         completion-replace = true;
         rulers = [81];
         lsp = {
-          display-messages = true;
-          display-inlay-hints = true;
+          auto-signature-help = false;
         };
         cursor-shape = {
           insert = "bar";
@@ -46,11 +45,14 @@
       keys = {
         normal = {
           space.h = ":toggle lsp.display-inlay-hints";
+          S-c = "toggle_block_comments";
           C-a = "code_action";
         };
         insert = {
+          C-h = "signature_help";
         };
         select = {
+          S-c = "toggle_block_comments";
         };
       };
     };
