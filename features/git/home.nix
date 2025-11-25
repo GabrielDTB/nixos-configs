@@ -1,13 +1,15 @@
 {...}: {
   programs.git = {
     enable = true;
-    userName = "Gabriel Talbert Bunt";
-    userEmail = "gabriel@gabrieltb.me";
     ignores = [
       "/.envrc"
       "/.direnv/"
     ];
-    extraConfig = {
+    settings = {
+      user = {
+        name = "Gabriel Talbert Bunt";
+        email = "gitcommit@dendry.net";
+      };
       credential = {
         helper = "store";
       };
