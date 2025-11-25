@@ -17,7 +17,7 @@
       /adb
       /aider
       /basic-utils
-      /beets
+      # /beets
       /btop
       /calibre
       # /colmap-gbox
