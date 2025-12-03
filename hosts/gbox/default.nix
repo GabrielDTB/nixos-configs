@@ -15,7 +15,7 @@
     ./bees.nix
     ((import ../../features/utils.nix).getFeatures [
       /adb
-      /aider
+      # /aider
       /basic-utils
       # /beets
       /btop
@@ -44,7 +44,7 @@
       /meshlab
       /mpv
       /music
-      /music-making
+      # /music-making
       /nix-index
       /nixos-aliases
       /obsidian
@@ -65,9 +65,9 @@
       /steam
       /stylix
       /syncthing
-      /thelounge
+      # /thelounge
       /thunar
-      /tmux
+      # /tmux
       /virtualization
       /xpra
       /zathura
