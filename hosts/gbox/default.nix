@@ -42,6 +42,7 @@
       /lazygit
       /libreoffice
       /meshlab
+      /miniflux
       /mpv
       /music
       # /music-making
