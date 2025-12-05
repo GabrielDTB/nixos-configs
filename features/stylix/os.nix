@@ -34,7 +34,7 @@
 
       monospace = {
         package = nerd-fonts.fira-code;
-        name = "Fira Code Nerd Font Mono";
+        name = "FiraCode Nerd Font Mono";
       };
 
       emoji = {
