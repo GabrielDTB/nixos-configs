@@ -71,6 +71,7 @@
       /virtualization
       /xpra
       /zathura
+      /zed-editor
       /zellij
       /zen-browser
     ])
