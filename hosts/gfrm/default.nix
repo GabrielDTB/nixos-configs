@@ -48,6 +48,7 @@
       /xpra
       /zathura
       /zellij
+      /zed-editor
       /zen-browser
     ])
   ];
