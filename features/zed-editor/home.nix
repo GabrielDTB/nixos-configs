@@ -28,7 +28,10 @@
         use_modifier_to_send = true;
       };
       relative_line_numbers = "enabled";
-      toolbar.show = false;
+      toolbar = {
+        breadcrumbs = false;
+        quick_actions = false;
+      };
       tab_bar.show = false;
       tabs = {
         file_icons = true;
@@ -49,6 +52,7 @@
       debugger.button = false;
       notification_panel.button = false;
       search.button = false;
+      scrollbar.show = "never";
     };
   };
 }
