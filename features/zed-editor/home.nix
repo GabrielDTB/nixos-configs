@@ -28,6 +28,27 @@
         use_modifier_to_send = true;
       };
       relative_line_numbers = "enabled";
+      toolbar.show = false;
+      tab_bar.show = false;
+      tabs = {
+        file_icons = true;
+      };
+      gutter = {
+        folds = false;
+        runnables = false;
+        breakpoints = false;
+        min_line_number_digits = 2;
+      };
+      project_panel = {
+        indent_size = 12;
+      };
+      terminal = {
+        max_scroll_history_lines = 100000;
+      };
+      outline_panel.button = false;
+      debugger.button = false;
+      notification_panel.button = false;
+      search.button = false;
     };
   };
 }
