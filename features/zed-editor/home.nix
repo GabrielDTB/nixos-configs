@@ -4,6 +4,7 @@
     extensions = [
       "lean4"
       "nix"
+      "typst"
 
       "git-firefly"
       "toml"
