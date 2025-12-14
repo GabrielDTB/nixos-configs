@@ -56,7 +56,7 @@
   services.fwupd.enable = true;
   services.fprintd.enable = true;
 
-  # services.printing.enable = true;
+  services.printing.enable = true;
   # hardware.printers.ensurePrinters = [
   #   {
   #     name = "Gateway4";
