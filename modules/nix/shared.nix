@@ -6,7 +6,10 @@
     registry = lib.mapAttrs (_: value: {flake = value;}) inputs;
     settings = {
       experimental-features = "nix-command flakes";
+      keep-outputs = true;
+      keep-derivations = true;
       auto-optimise-store = true;
+      max-substitution-jobs = 1;
       substituters = [
         "https://nix-community.cachix.org"
         "https://cache.nixos.org/"
@@ -17,8 +20,7 @@
       ];
     };
     gc = {
-      automatic = true;
-      options = "--delete-older-than 60d";
+      automatic = false;
     };
     # optimise.automatic = true;
   };
