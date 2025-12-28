@@ -54,6 +54,47 @@
       notification_panel.button = false;
       search.button = false;
       scrollbar.show = "never";
+      languages = {
+        Python = {
+          formatter = {
+            external = {
+              command = "black";
+              arguments = ["--stdin-filename" "{buffer_path}" "-"];
+            };
+          };
+        };
+      };
+      lsp = {
+        ruff = {
+          initialization_options = {
+            settings = {
+              exclude = ["*"];
+            };
+          };
+        };
+      };
+      file_scan_exclusions = [
+        "**/.ruff_cache"
+        "**/__pycache__"
+        "**/*.egg-info"
+        "**/dist"
+        "**/.pre-commit-config.yaml"
+        "**/.devenv.flake.nix"
+        "**/.devenv"
+        "**/.direnv"
+        "**/.helix"
+        "**/*.lock"
+        "**/.envrc"
+        # default values below
+        "**/.git"
+        "**/.svn"
+        "**/.hg"
+        "**/CVS"
+        "**/.DS_Store"
+        "**/Thumbs.db"
+        "**/.classpath"
+        "**/.settings"
+      ];
     };
   };
 }
