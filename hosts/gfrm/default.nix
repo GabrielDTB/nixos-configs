@@ -41,6 +41,7 @@
       /qimgv
       /scripts
       /signal
+      /snapshotting
       /starship
       /steam
       /stylix
