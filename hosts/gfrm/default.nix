@@ -4,6 +4,7 @@
     ./hardware-configuration.nix
     ./tailscale.nix
     ./bees.nix
+    ./kmonad.nix
     inputs.disko.nixosModules.disko
     ((import ../../features/utils.nix).getFeatures [
       # /.
