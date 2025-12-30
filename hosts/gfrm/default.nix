@@ -28,6 +28,7 @@
       /git
       # /gnome
       /helix
+      /kopia
       /lazygit
       /libreoffice
       /meshlab
