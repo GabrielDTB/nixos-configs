@@ -99,8 +99,8 @@
     ];
   };
 
-  time.timeZone = "America/Los_Angeles";
-  # time.timeZone = "America/New_York";
+  # time.timeZone = "America/Los_Angeles";
+  time.timeZone = "America/New_York";
 
   system.stateVersion = "24.05";
 }
