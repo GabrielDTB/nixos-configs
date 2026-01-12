@@ -28,6 +28,7 @@
       /git
       # /gnome
       /helix
+      /kmonad
       /kopia
       /lazygit
       /libreoffice
