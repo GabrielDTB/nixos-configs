@@ -11,7 +11,7 @@
           nav (tap-hold-next-release 200 t (layer-toggle nav))
           ect (tap-hold-next-release 200 esc lctl)
         )
-        
+
         (defsrc
         esc                                                               del
         grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
