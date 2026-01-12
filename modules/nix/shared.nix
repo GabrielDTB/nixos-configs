@@ -9,7 +9,6 @@
       keep-outputs = true;
       keep-derivations = true;
       auto-optimise-store = true;
-      max-substitution-jobs = 1;
       substituters = [
         "https://nix-community.cachix.org"
         "https://cache.nixos.org/"
@@ -20,8 +19,8 @@
       ];
     };
     gc = {
-      automatic = false;
+      automatic = true;
+      options = "--delete-older-than 120d";
     };
-    # optimise.automatic = true;
   };
 }
