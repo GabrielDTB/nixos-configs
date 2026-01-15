@@ -64,6 +64,7 @@
       /scripts
       /shattered-pixel-dungeon
       /signal
+      /snapshotting
       /ssh-from
       /ssh-from/gfrm
       /starship
