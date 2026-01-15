@@ -5,11 +5,11 @@
 }: {
   imports = [
     ./disks.nix
-    ./elden-ring-backup.nix
+    # ./elden-ring-backup.nix
     ./disable-ds4-touchpad.nix
     ./hardware-configuration.nix
     ./immich
-    ./kopia.nix
+    # ./kopia.nix
     ./swap.nix
     ./tailscale.nix
     ./bees.nix
