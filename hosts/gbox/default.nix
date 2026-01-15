@@ -14,6 +14,7 @@
     ./tailscale.nix
     ./bees.nix
     ./kmonad.nix
+    ./snapshotting.nix
     ((import ../../features/utils.nix).getFeatures [
       /adb
       # /aider
