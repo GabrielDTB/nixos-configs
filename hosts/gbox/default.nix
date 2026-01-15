@@ -24,6 +24,7 @@
       /core-replacements
       /cosmic
       /croc
+      /cryptsetup
       /devenv
       /direnv
       /ffmpeg
