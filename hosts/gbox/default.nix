@@ -42,7 +42,7 @@
       /headscale
       /helix
       /hledger
-      /jellyfin
+      # /jellyfin
       /kmonad
       /kopia
       /lazygit
