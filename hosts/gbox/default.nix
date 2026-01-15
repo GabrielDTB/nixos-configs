@@ -13,6 +13,7 @@
     ./swap.nix
     ./tailscale.nix
     ./bees.nix
+    ./kmonad.nix
     ((import ../../features/utils.nix).getFeatures [
       /adb
       # /aider
@@ -21,6 +22,7 @@
       /btop
       /calibre
       # /colmap-gbox
+      /colemak-dh-ortho
       /core-replacements
       /cosmic
       /croc
@@ -40,6 +42,7 @@
       /helix
       /hledger
       /jellyfin
+      /kmonad
       /lazygit
       /libreoffice
       /meshlab
