@@ -118,23 +118,22 @@
   # '';
   # boot.extraModulePackages = [pkgs.linuxPackages.nvidia_x11];
   # boot.blacklistedKernelModules = ["nouveau" "nvidia_drm" "nvidia_modeset" "nvidia"];
-  hardware.nvidia = {
-    modesetting.enable = false;
-    powerManagement.enable = true;
-    open = false;
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
-  };
+  # hardware.nvidia = {
+  #   modesetting.enable = false;
+  #   powerManagement.enable = true;
+  #   open = false;
+  #   package = config.boot.kernelPackages.nvidiaPackages.stable;
+  # };
   # packages = [ pkgs. ];
 
   boot.initrd.kernelModules = ["amdgpu"];
-  services.xserver.videoDrivers = ["amdgpu" "nvidia"];
+  services.xserver.videoDrivers = ["amdgpu"];
 
   environment.systemPackages = with pkgs; [
     lmstudio
     p7zip
     prismlauncher
     clinfo
-    linuxPackages.nvidia_x11
   ];
 
   boot.loader.systemd-boot.enable = true;
