@@ -18,5 +18,11 @@
       verbosity = "crit";
       extraOptions = ["--loadavg-target" "2.0"];
     };
+    enclave = {
+      spec = "LABEL=enclave";
+      hashTableSizeMB = 128;
+      verbosity = "crit";
+      extraOptions = ["--loadavg-target" "2.0"];
+    };
   };
 }
