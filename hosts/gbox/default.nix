@@ -43,6 +43,7 @@
       /hledger
       /jellyfin
       /kmonad
+      /kopia
       /lazygit
       /libreoffice
       /meshlab
