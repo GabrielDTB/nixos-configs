@@ -41,6 +41,7 @@
       /podman
       /qimgv
       /scripts
+      /snapshotting
       /ssh-from
       /ssh-from/gbox
       /ssh-from/gfrm
