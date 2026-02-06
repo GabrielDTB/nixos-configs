@@ -8,6 +8,7 @@ in {
       podcast-path = gp + "/podcasts";
       playlists-path = gp + "/playlists";
       listen-addr = "100.64.0.5:4747";
+      exclude-pattern = "@eaDir|[aA]rtwork|[cC]overs|[sS]cans|[sS]pectrals|.snapshots";
     };
   };
   fileSystems = {
