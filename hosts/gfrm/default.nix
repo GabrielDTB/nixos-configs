@@ -2,7 +2,6 @@
   imports = [
     ./disko-config.nix
     ./hardware-configuration.nix
-    ./tailscale.nix
     ./bees.nix
     inputs.disko.nixosModules.disko
     ((import ../../features/utils.nix).getFeatures "gfrm" [
@@ -46,6 +45,7 @@
       /steam
       /stylix
       /syncthing
+      /tailscale
       /thunar
       /tmux
       /xpra

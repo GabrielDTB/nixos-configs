@@ -11,7 +11,6 @@
     ./immich
     # ./kopia.nix
     ./swap.nix
-    ./tailscale.nix
     ./bees.nix
     ((import ../../features/utils.nix).getFeatures "gbox" [
       /adb
@@ -72,6 +71,7 @@
       /steam
       /stylix
       /syncthing
+      /tailscale
       # /thelounge
       /thunar
       # /tmux

@@ -7,7 +7,6 @@
     ./disko-config.nix
     ./hardware-configuration.nix
     ./swap.nix
-    ./tailscale.nix
     ./bees.nix
     inputs.disko.nixosModules.disko
     ((import ../../features/utils.nix).getFeatures "glab" [
@@ -48,6 +47,7 @@
       /starship
       /stylix
       /syncthing
+      /tailscale
       /thunar
       /tmux
       /virtualization
