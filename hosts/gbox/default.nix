@@ -13,7 +13,6 @@
     ./swap.nix
     ./tailscale.nix
     ./bees.nix
-    ./snapshotting.nix
     ((import ../../features/utils.nix).getFeatures "gbox" [
       /adb
       # /aider
