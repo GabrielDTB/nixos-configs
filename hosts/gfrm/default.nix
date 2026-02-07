@@ -6,7 +6,7 @@
     ./bees.nix
     ./kmonad.nix
     inputs.disko.nixosModules.disko
-    ((import ../../features/utils.nix).getFeatures [
+    ((import ../../features/utils.nix).getFeatures "gfrm" [
       # /.
       /adb
       /appimage

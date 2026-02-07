@@ -11,7 +11,7 @@
     ./bees.nix
     ./kmonad.nix
     inputs.disko.nixosModules.disko
-    ((import ../../features/utils.nix).getFeatures [
+    ((import ../../features/utils.nix).getFeatures "glab" [
       /adb
       /appimage
       /basic-utils

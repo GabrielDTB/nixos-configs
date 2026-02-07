@@ -15,7 +15,7 @@
     ./bees.nix
     ./kmonad.nix
     ./snapshotting.nix
-    ((import ../../features/utils.nix).getFeatures [
+    ((import ../../features/utils.nix).getFeatures "gbox" [
       /adb
       # /aider
       /appimage

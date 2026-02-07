@@ -9,14 +9,14 @@ let
           else [])
         paths
       );
-  osFeatures = fes: keepOnlyExisting (map (fe: ./${fe}/os.nix) (fes ++ [/.]));
-  homeFeatures = fes: keepOnlyExisting (map (fe: ./${fe}/home.nix) (fes ++ [/.]));
+  osFeatures = host: fes: keepOnlyExisting ((map (fe: ./${fe}/os.nix) (fes ++ [/.])) ++ (map (fe: ./${fe}/os.${host}.nix) (fes ++ [/.])));
+  homeFeatures = host: fes: keepOnlyExisting ((map (fe: ./${fe}/home.nix) (fes ++ [/.])) ++ (map (fe: ./${fe}/home.${host}.nix) (fes ++ [/.])));
 in rec
 {
-  getHomeFeatures = features: {
+  getHomeFeatures = host: features: {
     home-manager.users = {
       gabe = {
-        imports = homeFeatures features;
+        imports = homeFeatures host features;
         home = {
           username = "gabe";
           homeDirectory = "/home/gabe";
@@ -24,8 +24,8 @@ in rec
       };
     };
   };
-  getOsFeatures = features: {
-    imports = osFeatures features;
+  getOsFeatures = host: features: {
+    imports = osFeatures host features;
   };
-  getFeatures = features: (getHomeFeatures features) // (getOsFeatures features);
+  getFeatures = host: features: (getHomeFeatures host features) // (getOsFeatures host features);
 }
