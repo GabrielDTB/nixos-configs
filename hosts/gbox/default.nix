@@ -5,11 +5,8 @@
 }: {
   imports = [
     ./disks.nix
-    # ./elden-ring-backup.nix
-    ./disable-ds4-touchpad.nix
     ./hardware-configuration.nix
     ./immich
-    # ./kopia.nix
     ./swap.nix
     ./bees.nix
     ((import ../../features/utils.nix).getFeatures "gbox" [
