@@ -13,6 +13,7 @@
     inputs.disko.nixosModules.disko
     ((import ../../features/utils.nix).getFeatures [
       /adb
+      /appimage
       /basic-utils
       /btop
       # /colmap-gbox

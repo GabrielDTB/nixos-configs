@@ -9,7 +9,7 @@
     ((import ../../features/utils.nix).getFeatures [
       # /.
       /adb
-      /aider
+      /appimage
       /basic-utils
       /btop
       /colemak-dh-ortho

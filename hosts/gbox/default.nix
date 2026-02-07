@@ -18,6 +18,7 @@
     ((import ../../features/utils.nix).getFeatures [
       /adb
       # /aider
+      /appimage
       /basic-utils
       # /beets
       /btop
