@@ -103,7 +103,7 @@
       };
       auto_signature_help = false;
       inlay_hints = {
-        show_backgorund = false;
+        show_background = false;
         enabled = false;
       };
       hover_popover_enabled = true;
