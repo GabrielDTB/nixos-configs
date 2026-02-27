@@ -95,6 +95,18 @@
         "**/.classpath"
         "**/.settings"
       ];
+      autosave = {
+        after_delay = {
+          milliseconds = 1000;
+        };
+      };
+      auto_signature_help = false;
+      inlay_hints = {
+        show_backgorund = false;
+        enabled = false;
+      };
+      hover_popover_enabled = true;
+      soft_wrap = "editor_width";
     };
   };
 }
