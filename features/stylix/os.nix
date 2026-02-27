@@ -8,19 +8,7 @@
   stylix = {
     enable = true;
     image = ./paper_squares.jpg;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/colors.yaml";
-    override = {
-      base00 = "0c0c0c";
-      base01 = "2f2f2f";
-      base02 = "535353";
-      base03 = "767676";
-      base04 = "b9b9b9";
-      base05 = "cccccc";
-      base06 = "dfdfdf";
-      base07 = "f2f2f2";
-      base09 = "ff69b4";
-      base0D = "1080ff";
-    };
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/solarized-light.yaml";
     fonts = with pkgs; {
       serif = {
         package = noto-fonts;
