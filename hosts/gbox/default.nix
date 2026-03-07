@@ -72,7 +72,7 @@
       # /thelounge
       /thunar
       # /tmux
-      /virtualization
+      # /virtualization
       /xpra
       /zathura
       /zed-editor
