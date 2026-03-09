@@ -15,6 +15,7 @@
           ];
         };
         logtail.enabled = false;
+        policy.path = ./policy.json;
       };
     };
 

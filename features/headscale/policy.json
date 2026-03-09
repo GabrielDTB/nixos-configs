@@ -1,0 +1,17 @@
+{
+  "acls": [
+    {
+      "action": "accept",
+      "src": ["gpix@", "gbox@", "gfrm@"],
+      "dst": ["*:*"]
+    },
+    {
+      "action": "accept",
+      "src": ["glab@"],
+      "dst": [
+        "gbox@:33122", // openwebui
+        "*:22000" // syncthing
+      ]
+    }
+  ]
+}
