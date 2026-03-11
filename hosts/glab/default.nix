@@ -35,6 +35,7 @@
       /mpv
       /music
       /nix-index
+      /nix-ld
       /nixos-aliases
       /obsidian
       /podman

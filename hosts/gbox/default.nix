@@ -48,6 +48,7 @@
       /music
       # /music-making
       /nix-index
+      /nix-ld
       /nixos-aliases
       /obsidian
       # /ollama

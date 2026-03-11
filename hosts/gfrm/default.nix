@@ -33,6 +33,7 @@
       /meshlab
       /mpv
       /nix-index
+      /nix-ld
       /nixos-aliases
       /obsidian
       /osu
