@@ -63,6 +63,7 @@
               arguments = ["--stdin-filename" "{buffer_path}" "-"];
             };
           };
+          language_servers = ["ty" "!basedpyright" "..."];
         };
       };
       lsp = {
