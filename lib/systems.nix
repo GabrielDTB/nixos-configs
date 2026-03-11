@@ -8,5 +8,5 @@ in rec {
         config.allowUnfree = true;
       }
   );
-  forEachSystem = f: lib.genAttrs (import inputs.stdenv.hostPlatform.system) (system: f pkgsFor.${system});
+  forEachSystem = f: lib.genAttrs (import inputs.systems) (system: f pkgsFor.${system});
 }
