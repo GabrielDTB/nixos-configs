@@ -18,6 +18,7 @@
       /core-replacements
       /cosmic
       /croc
+      /cuda
       /devenv
       /direnv
       /ffmpeg
