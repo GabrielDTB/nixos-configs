@@ -1,7 +1,7 @@
 {...}: {
   services.kmonad = {
     enable = true;
-    keyboards.integrated = {
+    keyboards.main = {
       defcfg = {
         enable = true;
         fallthrough = true;
