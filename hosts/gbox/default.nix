@@ -58,6 +58,7 @@
       /podman
       /qbittorrent
       /qimgv
+      /remote-building
       /scanning
       /scripts
       /shattered-pixel-dungeon
