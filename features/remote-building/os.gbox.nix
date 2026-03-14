@@ -22,10 +22,10 @@
     ];
     settings = {
       substituters = [
-        "ssh-ng://nixbuilder@glab"
+        "ssh-ng://nixbuilder@glab?ssh-key=/root/.ssh/nixbuilder_ed25519"
       ];
       trusted-substituters = [
-        "ssh-ng://nixbuilder@glab"
+        "ssh-ng://nixbuilder@glab?ssh-key=/root/.ssh/nixbuilder_ed25519"
       ];
       builders-use-substitutes = true;
     };
