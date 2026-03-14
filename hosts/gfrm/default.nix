@@ -39,6 +39,7 @@
       /osu
       /prism-launcher
       /qimgv
+      /remote-building
       /scripts
       /signal
       /snapshotting

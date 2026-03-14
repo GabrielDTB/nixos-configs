@@ -10,11 +10,17 @@
   users.groups.nixbuilder = {};
   nix.settings.trusted-users = ["nixbuilder"];
 
-  # nix = {
-  #   distributedBuilds = true;
-  #   buildMachines = [];
-  #   extraOptions = ''
-  #     builders-use-substitutes = true
-  #   '';
-  # };
+  nix = {
+    # distributedBuilds = true;
+    # buildMachines = [];
+    # settings = {
+    #   substituters = [
+    #     # "ssh-ng://nixbuilder@"
+    #   ];
+    #   trusted-substituters = [
+    #     # "ssh-ng://nixbuilder@g"
+    #   ];
+    #   builders-use-substitutes = true;
+    # };
+  };
 }
