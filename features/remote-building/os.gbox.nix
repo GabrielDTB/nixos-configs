@@ -1,7 +1,15 @@
 {...}: {
+  users.users.nixbuilder = {
+    isSystemUser = true;
+    group = "nixbuilder";
+    shell = "/run/current-system/sw/bin/bash";
+    openssh.authorizedKeys.keys = [];
+  };
+  users.groups.nixbuilder = {};
+  nix.settings.trusted-users = ["nixbuilder"];
+
   nix = {
     distributedBuilds = true;
-
     buildMachines = [
       {
         hostName = "glab";
@@ -12,9 +20,6 @@
         supportedFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
       }
     ];
-
-    # Optional but recommended: use the remote builder's store as a substituter
-    # so your local machine doesn't rebuild things the remote already has
     extraOptions = ''
       builders-use-substitutes = true
     '';
