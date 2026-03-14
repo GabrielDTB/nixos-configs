@@ -48,7 +48,7 @@
       };
       terminal = {
         max_scroll_history_lines = 100000;
-        dock = "left";
+        dock = "bottom";
       };
       outline_panel.button = false;
       debugger.button = false;
