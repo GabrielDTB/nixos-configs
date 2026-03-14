@@ -74,6 +74,12 @@
             };
           };
         };
+        hls = {
+          binary = {
+            path = "haskell-language-server";
+            arguments = ["--lsp"];
+          };
+        };
       };
       file_scan_exclusions = [
         "**/.ruff_cache"
