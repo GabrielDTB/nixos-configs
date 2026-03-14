@@ -41,6 +41,7 @@
       /obsidian
       /podman
       /qimgv
+      /remote-building
       /scripts
       /snapshotting
       /ssh-from
