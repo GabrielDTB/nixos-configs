@@ -80,6 +80,12 @@
             arguments = ["--lsp"];
           };
         };
+        racket-lsp = {
+          binary = {
+            path = "racket";
+            arguments = ["-l" "racket-langserver"];
+          };
+        };
       };
       file_scan_exclusions = [
         "**/.ruff_cache"
