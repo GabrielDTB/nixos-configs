@@ -6,5 +6,6 @@
       KbdInteractiveAuthentication = false;
       X11Forwarding = true;
     };
+    openFirewall = false;
   };
 }
