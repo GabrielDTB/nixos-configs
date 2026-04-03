@@ -16,7 +16,7 @@
       /basic-utils
       # /beets
       /btop
-      /calibre
+      # /calibre
       # /colmap-gbox
       /colemak-dh-ortho
       /core-replacements
