@@ -10,6 +10,11 @@
         (defalias
           nav (tap-hold-next-release 200 t (layer-toggle nav))
           ect (tap-hold-next-release 200 esc lctl)
+          gam (layer-switch gaming)
+          qwr (layer-switch qwerty)
+          clm (layer-switch colemak-dh-ortho)
+          ges (layer-toggle gaming-esc)
+          qes (layer-toggle qwerty-esc)
         )
 
         (defsrc
@@ -32,11 +37,51 @@
                                                                      down
         )
 
+        (deflayer gaming
+        @ges                                                               del
+        grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+        tab    q    w    f    p    b    j    l    u    y    ;    [    ]     \
+        @ect     a    r    s    t    g    m    n    e    i    o    '      ret
+        lsft       z    x    c    d    v    k    h    ,    .    /        rsft
+        lctl       lmet lalt           spc            ralt rctl left up right
+                                                                     down
+        )
+
+        (deflayer gaming-esc
+        _                                                                  _
+        _    _    _    _    _    _    _    _    _    _    _    _    _      _
+        _      _    _    _    _    _    _    _    _    _    _    _    _    _
+        @clm     _    _    _    _    _    _    _    _    _    _    _       _
+        _          _    _    _    _    _    _    _    _    _    _          _
+        _          _    _              _              _    _    _    _     _
+                                                                     _
+        )
+
+        (deflayer qwerty
+        @qes                                                               del
+        grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+        tab    q    w    e    r    t    y    u    i    o    p    [    ]     \
+        caps     a    s    d    f    g    h    j    k    l    ;    '      ret
+        lsft       z    x    c    v    b    n    m    ,    .    /        rsft
+        lctl       lmet lalt           spc            ralt rctl left up right
+                                                                     down
+        )
+
+        (deflayer qwerty-esc
+        _                                                                  _
+        _    _    _    _    _    _    _    _    _    _    _    _    _      _
+        _      _    _    _    _    _    _    _    _    _    _    _    _    _
+        @clm     _    _    _    _    _    _    _    _    _    _    _       _
+        _          _    _    _    _    _    _    _    _    _    _          _
+        _          _    _              _              _    _    _    _     _
+                                                                     _
+        )
+
         (deflayer nav
         _                                                                  _
         _    _    _    _    _    _    _    _    _    _    _    _    _      _
-        _      _    _    _    _    _    _    ret  _    _    _    _    _    _
-        _        _    _    _    _    _    bspc left down up  right _       _
+        _      @qwr _    _    _    _    _    ret  _    _    _    _    _    _
+        _        _    _    _    _    @gam bspc left down up  right _       _
         _          _    _    _    _    _    del  _    _    _    _          _
         _          _    _              _              _    _    _    _     _
                                                                      _
