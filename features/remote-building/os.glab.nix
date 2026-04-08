@@ -4,7 +4,8 @@
     group = "nixbuilder";
     shell = "/run/current-system/sw/bin/bash";
     openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBzRci0GQjuVeBYEUcpFlPdbIoKEL7Njrbdsss/yTd00 nixbuilder"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBzRci0GQjuVeBYEUcpFlPdbIoKEL7Njrbdsss/yTd00 gbox"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINwvA3NDLM4IR272Y/ShR52t7c/xkvsY9Ok96xx/fy+r gtop"
     ];
   };
   users.groups.nixbuilder = {};

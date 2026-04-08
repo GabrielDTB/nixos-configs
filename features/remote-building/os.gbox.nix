@@ -3,7 +3,9 @@
     isSystemUser = true;
     group = "nixbuilder";
     shell = "/run/current-system/sw/bin/bash";
-    openssh.authorizedKeys.keys = [];
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINwvA3NDLM4IR272Y/ShR52t7c/xkvsY9Ok96xx/fy+r gtop"
+    ];
   };
   users.groups.nixbuilder = {};
   nix.settings.trusted-users = ["nixbuilder"];
