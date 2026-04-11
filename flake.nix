@@ -14,6 +14,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     musnix.url = "github:musnix/musnix";
+    claude-sandboxed.url = "github:GabrielDTB/claude-sandbox";
   };
 
   outputs = {self, ...} @ inputs: let

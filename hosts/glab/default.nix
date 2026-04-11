@@ -14,6 +14,7 @@
       /appimage
       /basic-utils
       /btop
+      /claude-sandboxed
       # /colmap-gbox
       /core-replacements
       /cosmic
