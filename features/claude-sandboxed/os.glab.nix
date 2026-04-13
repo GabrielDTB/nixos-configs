@@ -1,3 +1,3 @@
 {...}: {
-  # hardware.nvidia-container-toolkit.enable = true;
+  hardware.nvidia-container-toolkit.enable = true;
 }
