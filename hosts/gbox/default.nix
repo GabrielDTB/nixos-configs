@@ -17,6 +17,7 @@
       # /beets
       /btop
       # /calibre
+      /claude-sandboxed
       # /colmap-gbox
       /colemak-dh-ortho
       /core-replacements
