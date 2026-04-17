@@ -3,14 +3,15 @@
     {
       "action": "accept",
       "src": ["gpix@", "gbox@", "gfrm@"],
-      "dst": ["*:*"]
+      "dst": ["*:*"],
     },
     {
       "action": "accept",
       "src": ["glab@"],
       "dst": [
         "gbox@:33122", // openwebui
-        "*:22000" // syncthing
+        "*:22000", // syncthing
+        "gbox@:18080", // claude-proxy
       ]
     }
   ]
