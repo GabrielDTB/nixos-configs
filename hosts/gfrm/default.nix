@@ -10,6 +10,7 @@
       /appimage
       /basic-utils
       /btop
+      /claude-sandboxed
       /colemak-dh-ortho
       /core-replacements
       /cosmic
