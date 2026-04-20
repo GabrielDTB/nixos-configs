@@ -73,11 +73,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1776623678,
-        "narHash": "sha256-fK7uCnFMX5pe65DP+fgUw52uJn1qjS5yOjH8A1og8vQ=",
+        "lastModified": 1776717750,
+        "narHash": "sha256-IASxbO2TPtWTIn7xdKmNHzQlJCeIg+YNd9Y0MKSTwS4=",
         "owner": "GabrielDTB",
         "repo": "claude-sandbox",
-        "rev": "258e06d0f18ca00f89607b3ffea48efe2bef085f",
+        "rev": "14b8e85a2d58b0eab1ea6796639ea6c643c61408",
         "type": "github"
       },
       "original": {
@@ -251,17 +251,17 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1774773543,
-        "narHash": "sha256-Husih3IXbA+86Hbpa8EUWAhzDKhJZ7qY2DDndMZ8bsE=",
+        "lastModified": 1776329215,
+        "narHash": "sha256-a8BYi3mzoJ/AcJP8UldOx8emoPRLeWqALZWu4ZvjPXw=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "7a17139823551e1fb824ccca70540ff99dea0ea2",
+        "rev": "b86751bc4085f48661017fa226dee99fab6c651b",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
+        "ref": "nixpkgs-unstable",
         "repo": "nixpkgs",
-        "rev": "7a17139823551e1fb824ccca70540ff99dea0ea2",
         "type": "github"
       }
     },
