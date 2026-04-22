@@ -5,4 +5,11 @@
       enable = true;
     };
   };
+
+  programs.claude-sandboxed = {
+    enable = true;
+    sharedLimit = {
+      enable = true;
+    };
+  };
 }

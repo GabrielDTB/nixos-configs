@@ -1,9 +1,7 @@
 {...}: {
-  hardware.nvidia-container-toolkit.enable = true;
-
   programs.claude-sandboxed = {
     sharedLimit = {
-      memoryGB = 20;
+      memoryGB = 8;
     };
   };
 }
