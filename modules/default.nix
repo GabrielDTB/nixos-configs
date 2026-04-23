@@ -2,6 +2,7 @@ let
   modules = [
     ./nix
     ./nixpkgs
+    ./claude-sandboxed
   ];
   mergeConfig = type:
     builtins.foldl' (
