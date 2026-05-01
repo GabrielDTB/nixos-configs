@@ -171,7 +171,7 @@
         format = "([$symbol$version]($style) )";
       };
       pijul_channel = {
-        version_format = "$raw";
+        # version_format = "$raw";
         format = "([$symbol$channel]($style) )";
       };
       pulumi = {
