@@ -48,6 +48,7 @@
       /ssh-from
       /ssh-from/gbox
       /ssh-from/gfrm
+      /ssh-from/gpix
       /starship
       /stylix
       /syncthing
