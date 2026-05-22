@@ -67,6 +67,7 @@
       /snapshotting
       /ssh-from
       /ssh-from/gfrm
+      /ssh-from/gpix
       /starship
       /steam
       /stylix
@@ -111,6 +112,7 @@
       rocmPackages.clr.icd
     ];
   };
+  services.lact.enable = true;
 
   networking = {
     interfaces = {
