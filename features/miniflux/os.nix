@@ -1,6 +1,7 @@
-{...}: {
+{pkgs, ...}: {
   services.miniflux = {
     enable = true;
+    package = pkgs.master.miniflux;
     # Safe to expose since this is only served on my private network.
     adminCredentialsFile = ./userinfo;
     config = {
