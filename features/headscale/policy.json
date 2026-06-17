@@ -13,6 +13,13 @@
         "*:22000", // syncthing
         "gbox@:18080", // claude-proxy
       ]
+    },
+    {
+      "action": "accept",
+      "src": ["gpap@"],
+      "dst": [
+        "gbox@:13914", // miniflux
+      ]
     }
   ]
 }
