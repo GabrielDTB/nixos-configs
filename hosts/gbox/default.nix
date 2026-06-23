@@ -56,6 +56,7 @@
       /open-webui
       /osu
       # /paperless
+      /prism-launcher
       /podman
       /qbittorrent
       /qimgv
@@ -147,7 +148,6 @@
   environment.systemPackages = with pkgs; [
     lmstudio
     p7zip
-    prismlauncher
     clinfo
   ];
 
