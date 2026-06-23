@@ -80,7 +80,7 @@
       # /virtualization
       /xpra
       /zathura
-      /zed-editor
+      # /zed-editor
       /zellij
       /zen-browser
     ])
