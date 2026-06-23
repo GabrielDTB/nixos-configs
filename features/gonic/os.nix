@@ -1,6 +1,7 @@
 {...}: let
   gp = "/gonic";
 in {
+  systemd.services.gonic.serviceConfig.PrivateTmp = true;
   services.gonic = {
     enable = true;
     settings = {
