@@ -73,11 +73,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1781759882,
-        "narHash": "sha256-Bb1z7L9BElRQaqZGTAtEn/qvoFoYaMW+OGv1KI7u1Bc=",
+        "lastModified": 1782302263,
+        "narHash": "sha256-XH+qZQ4Wd+3yEZh9BPv07RIDXzDfaLJnzbHoamNBE+E=",
         "owner": "GabrielDTB",
         "repo": "claude-sandbox",
-        "rev": "f155ccde13761263afca801645bc5cc2b5ec6d47",
+        "rev": "eae9242f3112f0f32f26a039b97bd43172bf2a7d",
         "type": "github"
       },
       "original": {
