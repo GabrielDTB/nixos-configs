@@ -44,6 +44,7 @@
       /qimgv
       /remote-building
       /scripts
+      /slurm
       /snapshotting
       /ssh-from
       /ssh-from/gbox
