@@ -10,7 +10,7 @@
   };
   users.groups.nixbuilder = {};
   nix.settings.trusted-users = ["nixbuilder"];
-  nix.settings.secret-key-files = [ "/root/cache-priv-key.pem" ];
+  nix.settings.secret-key-files = ["/root/cache-priv-key.pem"];
 
   nix = {
     distributedBuilds = true;
