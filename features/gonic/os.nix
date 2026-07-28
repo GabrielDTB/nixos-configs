@@ -18,5 +18,10 @@ in {
       fsType = "btrfs";
       options = ["subvol=@gonic" "compress-force=zstd:3" "noatime"];
     };
+    "/home/gabe/Videos/beets/library_mount" = {
+      device = "/home/gabe/Videos/qbittorrent/RED";
+      fsType = "none";
+      options = [ "bind" "ro" ];
+    };
   };
 }
