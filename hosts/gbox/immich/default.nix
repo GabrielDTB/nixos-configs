@@ -3,9 +3,16 @@
   pkgs,
   ...
 }: {
+  fileSystems."/srv/immich-media" = {
+    device = "/home/gabe/Videos/immich";
+    fsType = "none";
+    options = [ "bind" ];
+  };
+  systemd.services.immich-server.unitConfig.RequiresMountsFor = [ "/srv/immich-media" ];
   services.immich = {
     enable = true;
     environment.IMMICH_MACHINE_LEARNING_URL = "http://localhost:3003";
+    mediaLocation = "/srv/immich-media";
   };
   users.users.immich.extraGroups = ["video" "render"];
 
