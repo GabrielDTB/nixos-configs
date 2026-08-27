@@ -44,6 +44,7 @@
       /libreoffice
       /meshlab
       /miniflux
+      /mosh
       /mpv
       /music
       # /music-making
