@@ -40,6 +40,7 @@
       # /jellyfin
       /kmonad
       /kopia
+      /kraken
       /lazygit
       /libreoffice
       /meshlab
