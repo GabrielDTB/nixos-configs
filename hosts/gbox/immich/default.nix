@@ -3,6 +3,10 @@
   pkgs,
   ...
 }: {
+  imports = [
+    ./immich-stack.nix
+  ];
+
   fileSystems."/srv/immich-media" = {
     device = "/home/gabe/Videos/immich";
     fsType = "none";
