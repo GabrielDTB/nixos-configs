@@ -1,6 +1,6 @@
 {...}: {
   imports = [
-    ((import ../../../features/utils.nix).getStandaloneFeatures "slugbox" "gilberto" [
+    ((import ../../../features/utils.nix).getStandaloneFeatures "gilberto" ["slugbox"] [
       /basic-utils
       /btop
       /core-replacements

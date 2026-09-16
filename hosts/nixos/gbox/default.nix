@@ -9,7 +9,7 @@
     ./immich
     ./swap.nix
     ./bees.nix
-    ((import ../../../features/utils.nix).getNixosFeatures "gbox" "gabe" [
+    ((import ../../../features/utils.nix).getNixosFeatures "gabe" ["gbox"] [
       /adb
       # /aider
       /appimage

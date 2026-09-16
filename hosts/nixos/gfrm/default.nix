@@ -4,7 +4,7 @@
     ./hardware-configuration.nix
     ./bees.nix
     inputs.disko.nixosModules.disko
-    ((import ../../../features/utils.nix).getNixosFeatures "gfrm" "gabe" [
+    ((import ../../../features/utils.nix).getNixosFeatures "gabe" ["gfrm"] [
       # /.
       /adb
       /appimage
