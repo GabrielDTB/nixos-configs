@@ -67,6 +67,7 @@
       /shattered-pixel-dungeon
       /signal
       /snapshotting
+      /ssh
       /ssh-from
       /ssh-from/gfrm
       /ssh-from/gpix

@@ -13,6 +13,7 @@
       /lazygit
       /nix-index
       /scripts
+      /ssh
       /starship
       /tmux
       /zellij

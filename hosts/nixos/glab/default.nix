@@ -46,6 +46,7 @@
       /scripts
       /slurm
       /snapshotting
+      /ssh
       /ssh-from
       /ssh-from/gbox
       /ssh-from/gfrm

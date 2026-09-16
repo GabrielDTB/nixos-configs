@@ -44,6 +44,7 @@
       /scripts
       /signal
       /snapshotting
+      /ssh
       /starship
       /steam
       /stylix
