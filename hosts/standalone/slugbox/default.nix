@@ -1,6 +1,6 @@
 {...}: {
   imports = [
-    ((import ../../../features/utils.nix).getHomeImports "slugbox" [
+    ((import ../../../features/utils.nix).getStandaloneFeatures "slugbox" "gilberto" [
       /basic-utils
       /btop
       /core-replacements
@@ -18,11 +18,6 @@
       /zellij
     ])
   ];
-
-  home = {
-    username = "gilberto";
-    homeDirectory = "/home/gilberto";
-  };
 
   targets.genericLinux.enable = true;
 }
