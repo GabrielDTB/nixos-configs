@@ -31,13 +31,24 @@
     system,
     username,
     homeDirectory,
-  }:
+  }: let
+    pkgs = pkgsFor system;
+  in
     inputs.home-manager.lib.homeManagerConfiguration {
-      pkgs = pkgsFor system;
+      inherit pkgs;
       extraSpecialArgs = {inherit inputs outputs;};
       modules = [
         path
-        {home = {inherit username homeDirectory;};}
+        {
+          home = {inherit username homeDirectory;};
+
+          # modules/nix always sets nix.settings, and home-manager refuses to
+          # generate nix.conf without a nix to validate it against. On NixOS the
+          # system fills this in; standalone nothing does. Build-time only --
+          # home-manager does not add it to home.packages, so the system nix on
+          # the target machine stays in charge.
+          nix.package = lib.mkDefault pkgs.nix;
+        }
       ];
     };
 in
