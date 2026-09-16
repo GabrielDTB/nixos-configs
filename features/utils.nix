@@ -13,15 +13,22 @@ let
   homeFeatures = host: fes: keepOnlyExisting ((map (fe: ./${fe}/home.nix) (fes ++ [/.])) ++ (map (fe: ./${fe}/home.${host}.nix) (fes ++ [/.])));
 in rec
 {
+  # The home half of a feature set as a bare home-manager module, without any
+  # user identity attached. Standalone homes (see ../homes) use this and supply
+  # home.username / home.homeDirectory themselves.
+  getHomeImports = host: features: {
+    imports = homeFeatures host features;
+  };
   getHomeFeatures = host: features: {
     home-manager.users = {
-      gabe = {
-        imports = homeFeatures host features;
-        home = {
-          username = "gabe";
-          homeDirectory = "/home/gabe";
+      gabe =
+        (getHomeImports host features)
+        // {
+          home = {
+            username = "gabe";
+            homeDirectory = "/home/gabe";
+          };
         };
-      };
     };
   };
   getOsFeatures = host: features: {

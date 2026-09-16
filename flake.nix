@@ -25,5 +25,6 @@
     inherit (lib) formatter devShells;
 
     nixosConfigurations = import ./hosts {inherit inputs outputs lib;};
+    homeConfigurations = import ./homes {inherit inputs outputs lib;};
   };
 }
