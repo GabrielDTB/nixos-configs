@@ -1,4 +1,4 @@
-{...}: {
+{lib, ...}: {
   imports = [
     ((import ../../../features/utils.nix).getStandaloneFeatures "gilberto" ["slugbox"] [
       /basic-utils
@@ -20,4 +20,8 @@
   ];
 
   targets.genericLinux.enable = true;
+
+  # Systemd can't use the chroot nix store.
+  systemd.user.enable = lib.mkForce false;
+  nix.gc.automatic = lib.mkForce false;
 }
