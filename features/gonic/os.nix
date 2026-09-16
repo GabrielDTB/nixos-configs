@@ -21,7 +21,7 @@ in {
     "/home/gabe/Videos/beets/library_mount" = {
       device = "/home/gabe/Videos/qbittorrent/RED";
       fsType = "none";
-      options = [ "bind" "ro" ];
+      options = ["bind" "ro"];
     };
   };
 }

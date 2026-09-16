@@ -10,9 +10,9 @@
   fileSystems."/srv/immich-media" = {
     device = "/home/gabe/Videos/immich";
     fsType = "none";
-    options = [ "bind" ];
+    options = ["bind"];
   };
-  systemd.services.immich-server.unitConfig.RequiresMountsFor = [ "/srv/immich-media" ];
+  systemd.services.immich-server.unitConfig.RequiresMountsFor = ["/srv/immich-media"];
   services.immich = {
     enable = true;
     environment.IMMICH_MACHINE_LEARNING_URL = "http://localhost:3003";

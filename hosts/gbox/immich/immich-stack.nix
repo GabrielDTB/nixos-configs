@@ -30,7 +30,7 @@ in {
       Type = "oneshot";
       ExecStart = "${stackScript}";
       LoadCredential = ["api-key:${apiKeyFile}"];
-      StateDirectory = "immich-stack";   # cursor -> /var/lib/immich-stack/cursor
+      StateDirectory = "immich-stack"; # cursor -> /var/lib/immich-stack/cursor
 
       DynamicUser = true;
       PrivateTmp = true;
