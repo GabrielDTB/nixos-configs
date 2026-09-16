@@ -5,7 +5,7 @@
   nix = {
     registry = lib.mapAttrs (_: value: {flake = value;}) inputs;
     settings = {
-      experimental-features = "nix-command flakes";
+      experimental-features = ["nix-command" "flakes"];
       keep-outputs = true;
       keep-derivations = true;
       auto-optimise-store = true;
