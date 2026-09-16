@@ -16,7 +16,6 @@ in
       modules =
         [
           path
-          # inputs.claude-sandboxed.nixosModules.default
         ]
         ++ commonModules;
     })

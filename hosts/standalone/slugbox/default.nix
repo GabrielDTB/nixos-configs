@@ -1,6 +1,6 @@
 {...}: {
   imports = [
-    ((import ../../../features/utils.nix).getHomeImports "generic" [
+    ((import ../../../features/utils.nix).getHomeImports "slugbox" [
       /basic-utils
       /btop
       /core-replacements
@@ -20,8 +20,8 @@
   ];
 
   home = {
-    username = "gabe";
-    homeDirectory = "/home/gabe";
+    username = "gilberto";
+    homeDirectory = "/home/gilberto";
   };
 
   targets.genericLinux.enable = true;

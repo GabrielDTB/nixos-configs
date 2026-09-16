@@ -4,8 +4,8 @@
   lib,
 }: let
   hosts = {
-    "generic" = {
-      path = ./generic;
+    "slugbox" = {
+      path = ./slugbox;
       system = "x86_64-linux";
     };
   };

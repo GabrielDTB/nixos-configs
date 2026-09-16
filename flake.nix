@@ -26,9 +26,6 @@
     inherit (lib) formatter devShells;
 
     nixosConfigurations = hosts.nixos;
-    standaloneConfigurations = hosts.standalone;
-
-    # `home-manager --flake .#<host>` only looks under homeConfigurations.
     homeConfigurations = hosts.standalone;
   };
 }
