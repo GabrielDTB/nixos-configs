@@ -1,6 +1,6 @@
 {...}: {
   imports = [
-    ((import ../../features/utils.nix).getHomeImports "generic" [
+    ((import ../../../features/utils.nix).getHomeImports "generic" [
       /basic-utils
       /btop
       /core-replacements
@@ -19,7 +19,10 @@
     ])
   ];
 
-  # Not NixOS: pick up /usr/share, the distro's terminfo, and the system nix
-  # profile. Drop this if a standalone home ever lands on a NixOS box.
+  home = {
+    username = "gabe";
+    homeDirectory = "/home/gabe";
+  };
+
   targets.genericLinux.enable = true;
 }

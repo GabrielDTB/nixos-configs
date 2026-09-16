@@ -20,11 +20,15 @@
   outputs = {self, ...} @ inputs: let
     inherit (self) outputs;
     lib = import ./lib {inherit inputs;};
+    hosts = import ./hosts {inherit inputs outputs lib;};
   in {
     inherit lib;
     inherit (lib) formatter devShells;
 
-    nixosConfigurations = import ./hosts {inherit inputs outputs lib;};
-    homeConfigurations = import ./homes {inherit inputs outputs lib;};
+    nixosConfigurations = hosts.nixos;
+    standaloneConfigurations = hosts.standalone;
+
+    # `home-manager --flake .#<host>` only looks under homeConfigurations.
+    homeConfigurations = hosts.standalone;
   };
 }

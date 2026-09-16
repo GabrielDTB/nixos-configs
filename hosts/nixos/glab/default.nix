@@ -9,7 +9,7 @@
     ./swap.nix
     ./bees.nix
     inputs.disko.nixosModules.disko
-    ((import ../../features/utils.nix).getFeatures "glab" [
+    ((import ../../../features/utils.nix).getFeatures "glab" [
       /adb
       /appimage
       /basic-utils

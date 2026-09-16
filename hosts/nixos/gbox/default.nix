@@ -9,7 +9,7 @@
     ./immich
     ./swap.nix
     ./bees.nix
-    ((import ../../features/utils.nix).getFeatures "gbox" [
+    ((import ../../../features/utils.nix).getFeatures "gbox" [
       /adb
       # /aider
       /appimage
